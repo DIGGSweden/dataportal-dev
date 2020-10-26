@@ -1,0 +1,91 @@
+{
+  "startpage" : {
+    "search_placeholder" : "Search for data",
+    "seo_description" : "Sweden's national data portal for finding, exploring and using data from the public and private sectors",
+    "seo_title" : "The Swedish dataportal",
+    "search_title_1" : "Search and explore",
+    "search_title_2" : "data from Sweden",    
+    "explore_datasets" : "Explore datasets",
+    "explore_concepts" : "Explore concepts and terminologies",
+    "explore_specs" : "Explore specifications of information and data models",
+    "coming_soon" : "COMING SOON",
+    "search_datasets_format" : "Search datasets in the {{category}} category",
+    "datasets_by_category" : "Datasets by categories"
+   },
+  "statistic" : {
+    "statistic-header" : "Statistics of the data portal",
+    "dataset-numbers" : "Harvested datasets per month",
+    "statistic-numbers" : "Statistics at a glance",
+    "top-organizations" : "organizations",
+    "top-categories" : "categories",
+    "top" : "Top",
+    "statistic-link" : "Description of statistics",
+    "graph-screenreader" : "The following information is also avaliable in text. Follow the link Description of statistics",
+    "statistic-page-text" :"Statistics visualized on the startpage is here available in text. The statistics shows harvested datasets per months, top 5 organizations and categories.",
+    "statistic-page-header" : "Statistic",
+    "statistic-page-numberofdatasets" :"Number of datasets on dataportalen today: ",
+    "statistic-page-seotitle" : "Statistic - Sveriges dataportal",
+    "statistic-page-link" : "statistic"
+  },
+  "highlight" : {
+    "highlight-header":"Sweden's data portal for increased innovation",
+    "highlight-text":"Data is a national resource for the development of society, industry and the public sector. It is a path to transparency, innovation and growth that benefits the entire society created by citizens, businesses and the government bodies together.",
+    "highlight-text2":"Sweden’s data portal is a hub that coordinates and makes available data for re-use provided by public, private and civil society organisations. The portal only contains information about the datasets. Data is retrieved or requested via links to the organization responsible for it."
+  },
+  "search" : {
+    "search" : "Search",
+    "dataset-hits" : "datasets",
+    "concept-hits" : "concepts",
+    "specification-hits" : "specifications",
+    "next-page" : "Next",
+    "prev-page" : "Previous",
+    "first-page" : "First",
+    "page" : "Page",
+    "of" : "of",
+    "datasets" : "Datasets",
+    "concepts" : "Concepts",
+    "specifications" : "Specifications",
+    "organization" : "Organizations",
+    "relevance" : "Relevance",
+    "date" : "Last modified",
+    "sort" : "Order by:",
+    "nohits" : "No hits",
+    "numberofhits" : "Number of hits:"
+  },
+  "datasets" : {
+    "search-datasets" : "Search datasets",
+    "datasets" : "datasets"
+  },
+  "concepts" : {
+    "search-concept" : "Search concepts",
+    "concepts" : "concepts"
+  },
+  "specifications" : {
+    "search-specifications" : "Search specifications",
+    "specifications" : "specifications"
+  },
+  "notfoundpage" : {
+    "heading" : "404 - Page not found",
+    "body" : "The page you requested could not be found. Hopefully one of these links can help you find the information.",
+    "startpage" : "Sveriges dataportals's home page",
+    "goto" : "Go to "
+  },
+  "datasetpage" : {
+    "about-dataset" : "About dataset",
+    "download-dataset" : "Access data",
+    "catalog" : "Catalog"
+  },
+  "articles" :{
+    "news" : "news",
+    "articles" : "Articles",
+    "view-all" : "View all articles"
+  },  
+  "redirect" :{
+    "pagenotfound_header" : "Oops, the page could not be found!",
+    "pagenotfound-label" : "The Swedish dataportal",
+    "pagenotfound-text" : "This may be because oppnadata.se moved to dataportal.se September 23, 2020. Hopefully these links can help you find what you were looking for.",
+    "pagenotfound-link" : "Home page",
+    "pagenotfound-link2" : "Search data"
+  }
+}
+

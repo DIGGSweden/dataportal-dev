@@ -1,0 +1,74 @@
+@import 'scss/general/variables.scss';
+
+
+.highlight {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: $space-48;
+    background-color: $brown10;
+
+    @media screen and (max-width: 1151px) {
+        background-color: $white;
+    }
+
+
+    h2 {
+        margin: 0px;
+        padding-top: $space-24;
+        padding-left: $space-24;
+        padding-right: $space-24;
+
+        @media screen and (max-width: 1151px) {
+            padding-top: 0px;
+            padding-left: 0px;
+            padding-right: 24px;
+        }
+
+        @media screen and (max-width: 800px) {
+            padding-top: $space-8;
+            padding-right: 0px;
+        }
+    }
+
+    p {
+        padding: $space-8 $space-24 0px;
+        margin: 0px;
+
+        @media screen and (max-width: 1151px) {
+            padding-left: 0px;
+            padding-right: $space-24;
+        }
+
+        @media screen and (max-width: 800px) {
+            padding-top: $space-8;
+            padding-right: 0px;
+        }
+    }
+
+    div {
+        width: 50%;
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        &:last-of-type {
+            display: flex;
+            align-items: flex-start;
+        }
+    }
+
+    @media screen and (max-width: 800px) {
+        flex-direction: column-reverse;
+
+        h2 {
+            margin-top: $space-16;
+        }
+
+        div {
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,23 @@
+{
+  "search-data" : "Search data",
+  "language" : "På svenska",
+
+  "contact" : "Contact",
+  "beta-text1" : "We are constantly developing Sveriges dataportal. Please send your ",
+  "beta-link-text" : "opinions",
+  "beta-text2" : " to us!",
+  "logo-title" : "The Swedish dataportal",
+  "logo-alt-title" : "The Swedish dataportal logo",
+  "to-top" : "To the top",
+  "show-filter" : "Show filter",
+  "hide-filter" : "Hide filter",
+  "loading" : "Loading",
+  "load-more" : "Load more",
+  "clear-filters" : "Clear all filters",
+  "no-js-text" : "JavaScript must be enabled for the search page to work.",
+  "soon" : "COMING SOON",
+  "logo" : "",
+  "seo-title" : "The Swedish dataportal",
+  "accessibility-report" : "Accessibility report",
+  "logo-text" : " - Agency for digital government"
+}

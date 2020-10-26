@@ -1,0 +1,43 @@
+{
+  "about":
+  {
+    "path":"om-webbplatsen",
+    "title":"Om webbplatsen"
+  },
+  "accessibility":{
+    "path":"om-webbplatsen/tillganglighet",
+    "title":"Tillgänglighet"
+  },
+  "register-data":{
+    "path":"registrera-data",
+    "title":"Registrera data"
+  },
+  "projects":{
+    "path":"projects",
+    "title":"Inspiration"
+  },  
+  "datasets":{
+    "path":"datasets",
+    "title":"Datamängder"
+  },
+  "specifications":{
+    "path":"specifications",
+    "title":"Specifikationer"
+  },
+  "concepts":{
+    "path":"concepts",
+    "title":"Begrepp"
+  },
+  "news":{
+    "path":"artiklar",
+    "title":"Artiklar"
+  },
+  "nyhet":{
+    "path":"nyhets-artikel",
+    "title":"nyhets-artikel"
+  },
+  "start":{
+    "path" : "",
+    "title" : "Sveriges dataportal"    
+  }
+}

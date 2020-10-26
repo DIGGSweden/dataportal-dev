@@ -1,0 +1,112 @@
+@import 'scss/general/variables.scss';
+
+footer {
+    margin-top: 10rem;
+}
+
+.footer {
+    background-color: $white;
+    padding-top: $space-32;
+    padding-bottom: $space-96;
+    border-top: 2px solid #E4E4E4;
+
+    .footer-main {
+        display: flex;
+        flex-direction: column;
+        min-height: 3rem;
+
+        .digg__ {
+            span {
+                color: $black100;
+
+                &:first-of-type {
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}
+
+.footer__links {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: $space-16;
+
+    @media screen and (max-width: 700px) {
+        flex-direction: column;
+    }
+
+    span,
+    a {
+        color: $black100;
+    }
+
+    span {
+        margin-right: $space-8;
+    }
+
+    a {
+        margin-right: $space-24;
+    }
+
+    .footer-link {
+        word-break: initial;
+        margin-bottom: $space-16;
+
+        &:focus {
+            outline: $focus-style;
+            outline-offset: $focus-offset;
+        }
+    }
+
+    .footer__links-nav {
+        display: flex;
+        flex-wrap: wrap;
+        margin-right: $space-24;
+
+        div {
+            margin-right: $space-24;
+            margin-bottom: $space-16;
+        }
+
+        @media screen and (max-width: 700px) {
+            flex-direction: column;
+        }
+    }
+
+    .footer__links-contact {
+        display: flex;
+        flex-wrap: wrap;
+
+        .footer-link:last-of-type {
+            margin-right: 0px;
+        }
+
+        @media screen and (max-width: 700px) {
+            flex-direction: column;
+        }
+    }
+
+    //Back to top button
+    .back-to-top {
+        a {
+            height: $space-48;
+            background-color: $green10;
+            color: $white;
+            border: none;
+
+            &:hover,
+            &:focus {
+                background-color: $green25;
+                color: $black100;
+                border: none;
+            }
+
+            &:focus {
+                outline: $focus-style !important;
+                outline-offset: $focus-offset !important;
+            }
+        }
+    }
+}

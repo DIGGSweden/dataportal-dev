@@ -1,0 +1,43 @@
+{
+  "about":
+  {
+    "path":"about-webpage",
+    "title":"About this website"
+  },
+  "accessibility":{
+    "path":"about-webpage/accessibility",
+    "title":"Accessibility"
+  },
+  "register-data":{
+    "path":"register-data",
+    "title":"Register data"
+  },
+  "projects":{
+    "path":"projects",
+    "title":"Inspiration"
+  }, 
+  "datasets":{
+    "path":"datasets",
+    "title":"Datasets"
+  },
+  "specifications":{
+    "path":"specifications",
+    "title":"Specifications"
+  },
+  "concepts":{
+    "path":"concepts",
+    "title":"Concepts"
+  },
+  "news":{
+    "path":"articles",
+    "title":"Articles"
+  },
+  "news-article":{
+    "path":"news-article",
+    "title":"news-article"
+  },
+  "start":{
+    "path" : "",
+    "title" : "The Swedish dataportal"    
+  }
+}
