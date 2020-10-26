@@ -95,7 +95,7 @@ export class StartPage extends React.Component<PageProps, any> {
 
                   <div className="statistic">
                     <div className="statistic-header">
-                      <h2 className="text-3">Portalen i siffror</h2>
+                      <h2 className="text-3">En H2 </h2>
                     </div>
                   </div>
                 </MainContent>
