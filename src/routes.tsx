@@ -5,6 +5,7 @@ import { App } from './components/App';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { NotFoundPage} from './pages/NotFoundPage';
 import { StartPage } from './pages/StartPage';
+import { ContentPage } from './pages/Content/ContentPage';
 import { SettingsContext } from 'components/SettingsProvider';
 
 export interface RouteProps {
@@ -26,7 +27,10 @@ class RoutesComponent extends React.Component<RouteProps> {
               <Switch>                
                 {/* default */}
                 <Route path={['/', '/sv','/en']} exact render={(props)=><StartPage env={settings.env} {...props}/>} />
+                <Route path={['/nyheter/:nid/*', '/sv/nyheter/:nid/*','/sv/nyheter/*']} exact render={(props)=><ContentPage env={settings.env} {...props}/>} />
+                <Route path={['/om-webbplatsen', '/sv/om-webbplatsen']} exact render={(props)=><ContentPage env={settings.env} {...props}/>} />
                 <Route render={(props)=><NotFoundPage {...props}/>} />
+                
               </Switch>
             </App>
           )}
