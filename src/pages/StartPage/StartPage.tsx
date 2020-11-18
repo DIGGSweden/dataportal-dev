@@ -80,7 +80,21 @@ export class StartPage extends React.Component<PageProps, any> {
                       <div className="startpage-top"></div>
                     </div>
 
-                    <div className="main-container"></div>
+                    <div className="main-container">
+                      <div className="startpage-categories">
+                        <h2 className="text-3">
+                          {i18n.t('pages|startpage|datasets_by_category')}
+                        </h2>
+                        
+                      </div>
+                    
+                    </div>
+                  </div>
+
+                  <div className="statistic">
+                    <div className="statistic-header">
+                      <h2 className="text-3">En H2 som är cool </h2>
+                    </div>
                   </div>
                 </MainContent>
               </ErrorBoundary>

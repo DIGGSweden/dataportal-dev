@@ -24,7 +24,6 @@ const frame = hasWindow
   ? window.requestAnimationFrame
   : (cb: () => void) => cb();
 
-
 const InnerBox = styled(Box)`
   pointer-events: auto;
 `;
@@ -257,38 +256,27 @@ export class Header extends React.Component<HeaderProps> {
                 <div className="header-links">
                   <div>
                     <a
-                      className={
-                        'header-link ' +
-                        (this.props.activeLink == 'search' ||
-                        this.props.activeLink == 'terms' ||
-                        this.props.activeLink == 'specifications'
-                          ? 'active'
-                          : '')
-                      }
-                      href={`/${i18n.languages[0]}/${i18n.t(
-                        'routes|datasets|path'
-                      )}?q=&f=`}
-                    >
-                      {i18n.t('common|search-data')}
-                    </a>
-                  </div>
-
-                  <div>
-                    <a
-                      href={`/${i18n.languages[0]}/${i18n.t(
-                        'routes|projects|path'
-                      )}
-                      
-                      `}
+                      href="landningssida"
                       className={
                         'header-link ' +
                         (this.props.activeLink == 'projects' ? 'active' : '')
                       }
                     >
-                      {i18n.t('routes|projects|title')}
+                      Landningssida{' '}
                     </a>
                   </div>
 
+                  <div>
+                    <a
+                      href="innehållssida"
+                      className={
+                        'header-link ' +
+                        (this.props.activeLink == 'projects' ? 'active' : '')
+                      }
+                    >
+                      Innehållsida{' '}
+                    </a>
+                  </div>
                   {/* <div>
                     <a
                       href={`/${i18n.languages[0]}/${i18n.t(
