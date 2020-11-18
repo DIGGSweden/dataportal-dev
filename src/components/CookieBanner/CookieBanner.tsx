@@ -13,7 +13,7 @@ import {
   LocalStoreContextData,
 } from '../LocalStoreProvider';
 import { NoServerRender } from '../NoServerRender';
-import { StyledLink } from '../StyledLink';
+// import { StyledLink } from '../StyledLink';
 
 export class CookieBanner extends React.Component {
   acceptCookies = (localStore: LocalStoreContextData) =>

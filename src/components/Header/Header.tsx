@@ -24,16 +24,6 @@ const frame = hasWindow
   ? window.requestAnimationFrame
   : (cb: () => void) => cb();
 
-// const HeaderElem = Box.withComponent('header');
-
-// const StickyElem = styled(HeaderElem)`
-//   width: 100%;
-//   position: fixed;
-//   top: 0;
-//   z-index: 2;
-//   transform: translateZ(0);
-//   pointer-events: none;
-// `;
 
 const InnerBox = styled(Box)`
   pointer-events: auto;

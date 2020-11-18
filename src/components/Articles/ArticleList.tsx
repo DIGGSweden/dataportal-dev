@@ -3,7 +3,7 @@ import i18n from '../../i18n';
 import { EnvSettings } from '../../../config/env/EnvSettings';
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
-import { Loader } from '../Loader';
+// import { Loader } from '../Loader';
 import ChopLines from 'chop-lines';
 import { slugify } from 'utilities/urlHelpers';
 let moment = require('moment');
@@ -58,11 +58,6 @@ export const ArticleList: React.FC<ArticleListProps> = (props) => {
           articleList.map((n, index) => {
             return (
               <li
-                // onClick={() => {
-                //   (window as any).location.href = `/${
-                //     i18n.languages[0]
-                //   }/artiklar/${n.id}/${slugify(n.heading)}`;
-                // }}
                 key={index}
               >
                 <span className="text-6">

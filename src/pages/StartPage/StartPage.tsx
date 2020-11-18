@@ -77,26 +77,10 @@ export class StartPage extends React.Component<PageProps, any> {
                 <MainContent id="main" flex="1 1 auto">
                   <div className="wpb_wrapper">
                     <div className="main-search-container">
-                      <div className="startpage-top">
-                                              
-                      </div>
+                      <div className="startpage-top"></div>
                     </div>
 
-                    <div className="main-container">
-                      <div className="startpage-categories">
-                        <h2 className="text-3">
-                          {i18n.t('pages|startpage|datasets_by_category')}
-                        </h2>
-                        
-                      </div>
-                    
-                    </div>
-                  </div>
-
-                  <div className="statistic">
-                    <div className="statistic-header">
-                      <h2 className="text-3">En H2 </h2>
-                    </div>
+                    <div className="main-container"></div>
                   </div>
                 </MainContent>
               </ErrorBoundary>
