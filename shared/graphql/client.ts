@@ -1,5 +1,5 @@
 import {
-    InMemoryCache,    
+    InMemoryCache, IntrospectionFragmentMatcher,    
   } from 'apollo-cache-inmemory';
   import { ApolloClient } from '@apollo/client';
   import { createHttpLink } from 'apollo-link-http'
@@ -26,7 +26,15 @@ import {
   
     // ! Setting type as any to supress ts error.
     // ! Might cause problems but seems to work for now
-    const cache: any = new InMemoryCache();
+    const cache: any = new InMemoryCache({
+      fragmentMatcher: new IntrospectionFragmentMatcher({
+        introspectionQueryResultData: {
+          __schema: {
+            types: [],
+          },
+        },
+      }),
+    });
 
     const link: any = createHttpLink({
       uri: backendUrl,
