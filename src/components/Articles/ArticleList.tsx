@@ -1,7 +1,7 @@
 import React, { Component, useState } from 'react';
 import i18n from '../../i18n';
 import { EnvSettings } from '../../../config/env/EnvSettings';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery } from '@apollo/client';
 import { gql } from 'apollo-boost';
 import { Loader } from '../Loader';
 import ChopLines from 'chop-lines';

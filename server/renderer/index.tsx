@@ -16,11 +16,10 @@ import { Routes } from '../../src/routes';
 import { getBundles, getStyleBundles } from './getBundles';
 import { getFooter, getHeader } from './html-template';
 import { GlobalStyles } from '../../src/GlobalStyles';
-import { ApolloProvider } from '@apollo/react-hooks'
-import { ApolloClient } from 'apollo-client'
-import { createHttpLink } from 'apollo-link-http'
-import { InMemoryCache } from 'apollo-cache-inmemory'
+import { ApolloProvider } from '@apollo/client'
+import { getDataFromTree } from "@apollo/client/react/ssr";
 import { SettingsUtil } from "../../config/env/SettingsUtil";
+import { createApolloClient } from '../../shared/graphql/client';
 
 export interface RenderResponseProfileItem {
   name: string;
@@ -57,19 +56,11 @@ export const renderer = async (
 
   const env = SettingsUtil.create(host);
 
-  const link = createHttpLink({
-    uri:env.CONTENTBACKEND_GRAPHAPI,
-    credentials: 'same-origin',
-    headers: {
-      cookie: cookies,
-    },
-    fetch: fetch as any
-  });
-
-  const client = new ApolloClient({
-    ssrMode: true,
-    link,
-    cache: new InMemoryCache()    
+  const client = createApolloClient({     
+    ssrMode: true, 
+    backendUrl: env.CONTENTBACKEND_GRAPHAPI,
+    cookies:cookies,
+    fetch: fetch as any 
   });
 
   const frontend = (
@@ -95,6 +86,8 @@ export const renderer = async (
     const bundlesPromise = getBundles(manifestPath);    
     const styleBundlesPromise = getStyleBundles(manifestPath);    
 
+    await getDataFromTree(frontend);  
+
     if (routerContext.url) {
       return {
         statusCode: 301,
@@ -106,7 +99,7 @@ export const renderer = async (
     const { helmet } = helmetContext as FilledContext;    
 
     const bundles: string[] = await bundlesPromise;    
-    const styleBundles: string[] = await styleBundlesPromise;    
+    const styleBundles: string[] = await styleBundlesPromise;        
 
     let response = getHeader({
       metaTags: helmet
@@ -129,6 +122,12 @@ export const renderer = async (
       const helmetServer = Helmet.renderStatic();
       response += `<title data-react-helmet="true">Sveriges utvecklarportal</title>${helmetServer.meta.toString()}${helmetServer.link.toString()}`;      
     }
+
+    let data = client.extract();
+      if(data)
+        try {
+          response += `<script>window.__APOLLO_STATE__ = ${JSON.stringify(data)};</script>`
+        }catch{}
 
     response += `<style data-emotion-css>${css}</style></head>`;
 
