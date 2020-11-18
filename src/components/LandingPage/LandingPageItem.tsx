@@ -3,7 +3,7 @@ import i18n from '../../i18n';
 import { ArrowIcon } from '@digg/design-system';
 import { TopImage } from '../../assets/TopImage';
 import { EnvSettings } from '../../../config/env/EnvSettings';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery } from '@apollo/client';
 import { gql } from 'apollo-boost';
 import ChopLines from 'chop-lines';
 let moment = require('moment');
@@ -126,8 +126,6 @@ export const LandingPageItem: React.FC<LandingPageItemProps> = (props) => {
           <a href="#">Bra exempel</a>
           <ArrowIcon />
         </li>
-
-
       </ul>
 
       <ul className="text-5 landingpage_linkblock-simple">
@@ -149,7 +147,6 @@ export const LandingPageItem: React.FC<LandingPageItemProps> = (props) => {
         <li>
           <a href="#">Bra exempel</a>
         </li>
-        
       </ul>
 
       <h2 className="text-3">Lorem ipsum dolor</h2>
