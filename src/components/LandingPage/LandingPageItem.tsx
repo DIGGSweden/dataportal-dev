@@ -33,7 +33,7 @@ export const LandingPageItem : React.FC<LandingPageItemProps> = (props) => {
   if(props.id)
     id = props.id;
 
-  const LandingPage = gql `
+  const LANDINGPAGE = gql `
   {
     landingPage(siteurl:"*", lang:"${i18n.languages[0]}",id:"${id}"){
       id        
@@ -48,32 +48,32 @@ export const LandingPageItem : React.FC<LandingPageItemProps> = (props) => {
 `
 ;
 
-  const { loading, error, data } = useQuery<{content:Array<any>}>(CONTENT);
+  const { loading, error, data } = useQuery<{landingPage:Array<any>}>(LANDINGPAGE);
 
-  const contentItem = data && data.content && data.content.length > 0
-  ? data.content[0]
+  const landingPageItem = data && data.landingPage && data.landingPage.length > 0
+  ? data.landingPage[0]
   : null;
 
     return (                    
       <div className="news-article content">
         {loading && (<span className="text-5 loading">{i18n.t('common|loading')}</span>)}
-        {!loading && contentItem && id && id != '0' ?
+        {!loading && landingPageItem && id && id != '0' ?
           <>
             <Helmet>
-              <title>{contentItem.heading} - {i18n.t('common|seo-title')}</title>
+              <title>{landingPageItem.heading} - {i18n.t('common|seo-title')}</title>
             </Helmet>            
-            {contentItem && contentItem.imageUrl && (
-              <img src={`${contentItem.imageUrl}?width=1024`} />
+            {landingPageItem && landingPageItem.imageUrl && (
+              <img src={`${landingPageItem.imageUrl}?width=1024`} />
             )}
-            <span className="text-6">{moment(contentItem.published.toString()).format("D MMM YYYY")}</span>
-            <h1 className="text-1">{contentItem.heading}</h1>
+            <span className="text-6">{moment(landingPageItem.published.toString()).format("D MMM YYYY")}</span>
+            <h1 className="text-1">{landingPageItem.heading}</h1>
             <p className="preamble text-4">
-            {contentItem.preamble}
+            {landingPageItem.preamble}
             </p>                              
             <p
               className="main-text text-5"
               dangerouslySetInnerHTML={{
-                __html: contentItem.body,
+                __html: landingPageItem.body,
               }}
             />                          
           </>  

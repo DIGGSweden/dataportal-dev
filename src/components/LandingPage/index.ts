@@ -1,1 +1,1 @@
-export * from './ContentItem';
+export * from './LandingPageItem';
