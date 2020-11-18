@@ -277,19 +277,8 @@ export class Header extends React.Component<HeaderProps> {
                       Innehållsida{' '}
                     </a>
                   </div>
-                  {/* <div>
-                    <a
-                      href={`/${i18n.languages[0]}/${i18n.t(
-                        'routes|register-data|path'
-                      )}`}
-                      className={
-                        'header-link ' +
-                        (this.props.activeLink == 'register' ? 'active' : '')
-                      }
-                    >
-                      {i18n.t('routes|register-data|title')}
-                    </a>
-                  </div> */}
+
+
                 </div>
               </Box>
             </Container>

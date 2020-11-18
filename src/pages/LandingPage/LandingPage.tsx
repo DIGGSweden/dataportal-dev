@@ -69,43 +69,7 @@ export class LandingPage extends React.Component<PageProps> {
                   <MainContent flex="1 1 auto">
                     <div className="main-container">                  
                       <div className="">
-                          <h3>Landningssida</h3>
-                      {/* <LandingPageItem env={settings.env} id={this.props.match.params.nid} /> */}
-
-                      //Ersätt diven news-article content i landingpageItem.
-
-                      <div className="news-article content">
-        <span className="text-5 loading">{i18n.t('common|loading')}</span>)}
-        {!loading && contentItem && id && id != '0' ?
-          <>
-            <Helmet>
-              <title>{contentItem.heading} - {i18n.t('common|seo-title')}</title>
-            </Helmet>            
-            {contentItem && contentItem.imageUrl && (
-              <img src={`${contentItem.imageUrl}?width=1024`} />
-            )}
-            <span className="text-6">{moment(contentItem.published.toString()).format("D MMM YYYY")}</span>
-            <h1 className="text-1">{contentItem.heading}
-            
-            </h1>
-            <p className="preamble text-4">
-            {contentItem.preamble}
-            </p>                              
-            <p
-              className="main-text text-5"
-              dangerouslySetInnerHTML={{
-                __html: contentItem.body,
-              }}
-            />                          
-          </>  
-          : !loading &&
-          <>
-            <h1 className="text-1">Det här innehållet finns inte längre kvar.</h1>
-          </>
-        }
-      </div>    
-
-
+                      <LandingPageItem env={settings.env} id={this.props.match.params.nid} />
                       </div>
                     </div>
                   </MainContent>

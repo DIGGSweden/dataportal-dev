@@ -1,0 +1,134 @@
+@import 'scss/general/variables.scss';
+
+.landingpage_linkblock {
+    list-style: none;
+    padding: 0rem;
+    margin-top: $space-48;
+    margin-bottom: $space-48;
+
+    li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.313rem;
+        padding-left: $space-24;
+        padding-right: $space-16;
+        background-color: $orange25;
+
+        &:nth-of-type(even) {
+            background-color: $orange10;
+        }
+
+        &:nth-last-of-type(1) {
+            background-color: $orange25;
+        }
+
+        &:nth-last-of-type(2) {
+            background-color: $orange50;
+        }
+
+        &:nth-last-of-type(3) {
+            background-color: $orange10;
+        }
+
+        &:nth-last-of-type(4) {
+            background-color: $orange25;
+        }
+
+        &:nth-last-of-type(5) {
+            background-color: $orange10;
+        }
+
+        &:nth-last-of-type(6) {
+            background-color: $orange50;
+        }
+
+        &:nth-last-of-type(7) {
+            background-color: $orange25;
+        }
+
+        &:nth-last-of-type(8) {
+            background-color: $orange10;
+        }
+
+        &:nth-last-of-type(9) {
+            background-color: $orange50;
+        }
+
+        &:nth-last-of-type(10) {
+            background-color: $orange10;
+        }
+
+        @media screen and (max-width: 460px) {
+            padding: $space-16;
+            padding-right: $space-8;
+        }
+
+        &:hover {
+            cursor: pointer;
+            filter: brightness(98%);
+        }
+
+        a {
+            display: block;
+            color: $black100;
+            text-decoration: none;
+            padding-right: $space-16;
+            word-break: break-word;
+            -webkit-hyphens: auto;
+            -ms-hyphens: auto;
+            hyphens: auto;
+        }
+
+        span {
+            height: 1.5rem;
+
+            svg {
+                width: fit-content;
+            }
+        }
+    }
+}
+
+.landingpage_linkblock-simple {
+    list-style: none;
+    padding: 0rem;
+    margin-top: $space-48;
+    margin-bottom: $space-48;
+
+    li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: $space-8;
+        padding-bottom: $space-8;
+
+        @media screen and (max-width: 460px) {
+            padding: $space-16;
+            padding-right: $space-8;
+        }
+
+        a {
+            display: block;
+            color: $black100;
+            padding-right: $space-16;
+            word-break: break-word;
+            -webkit-hyphens: auto;
+            -ms-hyphens: auto;
+            hyphens: auto;
+
+            &:hover {
+                cursor: pointer;
+                text-decoration: none;
+            }
+        }
+
+        span {
+            height: 1.5rem;
+
+            svg {
+                width: fit-content;
+            }
+        }
+    }
+}
