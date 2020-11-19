@@ -189,23 +189,6 @@ export class Header extends React.Component<HeaderProps> {
     return (
       <>
         <header>
-          <InnerBox display="flex" justifyContent="center">
-            <div className="beta-banner">
-              <p className="text-6">
-                {i18n.t('common|beta-text1')}{' '}
-                <a
-                  className="text-6-link"
-                  target="_blank"
-                  href="https://webropol.com/s/beta-sveriges-dataportal"
-                  rel="noreferrer"
-                >
-                  {i18n.t('common|beta-link-text')}
-                </a>
-                {i18n.t('common|beta-text2')}
-              </p>
-            </div>
-          </InnerBox>
-
           <InnerBox
             bgColor=""
             paddingY={0}
