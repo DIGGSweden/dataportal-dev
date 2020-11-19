@@ -24,8 +24,6 @@ import 'scss/general/variables.scss';
 import 'scss/content/content.scss';
 import 'scss/content/landingpage.scss';
 
-import 'scss/startpage/startpage_categories.scss';
-import 'scss/startpage/startpage_search.scss';
 import 'scss/startpage/startpage_general.scss';
 import 'scss/news/news.scss';
 import 'scss/project/projectlist.scss';

@@ -222,8 +222,7 @@ export class Header extends React.Component<HeaderProps> {
                 // height="7.25rem"
                 deepRef={(el) => (this.container2Ref = el)}
               >
-                <EventEffect outline noHover>
-                  {({ className }) => (
+
                     <a
                       href={`/${i18n.languages[0]}`}
                       aria-label={i18n.t('common|logo-title')}
@@ -236,8 +235,6 @@ export class Header extends React.Component<HeaderProps> {
                         </div>
                       </Box>
                     </a>
-                  )}
-                </EventEffect>
 
                 {/* <LanguageSelector /> */}
                 <div className="lang-select">
