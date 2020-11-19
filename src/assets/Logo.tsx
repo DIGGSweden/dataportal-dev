@@ -8,7 +8,7 @@ const titleID = 'LogoID';
 
 export const DataportalLogo: React.FC = () => {
 	if(i18n.language === 'en') {
-		return <LogoEN title={title} id={titleID} />;
+		return <LogoSE title={title} id={titleID} />;
 	}
 	
 	return <LogoSE title={title} id={titleID} />;

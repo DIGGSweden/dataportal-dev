@@ -60,7 +60,7 @@ export class StartPage extends React.Component<PageProps, any> {
               bgColor="#fff"
             >
               <PageMetadata
-                seoTitle={i18n.t('pages|startpage|seo_title')}
+                seoTitle="Delwebb för utvecklare"
                 seoDescription={i18n.t('pages|startpage|seo_description')}
                 seoImageUrl=""
                 seoKeywords=""

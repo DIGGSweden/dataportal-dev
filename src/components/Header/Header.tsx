@@ -10,7 +10,6 @@ import React from 'react';
 import { Link, RouteComponentProps, withRouter } from 'react-router-dom';
 import { NoScriptLogo } from '../../assets/NoScriptLogo';
 import { DataportalLogo } from '../../assets/Logo';
-import { EventEffect } from '../EventEffect';
 import { skipToContent } from '../SkipToContent';
 import i18n from 'i18n';
 
@@ -193,7 +192,6 @@ export class Header extends React.Component<HeaderProps> {
             bgColor=""
             paddingY={0}
             paddingX={2}
-            // height="6.25rem"
             deepRef={(el) => (this.container1Ref = el)}
           >
             <Container>
@@ -202,7 +200,6 @@ export class Header extends React.Component<HeaderProps> {
                 display="flex"
                 alignItems="center"
                 justifyContent="space-between"
-                // height="7.25rem"
                 deepRef={(el) => (this.container2Ref = el)}
               >
 
