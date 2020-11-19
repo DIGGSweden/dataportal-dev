@@ -219,7 +219,7 @@ export class Header extends React.Component<HeaderProps> {
                 display="flex"
                 alignItems="center"
                 justifyContent="space-between"
-                height="7.25rem"
+                // height="7.25rem"
                 deepRef={(el) => (this.container2Ref = el)}
               >
                 <EventEffect outline noHover>
@@ -254,7 +254,6 @@ export class Header extends React.Component<HeaderProps> {
                 </div>
 
                 <div className="header-links">
-                  <div>
                     <a
                       href="landningssida"
                       className={
@@ -264,9 +263,7 @@ export class Header extends React.Component<HeaderProps> {
                     >
                       Landningssida{' '}
                     </a>
-                  </div>
 
-                  <div>
                     <a
                       href="innehållssida"
                       className={
@@ -274,9 +271,8 @@ export class Header extends React.Component<HeaderProps> {
                         (this.props.activeLink == 'projects' ? 'active' : '')
                       }
                     >
-                      Innehållsida{' '}
+                      Innehållssida{' '}
                     </a>
-                  </div>
 
 
                 </div>

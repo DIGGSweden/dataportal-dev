@@ -14,6 +14,7 @@
         padding-left: $space-24;
         padding-right: $space-16;
         background-color: $orange25;
+        transition: .1s;
 
         &:nth-of-type(even) {
             background-color: $orange10;
