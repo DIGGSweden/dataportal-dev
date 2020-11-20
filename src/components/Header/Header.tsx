@@ -10,7 +10,6 @@ import React from 'react';
 import { Link, RouteComponentProps, withRouter } from 'react-router-dom';
 import { NoScriptLogo } from '../../assets/NoScriptLogo';
 import { DataportalLogo } from '../../assets/Logo';
-import { EventEffect } from '../EventEffect';
 import { skipToContent } from '../SkipToContent';
 import i18n from 'i18n';
 
@@ -189,28 +188,10 @@ export class Header extends React.Component<HeaderProps> {
     return (
       <>
         <header>
-          <InnerBox display="flex" justifyContent="center">
-            <div className="beta-banner">
-              <p className="text-6">
-                {i18n.t('common|beta-text1')}{' '}
-                <a
-                  className="text-6-link"
-                  target="_blank"
-                  href="https://webropol.com/s/beta-sveriges-dataportal"
-                  rel="noreferrer"
-                >
-                  {i18n.t('common|beta-link-text')}
-                </a>
-                {i18n.t('common|beta-text2')}
-              </p>
-            </div>
-          </InnerBox>
-
           <InnerBox
             bgColor=""
             paddingY={0}
             paddingX={2}
-            // height="6.25rem"
             deepRef={(el) => (this.container1Ref = el)}
           >
             <Container>
@@ -219,11 +200,9 @@ export class Header extends React.Component<HeaderProps> {
                 display="flex"
                 alignItems="center"
                 justifyContent="space-between"
-                // height="7.25rem"
                 deepRef={(el) => (this.container2Ref = el)}
               >
-                <EventEffect outline noHover>
-                  {({ className }) => (
+
                     <a
                       href={`/${i18n.languages[0]}`}
                       aria-label={i18n.t('common|logo-title')}
@@ -236,8 +215,6 @@ export class Header extends React.Component<HeaderProps> {
                         </div>
                       </Box>
                     </a>
-                  )}
-                </EventEffect>
 
                 {/* <LanguageSelector /> */}
                 <div className="lang-select">

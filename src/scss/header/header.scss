@@ -5,7 +5,8 @@ header {
 }
 
 .dataportal-logo {
-    margin-right: $space-24;
+    margin-right: $space-48;
+
     &:focus {
         outline: $focus-style;
         outline-offset: $focus-offset;
@@ -21,13 +22,14 @@ header {
     flex-wrap: wrap;
     align-items: center;
 
-    @media screen and (max-width: 650px) {
+    @media screen and (max-width: 40.625rem) {
         padding-top: $space-16;
         padding-bottom: $space-16;
     }
 
     svg {
-        width: 18.75rem; //300px
+        max-width: 20.75rem;
+        width: 100%;
     }
 }
 
@@ -47,7 +49,7 @@ header {
         text-decoration: none;
         border-bottom: 2px solid transparent;
 
-        @media screen and (max-width: 650px) {
+        @media screen and (max-width: 40.625rem) {
             margin-top: $space-24;
             transition: .1s;
         }
@@ -55,13 +57,13 @@ header {
         &:not(:first-of-type) {
             margin-left: $space-32;
 
-            @media screen and (max-width: 650px) {
+            @media screen and (max-width: 40.625rem) {
                 margin-left: $space-24;
                 transition: .1s;
 
             }
 
-            @media screen and (max-width: 385px) {
+            @media screen and (max-width: 24.063rem) {
                 margin-left: $space-16;
                 transition: .1s;
             }
@@ -83,7 +85,7 @@ header {
     }
 
     //Hide in /en
-    .no-en{
+    .no-en {
         display: none;
     }
 
@@ -138,35 +140,30 @@ header {
 }
 
 //Language
-.lang-select{
+.lang-select {
     position: absolute;
     top: 5px;
     right: 0;
+
     a {
         text-decoration: none;
     }
-    
-    a,button{
+
+    a,
+    button {
         margin-top: $space-8;
         height: 20px;
         color: $black100;
-        border:none;
-        padding-right: 2px;
-        padding-left: 2px;
-        padding-top: 5px;
-        padding-bottom: 5px;
-        min-width: 0px;
-        border-radius: 0px;
-        text-decoration: none;
+        border: none;
+        padding-right: 0.125rem;
+        padding-left: 0.125rem;
+        padding-top: 0.313rem;
+        padding-bottom: 0.313rem;
+        min-width: 0rem;
+        border-radius: 0rem;
 
-        &:hover{
+        &:hover {
             transition: ease-in-out .2s;
-            // color: $black-hover;
-            // text-decoration: none;
         }
-    }
-
-    @media screen and (max-width: 600px) {
-        display: none;
     }
 }

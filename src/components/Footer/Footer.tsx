@@ -13,13 +13,9 @@ import {
   TwitterIcon,
   YoutubeIcon,
 } from '@digg/design-system';
-import { ThemeProvider } from 'emotion-theming';
 import React from 'react';
 import { Link, RouteComponentProps, withRouter } from 'react-router-dom';
-import { EventEffect } from '../EventEffect';
-import { ScrollToTop } from '../ScrollToTop';
 import { SettingsContext } from '../SettingsProvider';
-import { FooterLink } from './FooterLink';
 import i18n from 'i18n';
 
 import 'scss/footer/footer.scss';
@@ -60,62 +56,16 @@ export class Footer extends React.Component<FooterProps> {
                       <Box className="footer__links">
                         <div className="footer__links-nav">
                           <a
-                            href={`/${i18n.languages[0]}/${i18n.t(
-                              'routes|register-data|path'
-                            )}`}
+                            href="#"
                             className="footer-link text-6-link"
                           >
-                            {i18n.t('routes|register-data|title')}
+                            Lorem ipsum dolor
                           </a>
 
-                          <a
-                            href={`/${i18n.languages[0]}/${i18n.t(
-                              'routes|about|path'
-                            )}`}
-                            className="footer-link text-6-link"
-                          >
-                            {i18n.t('routes|about|title')}
-                          </a>
-
-                          <a
-                            className="footer-link text-6-link"
-                            href={`/${i18n.languages[0]}/${i18n.t(
-                              'routes|accessibility|path'
-                            )}`}
-                          >
-                            {i18n.t('common|accessibility-report')}
-                          </a>
-
-                          <div>
-                            <span className="text-6-bold">
-                              {i18n.t('common|contact')}:
-                            </span>
-                            <a
-                              className="footer-link text-6-link"
-                              href="mailto:dataportal@digg.se"
-                            >
-                              dataportal@digg.se
-                            </a>
-                          </div>
                         </div>
-
                         <div className="footer__links-contact">
-                          <a
-                            target="_blank"
-                            rel="noreferrer"
-                            href="https://www.facebook.com/oppnadata.psi/"
-                            className="footer-link text-6-link"
-                          >
-                            Facebook
-                          </a>
-                          <a
-                            target="_blank"
-                            rel="noreferrer"
-                            href="https://twitter.com/oppnadata_psi"
-                            className="footer-link text-6-link"
-                          >
-                            Twitter
-                          </a>
+                              {/* Space for twitter/facebook.. */}
+
                         </div>
                       </Box>
                       <Box className="digg__">

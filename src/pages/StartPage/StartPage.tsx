@@ -60,7 +60,7 @@ export class StartPage extends React.Component<PageProps, any> {
               bgColor="#fff"
             >
               <PageMetadata
-                seoTitle={i18n.t('pages|startpage|seo_title')}
+                seoTitle="Delwebb för utvecklare"
                 seoDescription={i18n.t('pages|startpage|seo_description')}
                 seoImageUrl=""
                 seoKeywords=""
@@ -81,21 +81,14 @@ export class StartPage extends React.Component<PageProps, any> {
                     </div>
 
                     <div className="main-container">
-                      <div className="startpage-categories">
-                        <h2 className="text-3">
-                          {i18n.t('pages|startpage|datasets_by_category')}
-                        </h2>
+                        <h1 className="text-3">
+                          Startsida
+                        </h1>
                         
-                      </div>
                     
                     </div>
                   </div>
 
-                  <div className="statistic">
-                    <div className="statistic-header">
-                      <h2 className="text-3">En H2 som är cool </h2>
-                    </div>
-                  </div>
                 </MainContent>
               </ErrorBoundary>
               <Footer onToTopButtonPushed={this.setFocus} />
