@@ -35,14 +35,13 @@ export const ContentItem : React.FC<ContentItemProps> = (props) => {
 
   const CONTENT = gql `
   {
-    news(siteurl:"*", lang:"${i18n.languages[0]}",id:"${id}"){
+    pages(siteurl:"*", lang:"${i18n.languages[0]}",id:"${id}"){
       id        
       heading
       preambleHTML
       published
       modified      
-      bodyHTML 
-      imageUrl
+      bodyHTML      
     }
   }
 `

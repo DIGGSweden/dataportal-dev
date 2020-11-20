@@ -29,14 +29,13 @@ class RoutesComponent extends React.Component<RouteProps> {
             <App>
               <Switch>                
                 {/* default */}
-                <Route path={['/', '/sv','/en']} exact render={(props)=><StartPage env={settings.env} {...props}/>} />
-                <Route path={['/nyheter/:nid/*', '/sv/nyheter/:nid/*','/sv/nyheter/*']} exact render={(props)=><ContentPage env={settings.env} {...props}/>} />
-                <Route path={['/innehållssida', '/sv/innehållssida']} exact render={(props)=><ContentPage env={settings.env} {...props}/>} />
+                <Route path={['/', '/sv','/en']} exact render={(props)=><StartPage env={settings.env} {...props}/>} />               
+                
                 <Route path={['/landningssida', '/sv/landningssida']} exact render={(props)=><LandingPage env={settings.env} {...props}/>} />
 
-                <Route render={(props)=><NotFoundPage {...props}/>} />
+                {/* <Route render={(props)=><NotFoundPage {...props}/>} /> */}
                 
-                <Route path={['/nyheter/:nid/*', '/sv/nyheter/:nid/*','/sv/nyheter/*']} exact render={(props)=><ContentPage env={settings.env} content={null} {...props}/>} />
+                {/* <Route path={['/nyheter/:nid/*', '/sv/nyheter/:nid/*','/sv/nyheter/*']} exact render={(props)=><ContentPage env={settings.env} content={null} {...props}/>} /> */}
                 <Route path={['/om-webbplatsen', '/sv/om-webbplatsen']} exact render={(props)=><ContentPage env={settings.env} content={null} {...props}/>} />
               
                 {/* query graphql for connectedcontentpath */}

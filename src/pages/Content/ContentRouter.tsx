@@ -31,7 +31,7 @@ interface ContentPageProps extends PageProps{
 
 const contentQuery = gql`
   query content($path: String, $lang: String) {
-    contents(siteurl:"*", connectedtagpaths:[$path], lang:$lang)
+    contents(siteurl:"*utvecklarportal*", connectedtagpaths:[$path], lang:$lang)
     {
       id      
       name

@@ -51,7 +51,7 @@ export class ContentPage extends React.Component<ContentPageProps> {
     return (   
       <QueryParamProvider params={uri}>
       <PageMetadata
-        seoTitle="Artiklar - Sveriges dataportal"
+        seoTitle="Innehåll - Sveriges dataportal"
         seoDescription=""
         seoImageUrl=""
         seoKeywords=""
