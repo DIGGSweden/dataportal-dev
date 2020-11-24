@@ -11,6 +11,8 @@ import { QueryParamProvider } from '../../components/QueryParamProvider';
 import { __RouterContext } from 'react-router';
 import { PageMetadata } from '../PageMetadata';
 import i18n from '../../i18n';
+import { ArrowIcon } from '@digg/design-system';
+import { Helmet } from 'react-helmet';
 import { TopImage } from '../../assets/TopImage';
 import { string } from 'prop-types';
 import { LandingPageItem } from '../../components/LandingPage'
@@ -18,10 +20,13 @@ import { SettingsContext } from '../../components/SettingsProvider';
 import { PageProps } from '../PageProps'
 
 const MainContent = Box.withComponent('main');
-export class LandingPage extends React.Component<PageProps> {
+interface LandingPageProps extends PageProps{  
+  content:any;
+}
+export class LandingPage extends React.Component<LandingPageProps> {
     private headerRef: React.RefObject<Header>;
 
-    constructor(props: PageProps) {
+    constructor(props: LandingPageProps) {
         super(props);
         this.headerRef = React.createRef();
         this.setFocus = this.setFocus.bind(this);
@@ -69,7 +74,79 @@ export class LandingPage extends React.Component<PageProps> {
                   <MainContent flex="1 1 auto">
                     <div className="main-container">                  
                       <div className="">
-                      <LandingPageItem env={settings.env} id={this.props.match.params.nid} />
+                      <div className="content">
+      <Helmet>
+      <title>{this.props.content.name} - {i18n.t('common|seo-title')}</title>
+      </Helmet>
+      {/* <img src={`${landingPageItem.imageUrl}?width=1024`} /> */}
+      <span className="text-6">
+        {/* {moment(landingPageItem.published.toString()).format('D MMM YYYY')} */}
+      </span>
+              <h1 className="text-1">{this.props.content.name}</h1>
+              <p
+                    className="preamble text-4"
+                    dangerouslySetInnerHTML={{
+                      __html: this.props.content.preambleHTML,
+                    }}
+                  />    
+
+      {/*Använd denna klass för landingpage ingångar */}
+      <ul className="text-5-bold landingpage_linkblock">
+        <li>
+          <a href="#">Standarder</a>
+          <ArrowIcon />
+        </li>
+        <li>
+          <a href="#">Versionshantering</a>
+          <ArrowIcon />
+        </li>
+        <li>
+          <a href="#">Namngivning med ett väldigt långt namn länk</a>
+          <ArrowIcon />
+        </li>
+        <li>
+          <a href="#">Identiteter</a>
+          <ArrowIcon />
+        </li>
+        <li>
+          <a href="#">Felhantering</a>
+          <ArrowIcon />
+        </li>
+        <li>
+          <a href="#">Bra exempel</a>
+          <ArrowIcon />
+        </li>
+      </ul>
+
+      <ul className="text-5 landingpage_linkblock-simple">
+        <li>
+          <a href="#">Standarder</a>
+        </li>
+        <li>
+          <a href="#">Versionshantering</a>
+        </li>
+        <li>
+          <a href="#">Namngivning med ett väldigt långt namn länk</a>
+        </li>
+        <li>
+          <a href="#">Identiteter</a>
+        </li>
+        <li>
+          <a href="#">Felhantering</a>
+        </li>
+        <li>
+          <a href="#">Bra exempel</a>
+        </li>
+      </ul>
+
+      <h2 className="text-3">Lorem ipsum dolor</h2>
+      <p
+                  className="main-text text-5"
+                  dangerouslySetInnerHTML={{
+                    __html: this.props.content.bodyHTML,
+                  }}
+                />   
+    </div>
                       </div>
                     </div>
                   </MainContent>

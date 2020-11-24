@@ -31,7 +31,7 @@ class RoutesComponent extends React.Component<RouteProps> {
                 {/* default */}
                 <Route path={['/', '/sv','/en']} exact render={(props)=><StartPage env={settings.env} {...props}/>} />               
                 
-                <Route path={['/landningssida', '/sv/landningssida']} exact render={(props)=><LandingPage env={settings.env} {...props}/>} />
+                {/* <Route path={['/landningssida', '/sv/landningssida']} exact render={(props)=><LandingPage env={settings.env} {...props}/>} /> */}
 
                 {/* <Route render={(props)=><NotFoundPage {...props}/>} /> */}
                 

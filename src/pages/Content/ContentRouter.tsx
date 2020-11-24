@@ -22,6 +22,7 @@ import { LoadingPage } from '../LoadingPage';
 import { ProgressPlugin } from 'webpack';
 import { ContentPage } from './ContentPage';
 import { NotFoundPage } from '../NotFoundPage';
+import { LandingPage } from 'pages/LandingPage';
 
 const MainContent = Box.withComponent('main');
 
@@ -35,7 +36,11 @@ const contentQuery = gql`
     {
       id      
       name
-      published      
+      published         
+      tags{
+        tagPath
+        connectedTagPath
+      }
       ... on Page {        
         preambleHTML        
       	bodyHTML
@@ -61,8 +66,17 @@ export const ContentRouter: React.FC<ContentPageProps> = (props) => {
     if(loading)
       return <LoadingPage />
     //content found with id, switch type for corrent Content component
-    else if(!loading && data && data.contents && data.contents.length > 0)
+    else if(!loading && data && data.contents && data.contents.length > 0){
+      console.log(data);
+      if(data.contents[0].tags.find((t :any) => t.tagPath.includes('/landingpage/')))
+      { 
+        /** We have a landing page!!! */
+        return <LandingPage {...props} content={data!.contents[0]} />
+      }
+      
       return <ContentPage {...props} content={data!.contents[0]} />
+    }
+      
     else    
       return <NotFoundPage {...props} />
 }

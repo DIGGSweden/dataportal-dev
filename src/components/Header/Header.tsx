@@ -231,6 +231,15 @@ export class Header extends React.Component<HeaderProps> {
                 </div>
 
                 <div className="header-links">
+                <a
+                      href="webbplatsen"
+                      className={
+                        'header-link ' +
+                        (this.props.activeLink == 'projects' ? 'active' : '')
+                      }
+                    >
+                      Webbplatsen{' '}
+                    </a>
                     <a
                       href="landningssida"
                       className={
