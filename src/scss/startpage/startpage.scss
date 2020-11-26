@@ -1,0 +1,96 @@
+@import 'scss/general/variables.scss';
+
+.dev_head {
+    display: flex;
+    justify-content: center;
+    padding-top: $space-32;
+
+    .dev_head-heading,
+    .dev_head-links {
+        display: flex;
+        flex-direction: column;
+
+        @media screen and (min-width: 40.625rem) {
+            padding-left: $space-16;
+            padding-right: $space-16;
+        }
+    }
+
+    .dev_head-heading {
+        width: 50%;
+        padding-bottom: $space-24;
+    }
+
+    .dev_head-links {
+        width: 40%;
+
+        .dev_head-link {
+            display: block;
+            display: flex;
+            flex-direction: column;
+            padding: $space-16;
+            background-color: $orange25;
+            margin-bottom: $space-16;
+            cursor: pointer;
+
+            &:hover {
+                filter: brightness(1.0188);
+
+                a {
+                    text-decoration: none;
+                }
+            }
+
+            &:last-of-type {
+                background-color: $pink25;
+            }
+        }
+    }
+
+    @media screen and (max-width: 50rem) {
+        flex-direction: column;
+
+        .dev_head-heading,
+        .dev_head-links {
+            width: 100%;
+        }
+
+        .dev_head-links {
+            flex-direction: row;
+
+            .dev_head-link {
+                width: 50%;
+
+                &:not(:last-of-type) {
+                    margin-right: $space-16;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 31.25rem) {
+        .dev_head-links {
+            flex-direction: column;
+
+            .dev_head-link {
+                width: 100%;
+
+                &:not(:last-of-type) {
+                    margin-right: $space-16;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 26.875rem) {
+        .dev_head-heading {
+            h1 {
+                margin-top: 0rem;
+                font-weight: bold;
+                font-size: 2rem; //32px
+                line-height: 2.5rem; //40px
+                letter-spacing: -0.03em;
+            }
+        }
+    }
+}

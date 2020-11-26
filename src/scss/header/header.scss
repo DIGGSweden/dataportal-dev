@@ -36,35 +36,29 @@ header {
 .header-links {
     display: flex;
     align-items: center;
-    flex-wrap: nowrap;
-
-    // display: none;
-
+    flex-wrap: wrap;
+    
     .header-link {
         font-family: Ubuntu !important;
         color: $black100;
         font-size: 18px;
         margin-top: $space-8;
-        padding-bottom: 2px;
         text-decoration: none;
         border-bottom: 2px solid transparent;
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
 
-        @media screen and (max-width: 40.625rem) {
-            margin-top: $space-24;
-            transition: .1s;
-        }
-
-        &:not(:first-of-type) {
-            margin-left: $space-32;
+        &:not(:last-of-type) {
+            margin-right: $space-32;
 
             @media screen and (max-width: 40.625rem) {
-                margin-left: $space-24;
+                margin-right: $space-24;
                 transition: .1s;
 
             }
 
             @media screen and (max-width: 24.063rem) {
-                margin-left: $space-16;
+                margin-right: $space-16;
                 transition: .1s;
             }
         }

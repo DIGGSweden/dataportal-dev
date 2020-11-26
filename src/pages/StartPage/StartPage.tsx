@@ -76,19 +76,37 @@ export class StartPage extends React.Component<PageProps, any> {
               <ErrorBoundary>
                 <MainContent id="main" flex="1 1 auto">
                   <div className="wpb_wrapper">
-                    <div className="main-search-container">
-                      <div className="startpage-top"></div>
-                    </div>
 
                     <div className="main-container">
-                        <h1 className="text-3">
-                          Startsida
-                        </h1>
-                        
-                    
+                      <div className="dev_head">
+                        <div className="dev_head-heading">
+                          <h1 className="text-1">Utvecklarportalen</h1>
+                          <span className="text-5">
+                            Här hittar du information och tips om hur du gör för
+                            att på ett standardierat sätt kan använda API:er och
+                            öppen data i de lösningar som du själv utvecklar.
+                          </span>
+                        </div>
+                        <div className="dev_head-links">
+                          <div className="dev_head-link">
+                            <a className="text-4-link">
+                              Produktägare och förvaltare
+                            </a>
+                            <span className="text-5">livscykelhantering?</span>
+                          </div>
+                          <div className="dev_head-link">
+                            <a className="text-4-link">
+                              Är du utvecklare eller testare
+                            </a>
+                            <span className="text-5">
+                              Ta del av bra exempel på hur andra har utvecklat
+                              sina lösningar.{' '}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-
                 </MainContent>
               </ErrorBoundary>
               <Footer onToTopButtonPushed={this.setFocus} />

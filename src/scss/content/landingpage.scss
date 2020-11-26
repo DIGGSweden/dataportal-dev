@@ -60,7 +60,7 @@
             background-color: $orange10;
         }
 
-        @media screen and (max-width: 460px) {
+        @media screen and (max-width: 28.75rem) {
             padding: $space-16;
             padding-right: $space-8;
         }
@@ -103,11 +103,6 @@
         align-items: center;
         padding-top: $space-8;
         padding-bottom: $space-8;
-
-        @media screen and (max-width: 460px) {
-            padding: $space-16;
-            padding-right: $space-8;
-        }
 
         a {
             display: block;
