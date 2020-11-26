@@ -12,150 +12,137 @@ import { Helmet } from 'react-helmet';
 
 export interface LandingPageItemProps {
   children?: React.ReactNode;
-  env: EnvSettings;
-  id: string;
+  env: EnvSettings;  
+  connectedtagpath:string;
 }
 
 const hasWindow = typeof window !== 'undefined';
 
 export const LandingPageItem: React.FC<LandingPageItemProps> = (props) => {
   moment.locale(i18n.languages[0]);
-  let id = '0';
+  let connectedtagpath = '';
 
-  //check if id is sent in via QueryString
-  if (hasWindow) {
-    var qs = decode(window.location.search.substring(1)) as any;
-    id = qs.id && qs.id.toString().length > 0 ? qs.id.toString() : '0';
-  }
+  if(props.connectedtagpath) connectedtagpath = props.connectedtagpath;
+  console.log('skoj skoj');
+  console.log(connectedtagpath);
+  // //check if id is sent in via QueryString
+  // if (hasWindow) {
+  //   var qs = decode(window.location.search.substring(1)) as any;
+  //   id = qs.id && qs.id.toString().length > 0 ? qs.id.toString() : '0';
+  // }
 
   //id via route is always preffered
-  if (props.id) id = props.id;
+  // if (props.id) id = props.id;
 
+
+  
   const LANDINGPAGE = gql`
   {
-    landingPage(siteurl:"*", lang:"${i18n.languages[0]}",id:"${id}"){
-      id        
-      heading
-      preamble
-      published
-      modified      
-      body 
-      imageUrl
+    contents(siteurl:"*",connectedtagpaths:["${connectedtagpath}"])
+    {
+      name
+      tags{
+        tagPath
+        connectedTagPath
+        id
+      }
+    }
+    links:  
+  tags(siteurl: "*utvecklarportal*",connectedtagpathscontains:["${connectedtagpath}*/"])
+    {
+      id
+      parentID
+      title
+      connectedTagPath
     }
   }
 `;
 
-  const { loading, error, data } = useQuery<{ landingPage: Array<any> }>(
-    LANDINGPAGE
-  );
+  const { loading, error, data } = useQuery<{ contents: Array<any>, links:Array<any> }>(LANDINGPAGE);
+
+const landingPageRelatedLinks =
+data && data.links && data.links.length > 0 ? data.links : [];
 
   const landingPageItem =
-    data && data.landingPage && data.landingPage.length > 0
-      ? data.landingPage[0]
+    data && data.contents && data.contents.length > 0
+      ? data.contents[0]
       : null;
-
-  return (
-    // <div className="news-article content">
-    //   {loading && (<span className="text-5 loading">{i18n.t('common|loading')}</span>)}
-    //   {!loading && landingPageItem && id && id != '0' ?
-    //     <>
-    //       <Helmet>
-    //         <title>{landingPageItem.heading} - {i18n.t('common|seo-title')}</title>
-    //       </Helmet>
-    //       {landingPageItem && landingPageItem.imageUrl && (
-    //         <img src={`${landingPageItem.imageUrl}?width=1024`} />
-    //       )}
-    //       <span className="text-6">{moment(landingPageItem.published.toString()).format("D MMM YYYY")}</span>
-    //       <h1 className="text-1">{landingPageItem.heading}</h1>
-    //       <p className="preamble text-4">
-    //       {landingPageItem.preamble}
-    //       </p>
-    //       <p
-    //         className="main-text text-5"
-    //         dangerouslySetInnerHTML={{
-    //           __html: landingPageItem.body,
-    //         }}
-    //       />
-    //     </>
-    //     : !loading &&
-    //     <>
-    //       <h1 className="text-1">Det här innehållet finns inte längre kvar.</h1>
-    //     </>
-    //   }
-    // </div>
-
-    <div className="content">
-      <Helmet>
-        <title>Landningssida</title>
-      </Helmet>
-      {/* <img src={`${landingPageItem.imageUrl}?width=1024`} /> */}
-      <span className="text-6">
-        {/* {moment(landingPageItem.published.toString()).format('D MMM YYYY')} */}
-      </span>
-      <h1 className="text-1">Landningssida</h1>
-      <p className="preamble text-4">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquam,
-        libero non feugiat volutpat, lacus diam varius nisl, non tincidunt enim
-        dui quis lacus. Proin eu scelerisque est. In hac habitasse platea
-        dictumst.{' '}
-      </p>
-
-      {/*Använd denna klass för landingpage ingångar */}
-      <ul className="text-5-bold landingpage_linkblock">
-        <li>
-          <a href="#">Standarder</a>
-          <ArrowIcon />
-        </li>
-        <li>
-          <a href="#">Versionshantering</a>
-          <ArrowIcon />
-        </li>
-        <li>
-          <a href="#">Namngivning med ett väldigt långt namn länk</a>
-          <ArrowIcon />
-        </li>
-        <li>
-          <a href="#">Identiteter</a>
-          <ArrowIcon />
-        </li>
-        <li>
-          <a href="#">Felhantering</a>
-          <ArrowIcon />
-        </li>
-        <li>
-          <a href="#">Bra exempel</a>
-          <ArrowIcon />
-        </li>
+      console.log(data);
+      console.log('hejsan');
+      console.log(data?.links);
+// console.log(landingPageItem);
+  return (   
+          <ul className="text-5-bold landingpage_linkblock">
+              {loading && (
+          <span className="text-5 loading">{i18n.t('common|loading')}</span>
+        )}
+        {!loading && error && (
+          <span className="loading-msg">
+            Det finns inga sidor att visa för tillfället.
+          </span>
+        )}
+           {!loading &&
+          landingPageRelatedLinks &&
+          landingPageRelatedLinks.length > 0 &&
+          landingPageRelatedLinks.map((n, index) => {
+            return (
+              <li 
+              key={index}
+              >
+                <a                  
+                  href={`${n.connectedTagPath}`}
+                >
+                  {n.title}
+                  </a>
+                  <ArrowIcon />
+              </li>
+            );
+          })}
+        {/* // <li>
+        //   <a href="#">Standarder</a>
+        //   <ArrowIcon />
+        // </li>
+        // <li>
+        //   <a href="#">Versionshantering</a>
+        //   <ArrowIcon />
+        // </li>
+        // <li>
+        //   <a href="#">Namngivning med ett väldigt långt namn länk</a>
+        //   <ArrowIcon />
+        // </li>
+        // <li>
+        //   <a href="#">Identiteter</a>
+        //   <ArrowIcon />
+        // </li>
+        // <li>
+        //   <a href="#">Felhantering</a>
+        //   <ArrowIcon />
+        // </li>
+        // <li>
+        //   <a href="#">Bra exempel</a>
+        //   <ArrowIcon />
+        // </li> */}
       </ul>
 
-      <ul className="text-5 landingpage_linkblock-simple">
-        <li>
-          <a href="#">Standarder</a>
-        </li>
-        <li>
-          <a href="#">Versionshantering</a>
-        </li>
-        <li>
-          <a href="#">Namngivning med ett väldigt långt namn länk</a>
-        </li>
-        <li>
-          <a href="#">Identiteter</a>
-        </li>
-        <li>
-          <a href="#">Felhantering</a>
-        </li>
-        <li>
-          <a href="#">Bra exempel</a>
-        </li>
-      </ul>
-
-      <h2 className="text-3">Lorem ipsum dolor</h2>
-      <p className="main-text text-5">
-        Aliquam et urna mauris. Pellentesque nec eros a augue commodo eleifend.
-        Suspendisse imperdiet sem at bibendum porta. Nullam dignissim tincidunt
-        nibh. Integer vitae tincidunt neque, eget vestibulum lorem. Quisque a
-        tortor in massa iaculis blandit.{' '}
-      </p>
-    </div>
+      // <ul className="text-5 landingpage_linkblock-simple">
+      //   <li>
+      //     <a href="#">Standarder</a>
+      //   </li>
+      //   <li>
+      //     <a href="#">Versionshantering</a>
+      //   </li>
+      //   <li>
+      //     <a href="#">Namngivning med ett väldigt långt namn länk</a>
+      //   </li>
+      //   <li>
+      //     <a href="#">Identiteter</a>
+      //   </li>
+      //   <li>
+      //     <a href="#">Felhantering</a>
+      //   </li>
+      //   <li>
+      //     <a href="#">Bra exempel</a>
+      //   </li>
+      // </ul>
   );
 };

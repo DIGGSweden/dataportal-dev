@@ -22,6 +22,7 @@ import { PageProps } from '../PageProps'
 const MainContent = Box.withComponent('main');
 interface LandingPageProps extends PageProps{  
   content:any;
+  path:string;
 }
 export class LandingPage extends React.Component<LandingPageProps> {
     private headerRef: React.RefObject<Header>;
@@ -30,6 +31,8 @@ export class LandingPage extends React.Component<LandingPageProps> {
         super(props);
         this.headerRef = React.createRef();
         this.setFocus = this.setFocus.bind(this);
+        
+
       }
 
       setFocus() {
@@ -44,8 +47,7 @@ export class LandingPage extends React.Component<LandingPageProps> {
 
       render() {
         const { location } = this.props;
-        let uri = new URLSearchParams(location.search);
-    
+        let uri = new URLSearchParams(location.search);   
         return (
           <QueryParamProvider params={uri}>
             <PageMetadata
@@ -89,9 +91,12 @@ export class LandingPage extends React.Component<LandingPageProps> {
                       __html: this.props.content.preambleHTML,
                     }}
                   />    
-
+                  
+                  <span>{this.props.content.tags[0].connectedTagPath}</span>
+                  
+<LandingPageItem env={settings.env} connectedtagpath={this.props.path} />
       {/*Använd denna klass för landingpage ingångar */}
-      <ul className="text-5-bold landingpage_linkblock">
+      {/* <ul className="text-5-bold landingpage_linkblock">
         <li>
           <a href="#">Standarder</a>
           <ArrowIcon />
@@ -116,9 +121,9 @@ export class LandingPage extends React.Component<LandingPageProps> {
           <a href="#">Bra exempel</a>
           <ArrowIcon />
         </li>
-      </ul>
+      </ul> */}
 
-      <ul className="text-5 landingpage_linkblock-simple">
+      {/* <ul className="text-5 landingpage_linkblock-simple">
         <li>
           <a href="#">Standarder</a>
         </li>
@@ -137,9 +142,9 @@ export class LandingPage extends React.Component<LandingPageProps> {
         <li>
           <a href="#">Bra exempel</a>
         </li>
-      </ul>
+      </ul> */}
 
-      <h2 className="text-3">Lorem ipsum dolor</h2>
+      {/* <h2 className="text-3">Lorem ipsum dolor</h2> */}
       <p
                   className="main-text text-5"
                   dangerouslySetInnerHTML={{

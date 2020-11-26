@@ -32,7 +32,7 @@ interface ContentPageProps extends PageProps{
 
 const contentQuery = gql`
   query content($path: String, $lang: String) {
-    contents(siteurl:"*utvecklarportal*", connectedtagpaths:[$path], lang:$lang)
+    contents(siteurl:"*utvecklarportal*", tagpathscontains:[$path], lang:$lang)
     {
       id      
       name
@@ -70,10 +70,12 @@ export const ContentRouter: React.FC<ContentPageProps> = (props) => {
       console.log(data);
       if(data.contents[0].tags.find((t :any) => t.tagPath.includes('/landingpage/')))
       { 
+        console.log('vi har en landningssida');
         /** We have a landing page!!! */
-        return <LandingPage {...props} content={data!.contents[0]} />
+        return <LandingPage {...props} content={data!.contents[0]} path={`/${props.match.params.path}/`} />
       }
       
+      console.log('en vanlig sida');
       return <ContentPage {...props} content={data!.contents[0]} />
     }
       
