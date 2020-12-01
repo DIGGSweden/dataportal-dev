@@ -3,7 +3,9 @@
 .dev_head {
     display: flex;
     justify-content: center;
-    padding-top: $space-32;
+    padding-top: $space-64;
+    transition: ease all .2s;
+
 
     .dev_head-heading,
     .dev_head-links {
@@ -17,6 +19,7 @@
     }
 
     .dev_head-heading {
+        justify-content: center;
         width: 50%;
         padding-bottom: $space-24;
     }
@@ -49,10 +52,17 @@
 
     @media screen and (max-width: 50rem) {
         flex-direction: column;
+        padding-top: $space-32;
 
         .dev_head-heading,
         .dev_head-links {
             width: 100%;
+        }
+
+        .dev_head-heading {
+            h1 {
+                margin-top: 0rem;
+            }
         }
 
         .dev_head-links {
@@ -85,7 +95,6 @@
     @media screen and (max-width: 26.875rem) {
         .dev_head-heading {
             h1 {
-                margin-top: 0rem;
                 font-weight: bold;
                 font-size: 2rem; //32px
                 line-height: 2.5rem; //40px
