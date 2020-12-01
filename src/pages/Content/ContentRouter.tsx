@@ -68,7 +68,7 @@ export const ContentRouter: React.FC<ContentPageProps> = (props) => {
     //content found with id, switch type for corrent Content component
     else if(!loading && data && data.contents && data.contents.length > 0){
       console.log(data);
-      if(data.contents[0].tags.find((t :any) => t.tagPath ='*/landingpage/'))
+      if(data.contents[0].tags.find((t :any) => t.tagPath.includes('/landingpage/')))
       { 
         console.log('vi har en landningssida');
         /** We have a landing page!!! */

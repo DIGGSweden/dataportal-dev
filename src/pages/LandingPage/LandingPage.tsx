@@ -93,6 +93,8 @@ export class LandingPage extends React.Component<LandingPageProps> {
                   />    
                   
                   <span>{this.props.content.tags[0].connectedTagPath}</span>
+                  <span>Landningssida</span>
+                  
                   
 <LandingPageItem env={settings.env} connectedtagpath={this.props.path} />
       {/*Använd denna klass för landingpage ingångar */}
