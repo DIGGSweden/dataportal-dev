@@ -36,6 +36,40 @@ export const SettingsContext = React.createContext<Settings>(
   defaultSettings
 );
 
+// const MENUS = gql`
+//   {
+//     footer:
+//       tags(siteurl:"*",tagpathscontains:["/tags/footer/"],requireConnectedContent:false)
+//         {
+//           id
+//           value    
+//           title
+//           tagPath      
+//           connectedTagPath
+//           parentID  
+//           externalUrl
+//           connectedContents{
+//             id
+//           }        
+//         }  
+  
+//     mainmenu:
+//       tags(siteurl:"*",tagpathscontains:["/tags/mainmenu/"],requireConnectedContent:false)
+//         {
+//           id
+//           title
+//           value        
+//           tagPath      
+//           connectedTagPath
+//           parentID
+//           externalUrl
+//           connectedContents{
+//             id
+//           }
+//         }
+//   }
+// `;
+
 const MENUS = gql`
 query menu($siteurl: String!) {
   footer :

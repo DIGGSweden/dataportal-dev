@@ -27,6 +27,9 @@ import 'scss/startpage/startpage_general.scss';
 import 'scss/startpage/startpage.scss';
 import 'scss/news/news.scss';
 import 'scss/redirectpage/redirectpage.scss';
+import 'scss/loader/loader.scss';
+import 'scss/breadcrumb/breadcrumb.scss';
+
 
 const emotionIds = (window as any).__EMOTION_IDS__ || null;
 

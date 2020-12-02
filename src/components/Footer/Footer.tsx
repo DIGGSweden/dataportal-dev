@@ -147,11 +147,8 @@ export class Footer extends React.Component<FooterProps> {
                               })}
 
                         </div>
-                        <div className="footer__links-contact">
-                              {/* Space for twitter/facebook.. */}
-
-                        </div>
                       </Box>
+                      
                       <Box className="digg__">
                         <Box width="15rem" marginRight={2}>
                           {process.env.CLIENT && (
