@@ -15,6 +15,7 @@ import i18n from 'i18n';
 
 import 'scss/header/header.scss';
 import 'scss/general/general.scss';
+import { SettingsContext } from 'components/SettingsProvider';
 // import LanguageSelector from '../../components/LanguageSelector/LanguageSelector';
 
 const hasWindow = typeof window !== 'undefined';
@@ -26,6 +27,10 @@ const frame = hasWindow
 const InnerBox = styled(Box)`
   pointer-events: auto;
 `;
+
+interface HeaderProps {
+  activeLink?: string;
+}
 
 const StyledHeading = styled(Heading)`
   margin-block-start: 0;
@@ -230,8 +235,32 @@ export class Header extends React.Component<HeaderProps> {
                 </div>
 
 
+<SettingsContext.Consumer>
+                      {(settings)=> (
+                        <div className="header-links">
+         {settings.mainmenu &&
+          settings.mainmenu[0] &&
+          settings.mainmenu[0].children &&
+          settings.mainmenu[0].children?.map((m:any, i:any) => {
+            if (m && m.data && m.data.connectedContent) {
+              return (
+                <a
+                  className={'header-link'}
+                  href={`/${i18n.languages[0]}${m.data.urlsegment}`}
+                >
+                  {m.data.title}
+                </a>
+              );
+            }
+            return;
+          })}
+          </div>
+                      )}
+                    </SettingsContext.Consumer>
 
-                <div className="header-links">
+         
+                {/* <div className="header-links">
+                  
                   <a
                     href="webbplatsen"
                     className={
@@ -260,7 +289,7 @@ export class Header extends React.Component<HeaderProps> {
                   >
                     Innehållssida{' '}
                   </a>
-                </div>
+                </div> */}
 
 
 
