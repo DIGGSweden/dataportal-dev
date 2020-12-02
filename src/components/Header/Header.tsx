@@ -230,7 +230,6 @@ export class Header extends React.Component<HeaderProps> {
                 </div>
 
 
-
                 <div className="header-links">
                   <a
                     href="webbplatsen"

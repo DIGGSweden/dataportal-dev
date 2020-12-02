@@ -42,7 +42,6 @@ header {
         font-family: Ubuntu !important;
         color: $black100;
         font-size: 18px;
-        margin-top: $space-8;
         text-decoration: none;
         border-bottom: 2px solid transparent;
         padding-top: 0.25rem;
@@ -54,7 +53,7 @@ header {
             @media screen and (max-width: 40.625rem) {
                 margin-right: $space-24;
                 transition: .1s;
-
+                margin-top: $space-8;
             }
 
             @media screen and (max-width: 24.063rem) {

@@ -1,17 +1,9 @@
 import {
   Box,
-  colorPalette,
   Container,
-  Divider,
-  FacebookIcon,
-  Heading,
-  LinkedinIcon,
   Logo,
-  styled,
   Text,
-  themes,
-  TwitterIcon,
-  YoutubeIcon,
+
 } from '@digg/design-system';
 import React from 'react';
 import { Link, RouteComponentProps, withRouter } from 'react-router-dom';
@@ -26,13 +18,6 @@ export interface FooterProps {
 
 const FooterBox = Box.withComponent('footer');
 
-const SocialIcons: { [key: string]: typeof TwitterIcon } = {
-  twitter: TwitterIcon,
-  facebook: FacebookIcon,
-  youtube: YoutubeIcon,
-  linkedIn: LinkedinIcon,
-};
-
 export class Footer extends React.Component<FooterProps> {
   shouldComponentUpdate() {
     return false;
@@ -43,7 +28,6 @@ export class Footer extends React.Component<FooterProps> {
         className="footer"
         bgColor=""
         paddingX={2}
-        // paddingTop={4}
         lang="sv"
       >
         <Text>
@@ -64,7 +48,7 @@ export class Footer extends React.Component<FooterProps> {
 
                         </div>
                       </Box>
-                      
+
                       <Box className="digg__">
                         <Box width="15rem" marginRight={2}>
                           {process.env.CLIENT && (

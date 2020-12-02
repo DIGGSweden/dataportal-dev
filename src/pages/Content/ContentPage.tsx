@@ -18,6 +18,8 @@ import { SettingsContext } from '../../components/SettingsProvider';
 import { PageProps } from '../PageProps'
 import Helmet from 'react-helmet';
 import moment from 'moment';
+import { Breadcrumb } from '../../components/Breadcrumb';
+
 
 const MainContent = Box.withComponent('main');
 
@@ -74,6 +76,8 @@ export class ContentPage extends React.Component<ContentPageProps> {
 
           <ErrorBoundary>
             <MainContent flex="1 1 auto">
+            <Breadcrumb/>
+
               <div className="main-container">                  
                 <div className="">
                 <div className="news-article content">       
