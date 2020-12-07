@@ -29,7 +29,7 @@ if(props.connectedtagpath){
   <div className="breadcrumb text-7">
     <ul className="breadcrumb__list">
       <li className="breadcrumb__list--item">
-        <a href={`/${i18n.languages[0]}`}>{i18n.t('common|Home')}</a>
+        <a href={`/${i18n.languages[0]}`}>{i18n.t('common|home-text')}</a>
       </li>    
       {pathsplitted && pathsplitted.map((n, index) => {        
           breadpath +=n+'/';            
