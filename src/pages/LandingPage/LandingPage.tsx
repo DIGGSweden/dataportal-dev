@@ -74,7 +74,9 @@ export class LandingPage extends React.Component<LandingPageProps> {
 
               <ErrorBoundary>
                 <MainContent flex="1 1 auto">
-                <Breadcrumb/>
+                <Breadcrumb env={settings.env}
+                connectedtagpath ={this.props.path}
+                />
 
                   <div className="main-container">
                     <div className="">
@@ -97,64 +99,12 @@ export class LandingPage extends React.Component<LandingPageProps> {
                           }}
                         />
 
-                        <span>
-                          {this.props.content.tags[0].connectedTagPath}
-                        </span>
-                        <span>Landningssida</span>
+                     
 
                         <LandingPageItem
                           env={settings.env}
                           connectedtagpath={this.props.path}
                         />
-                        {/*Använd denna klass för landingpage ingångar */}
-                        {/* <ul className="text-5-bold landingpage_linkblock">
-        <li>
-          <a href="#">Standarder</a>
-          <ArrowIcon />
-        </li>
-        <li>
-          <a href="#">Versionshantering</a>
-          <ArrowIcon />
-        </li>
-        <li>
-          <a href="#">Namngivning med ett väldigt långt namn länk</a>
-          <ArrowIcon />
-        </li>
-        <li>
-          <a href="#">Identiteter</a>
-          <ArrowIcon />
-        </li>
-        <li>
-          <a href="#">Felhantering</a>
-          <ArrowIcon />
-        </li>
-        <li>
-          <a href="#">Bra exempel</a>
-          <ArrowIcon />
-        </li>
-      </ul> */}
-
-                        {/* <ul className="text-5 landingpage_linkblock-simple">
-        <li>
-          <a href="#">Standarder</a>
-        </li>
-        <li>
-          <a href="#">Versionshantering</a>
-        </li>
-        <li>
-          <a href="#">Namngivning med ett väldigt långt namn länk</a>
-        </li>
-        <li>
-          <a href="#">Identiteter</a>
-        </li>
-        <li>
-          <a href="#">Felhantering</a>
-        </li>
-        <li>
-          <a href="#">Bra exempel</a>
-        </li>
-      </ul> */}
-
                         {/* <h2 className="text-3">Lorem ipsum dolor</h2> */}
                         <p
                           className="main-text text-5"

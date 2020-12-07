@@ -23,18 +23,6 @@ export const LandingPageItem: React.FC<LandingPageItemProps> = (props) => {
   let connectedtagpath = '';
 
   if(props.connectedtagpath) connectedtagpath = props.connectedtagpath;
-  console.log('skoj skoj');
-  console.log(connectedtagpath);
-  // //check if id is sent in via QueryString
-  // if (hasWindow) {
-  //   var qs = decode(window.location.search.substring(1)) as any;
-  //   id = qs.id && qs.id.toString().length > 0 ? qs.id.toString() : '0';
-  // }
-
-  //id via route is always preffered
-  // if (props.id) id = props.id;
-
-
   
   const LANDINGPAGE = gql`
   {
@@ -68,7 +56,7 @@ data && data.links && data.links.length > 0 ? data.links : [];
       ? data.contents[0]
       : null;
       console.log(data);
-      console.log('hejsan');
+     
       console.log(data?.links);
 // console.log(landingPageItem);
   return (   
@@ -97,52 +85,7 @@ data && data.links && data.links.length > 0 ? data.links : [];
                   <ArrowIcon />
               </li>
             );
-          })}
-        {/* // <li>
-        //   <a href="#">Standarder</a>
-        //   <ArrowIcon />
-        // </li>
-        // <li>
-        //   <a href="#">Versionshantering</a>
-        //   <ArrowIcon />
-        // </li>
-        // <li>
-        //   <a href="#">Namngivning med ett väldigt långt namn länk</a>
-        //   <ArrowIcon />
-        // </li>
-        // <li>
-        //   <a href="#">Identiteter</a>
-        //   <ArrowIcon />
-        // </li>
-        // <li>
-        //   <a href="#">Felhantering</a>
-        //   <ArrowIcon />
-        // </li>
-        // <li>
-        //   <a href="#">Bra exempel</a>
-        //   <ArrowIcon />
-        // </li> */}
+          })}      
       </ul>
-
-      // <ul className="text-5 landingpage_linkblock-simple">
-      //   <li>
-      //     <a href="#">Standarder</a>
-      //   </li>
-      //   <li>
-      //     <a href="#">Versionshantering</a>
-      //   </li>
-      //   <li>
-      //     <a href="#">Namngivning med ett väldigt långt namn länk</a>
-      //   </li>
-      //   <li>
-      //     <a href="#">Identiteter</a>
-      //   </li>
-      //   <li>
-      //     <a href="#">Felhantering</a>
-      //   </li>
-      //   <li>
-      //     <a href="#">Bra exempel</a>
-      //   </li>
-      // </ul>
   );
 };

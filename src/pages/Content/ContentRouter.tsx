@@ -43,7 +43,7 @@ const contentQuery = gql`
       }
       ... on Page {        
         preambleHTML        
-      	bodyHTML
+        bodyHTML        
       }
     }
   }

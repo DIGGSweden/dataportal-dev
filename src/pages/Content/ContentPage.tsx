@@ -76,7 +76,7 @@ export class ContentPage extends React.Component<ContentPageProps> {
 
           <ErrorBoundary>
             <MainContent flex="1 1 auto">
-            <Breadcrumb/>
+            <Breadcrumb env={settings.env} connectedtagpath={this.props.match.params.path}/>
 
               <div className="main-container">                  
                 <div className="">
