@@ -26,7 +26,7 @@ export const LandingPageItem: React.FC<LandingPageItemProps> = (props) => {
   
   const LANDINGPAGE = gql`
   {
-    contents(siteurl:"*",connectedtagpaths:["${connectedtagpath}"])
+    contents(siteurl:"${props.env.CONTENTBACKEND_SITEURL}",connectedtagpaths:["${connectedtagpath}"])
     {
       name
       tags{

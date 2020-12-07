@@ -31,8 +31,8 @@ interface ContentPageProps extends PageProps{
 }
 
 const contentQuery = gql`
-  query content($path: String, $lang: String) {
-    contents(siteurl:"*utvecklarportal*", connectedtagpaths:[$path], lang:$lang)
+  query content($siteurl: String!, $path: String, $lang: String) {
+    contents(siteurl:$siteurl, connectedtagpaths:[$path], lang:$lang)
     {
       id      
       name
@@ -59,7 +59,8 @@ export const ContentRouter: React.FC<ContentPageProps> = (props) => {
     useQuery<{ contents: Array<any> }>(contentQuery,{
       variables:{
         path:`/${props.match.params.path}/`,
-        lang: props.lang ?? "sv"
+        lang: props.lang ?? "sv",
+        siteurl: props.env.CONTENTBACKEND_SITEURL
       }
     });
   

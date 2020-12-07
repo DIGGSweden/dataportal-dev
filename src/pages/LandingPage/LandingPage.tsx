@@ -97,10 +97,7 @@ export class LandingPage extends React.Component<LandingPageProps> {
                           dangerouslySetInnerHTML={{
                             __html: this.props.content.preambleHTML,
                           }}
-                        />
-
-                     
-
+                        />                    
                         <LandingPageItem
                           env={settings.env}
                           connectedtagpath={this.props.path}

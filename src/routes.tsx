@@ -35,8 +35,7 @@ class RoutesComponent extends React.Component<RouteProps> {
 
                 {/* <Route render={(props)=><NotFoundPage {...props}/>} /> */}
                 
-                {/* <Route path={['/nyheter/:nid/*', '/sv/nyheter/:nid/*','/sv/nyheter/*']} exact render={(props)=><ContentPage env={settings.env} content={null} {...props}/>} /> */}
-                <Route path={['/om-webbplatsen', '/sv/om-webbplatsen']} exact render={(props)=><ContentPage env={settings.env} content={null} {...props}/>} />
+                {/* <Route path={['/nyheter/:nid/*', '/sv/nyheter/:nid/*','/sv/nyheter/*']} exact render={(props)=><ContentPage env={settings.env} content={null} {...props}/>} /> */}        
               
                 {/* query graphql for connectedcontentpath */}
                 <Route path={['/en/:path*']} exact render={(props) => (<ContentRouter env={settings.env} lang="en" {...props} />)} />                              

@@ -9,6 +9,7 @@ let moment = require('moment');
 
 export interface BreadcrumbItemProps{  
   tagpath:string;  
+  env: EnvSettings;
 }
 
 export const BreadcrumbItem : React.FC<BreadcrumbItemProps> = (props) =>{
@@ -19,7 +20,7 @@ export const BreadcrumbItem : React.FC<BreadcrumbItemProps> = (props) =>{
 
   const BREADCRUMBITEM = gql`
   {  
-  tags(siteurl:"utvecklarportal.web.local",connectedtagpaths:["/${connectedtagpath}"],requireConnectedContent:true)
+  tags(siteurl:"${props.env.CONTENTBACKEND_SITEURL}",connectedtagpaths:["/${connectedtagpath}"],requireConnectedContent:true)
   {  
     title
     tagPath

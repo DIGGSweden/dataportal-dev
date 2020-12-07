@@ -35,7 +35,7 @@ export const ContentItem : React.FC<ContentItemProps> = (props) => {
 
   const CONTENT = gql `
   {
-    pages(siteurl:"*", lang:"${i18n.languages[0]}",id:"${id}"){
+    pages(siteurl:"${props.env.CONTENTBACKEND_SITEURL}", lang:"${i18n.languages[0]}",id:"${id}"){
       id        
       heading
       preambleHTML

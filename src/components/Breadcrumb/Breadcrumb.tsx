@@ -6,6 +6,7 @@ import { EnvSettings } from '../../../config/env/EnvSettings';
 import { useQuery } from '@apollo/client';
 import { gql } from 'apollo-boost';
 import { BreadcrumbItem } from './BreadcrumbItem';
+import { SettingsContext } from 'components/SettingsProvider';
 let moment = require('moment');
 export interface BreadcrumbProps{  
   connectedtagpath:string;
@@ -34,7 +35,7 @@ if(props.connectedtagpath){
           breadpath +=n+'/';            
         console.log("min breadpath"+breadpath);
         return (        
-          <BreadcrumbItem tagpath={breadpath} />
+          <BreadcrumbItem env={props.env} tagpath={breadpath} />
         );  
       })}
     </ul>
