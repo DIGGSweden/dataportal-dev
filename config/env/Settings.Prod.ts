@@ -7,6 +7,8 @@ export class Settings_Prod extends EnvSettings {
 
   CANONICAL_URL = "https://www.devportal.se"; //TODO
 
+  MATOMO_SITEID = -1;
+
   envName = 'prod';
 
   public constructor()

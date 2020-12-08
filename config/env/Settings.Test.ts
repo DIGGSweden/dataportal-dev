@@ -7,6 +7,8 @@ export class Settings_Test extends EnvSettings {
 
   CANONICAL_URL = "https://digg-test-devportal.azurewebsites.net";
 
+  MATOMO_SITEID = -1;
+
   envName = 'test';
 
   public constructor()

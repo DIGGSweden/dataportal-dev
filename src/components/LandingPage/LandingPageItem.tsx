@@ -9,6 +9,8 @@ import ChopLines from 'chop-lines';
 let moment = require('moment');
 import { decode } from 'qss';
 import { Helmet } from 'react-helmet';
+import { Link } from 'react-router-dom';
+import Skeleton from 'react-loading-skeleton';
 
 export interface LandingPageItemProps {
   children?: React.ReactNode;
@@ -25,51 +27,33 @@ export const LandingPageItem: React.FC<LandingPageItemProps> = (props) => {
   if(props.connectedtagpath) connectedtagpath = props.connectedtagpath;
   
   const LANDINGPAGE = gql`
-  {
-    contents(siteurl:"${props.env.CONTENTBACKEND_SITEURL}",connectedtagpaths:["${connectedtagpath}"])
-    {
-      name
-      tags{
-        tagPath
-        connectedTagPath
+  {   
+    tags(siteurl: "${props.env.CONTENTBACKEND_SITEURL}",parentconnectedtagpaths:["${connectedtagpath}"])
+      {
         id
+        parentID
+        title
+        connectedTagPath
       }
     }
-    links:  
-  tags(siteurl: "*utvecklarportal*",connectedtagpathscontains:["${connectedtagpath}*/"])
-    {
-      id
-      parentID
-      title
-      connectedTagPath
-    }
-  }
 `;
 
-  const { loading, error, data } = useQuery<{ contents: Array<any>, links:Array<any> }>(LANDINGPAGE);
+  const { loading, error, data } = useQuery<{ tags:Array<any> }>(LANDINGPAGE);
 
-const landingPageRelatedLinks =
-data && data.links && data.links.length > 0 ? data.links : [];
+  const landingPageRelatedLinks =
+  data && data.tags && data.tags.length > 0 ? data.tags : [];  
 
-  const landingPageItem =
-    data && data.contents && data.contents.length > 0
-      ? data.contents[0]
-      : null;
-      console.log(data);
-     
-      console.log(data?.links);
-// console.log(landingPageItem);
   return (   
-          <ul className="text-5-bold landingpage_linkblock">
-              {loading && (
-          <span className="text-5 loading">{i18n.t('common|loading')}</span>
+    <ul className="text-5-bold landingpage_linkblock">
+        {loading && (
+          <Skeleton count={2} height={60} />
         )}
         {!loading && error && (
           <span className="loading-msg">
             Det finns inga sidor att visa för tillfället.
           </span>
         )}
-           {!loading &&
+        {!loading &&
           landingPageRelatedLinks &&
           landingPageRelatedLinks.length > 0 &&
           landingPageRelatedLinks.map((n, index) => {
@@ -77,15 +61,15 @@ data && data.links && data.links.length > 0 ? data.links : [];
               <li 
               key={index}
               >
-                <a                  
-                  href={`${n.connectedTagPath}`}
+                <Link                  
+                  to={`${n.connectedTagPath}`}
                 >
                   {n.title}
-                  </a>
+                  </Link>
                   <ArrowIcon />
               </li>
             );
           })}      
-      </ul>
+    </ul>
   );
 };

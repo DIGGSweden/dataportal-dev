@@ -20,6 +20,8 @@ import { ApolloProvider } from '@apollo/client'
 import { getDataFromTree } from "@apollo/client/react/ssr";
 import { SettingsUtil } from "../../config/env/SettingsUtil";
 import { createApolloClient } from '../../shared/graphql/client';
+import { I18nextProvider } from 'react-i18next';
+import i18n from '../../src/i18n';
 
 export interface RenderResponseProfileItem {
   name: string;
@@ -63,23 +65,31 @@ export const renderer = async (
     fetch: fetch as any 
   });
 
+  if(path.startsWith("/en/") || path == "/en")
+    i18n.changeLanguage("en");
+
+  if(path.startsWith("/sv/")  || path == "/sv")
+    i18n.changeLanguage("sv");
+
   const frontend = (
-  <ApolloProvider client={client}>
-    <CacheProvider value={cache}>
-      <GlobalStyles theme={themes.default} />
-      <ThemeProvider theme={themes.opendata}>
-        <HelmetProvider context={helmetContext}>       
-          <LocalStoreProvider>
-            <SettingsProvider applicationUrl={host}>
-              <StaticRouter location={path} context={routerContext}>
-                <Routes formdata={formdata} vars={vars} />
-              </StaticRouter>
-            </SettingsProvider>
-          </LocalStoreProvider>       
-        </HelmetProvider>
-      </ThemeProvider>      
-    </CacheProvider>
-    </ApolloProvider>
+  <I18nextProvider i18n={i18n}>
+    <ApolloProvider client={client}>
+      <CacheProvider value={cache}>
+        <GlobalStyles theme={themes.default} />
+        <ThemeProvider theme={themes.opendata}>
+          <HelmetProvider context={helmetContext}>       
+            <LocalStoreProvider>
+              <SettingsProvider applicationUrl={host}>
+                <StaticRouter location={path} context={routerContext}>
+                  <Routes formdata={formdata} vars={vars} />
+                </StaticRouter>
+              </SettingsProvider>
+            </LocalStoreProvider>       
+          </HelmetProvider>
+        </ThemeProvider>      
+      </CacheProvider>
+      </ApolloProvider>
+    </I18nextProvider>
   );
 
   try {

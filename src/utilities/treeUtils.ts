@@ -54,6 +54,7 @@ export const createNavigationTree= (data:any) => {
         tagPath: first?.tagPath,
         indexOrder: first?.indexOrder || 0,
         externalUrl: first?.externalUrl,
+        urlsegment: first?.urlsegment || '',
         connectedContent: first?.connectedContents && first?.connectedContents.length > 0? true : false,        
         children: undefined
       };    

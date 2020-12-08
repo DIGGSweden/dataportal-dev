@@ -8,6 +8,8 @@ export class Settings_Dev extends EnvSettings {
 
   CANONICAL_URL = "http://localhost:8080";
 
+  MATOMO_SITEID = -1;
+
   envName = 'dev';
 
   public constructor()

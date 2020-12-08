@@ -29,6 +29,7 @@ import 'scss/news/news.scss';
 import 'scss/redirectpage/redirectpage.scss';
 import 'scss/loader/loader.scss';
 import 'scss/breadcrumb/breadcrumb.scss';
+import { createInstance, MatomoProvider } from '@datapunt/matomo-tracker-react';
 
 
 const emotionIds = (window as any).__EMOTION_IDS__ || null;
@@ -44,7 +45,7 @@ const env = SettingsUtil.create(typeof window !== 'undefined'? window.location.h
 const client = createApolloClient({ 
   serverState: serverState, 
   fetch: fetch,
-  ssrMode: false,  
+  ssrForceFetchDelay: 100,
   backendUrl: env.CONTENTBACKEND_GRAPHAPI });
 
   ReactDOM.hydrate( 
@@ -55,9 +56,18 @@ const client = createApolloClient({
           <HelmetProvider>       
             <LocalStoreProvider>        
               <SettingsProvider applicationUrl={typeof window !== 'undefined'? window.location.href : ''}>
+                <MatomoProvider
+                  value={createInstance({
+                    urlBase: 'https://webbanalys.digg.se',
+                    siteId: env.MATOMO_SITEID > 0
+                      ? env.MATOMO_SITEID
+                      : -1,
+                  })}
+                >
                 <BrowserRouter>
                   <Routes />
                 </BrowserRouter>
+                </MatomoProvider>
               </SettingsProvider>                            
             </LocalStoreProvider>      
           </HelmetProvider>

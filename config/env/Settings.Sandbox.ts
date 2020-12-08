@@ -7,6 +7,8 @@ export class Settings_Sandbox extends EnvSettings {
 
   CANONICAL_URL = "https://www-devportal.se"; //TODO
 
+  MATOMO_SITEID = -1;
+
   envName = 'sandbox';
 
   public constructor()
