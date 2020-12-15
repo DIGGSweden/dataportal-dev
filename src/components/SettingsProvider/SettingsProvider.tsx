@@ -23,12 +23,14 @@ export interface MenuRoutes {
 export interface Settings {   
   env: EnvSettings;
   noScriptContent: string | null;
+  anchorLinkHeading: string | null;
   mainmenu?: MenuItem[] | null
   footermenu?: MenuItem[] | null
 }
 
 const defaultSettings: Settings = {    
   noScriptContent: '',
+  anchorLinkHeading: '',
   env: SettingsUtil.getDefault()
 };
 
@@ -125,6 +127,7 @@ export const SettingsProvider: React.FunctionComponent<SettingsProviderProps> = 
           value={{
             env: defaultSettings.env,
             noScriptContent: defaultSettings.noScriptContent,
+            anchorLinkHeading: '',
             mainmenu: !loading && data && data.mainmenu? 
               createNavigationTree(data.mainmenu)
               : 
