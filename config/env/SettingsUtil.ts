@@ -1,5 +1,4 @@
 import { Settings_Dev } from "./Settings.Dev";
-import { Settings_Sandbox } from "./Settings.Sandbox";
 import { Settings_Prod } from "./Settings.Prod";
 import { Settings_Test } from "./Settings.Test";
 import { EnvSettings } from "./EnvSettings";
@@ -43,15 +42,12 @@ export class SettingsUtil {
     }
 
     switch(url)
-    {
-      case "www-sandbox.dataportal.se":
-        SettingsUtil.current = new Settings_Sandbox();          
-        break;
-      case "www.dataportal.se":
-      case "dataportal.se":
+    {      
+      case "www.utvecklarportalen.se":
+      case "utvecklarportalen.se":
         SettingsUtil.current = new Settings_Prod();          
         break;        
-      case "digg-test-dataportal.azurewebsites.net":
+      case "digg-test-devportal.azurewebsites.net":
         SettingsUtil.current = new Settings_Test();          
         break;
       default:
