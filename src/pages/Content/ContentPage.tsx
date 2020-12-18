@@ -173,7 +173,7 @@ export const ContentPage: React.FC<ContentPageProps> = props =>{
                     __html: props.content.preambleHTML,
                   }}
                 />                           
-              <p
+              <div
                 className="main-text text-5"
                 dangerouslySetInnerHTML={{
                   __html: props.content.bodyHTML,
