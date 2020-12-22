@@ -101,9 +101,8 @@ export class LandingPage extends React.Component<LandingPageProps> {
                         <LandingPageItem
                           env={settings.env}
                           connectedtagpath={this.props.path}
-                        />
-                        {/* <h2 className="text-3">Lorem ipsum dolor</h2> */}
-                        <p
+                        />                        
+                        <div
                           className="main-text text-5"
                           dangerouslySetInnerHTML={{
                             __html: this.props.content.bodyHTML,
