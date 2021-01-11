@@ -148,3 +148,21 @@ html select:focus {
 .view-more-link {
     align-self: flex-start;
 }
+
+.main-container--contentwrapper {
+    display: flex;
+    flex-direction: row-reverse;
+
+    @media screen and (max-width: 56.1875rem) {
+        flex-direction: column;
+    }
+}
+
+.anchorlink_wrapper {
+    width: 100%;
+    padding-left: $space-64;
+
+    @media screen and (max-width: 56.1875rem) {
+        padding-left: 0rem;
+    }
+}

@@ -224,6 +224,7 @@ export class Header extends React.Component<HeaderProps> {
                 <div className="lang-select">
                   <a
                     className="text-7"
+                    lang={i18n.t('common|lang')}
                     href={
                       i18n.t('common|language').includes('english')
                         ? '/en'

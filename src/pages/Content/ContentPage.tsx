@@ -10,14 +10,17 @@ import { NoJavaScriptWarning } from '../../components/NoJavaScriptWarning';
 import { QueryParamProvider } from '../../components/QueryParamProvider';
 import { __RouterContext } from 'react-router';
 import { PageMetadata } from '../PageMetadata';
-import { PageNavigation, PixelWrapper } from '../../components/StyledComponents/';
+import {
+  PageNavigation,
+  PixelWrapper,
+} from '../../components/StyledComponents/';
 import { MenuItem, AnchorLinkMenu } from './AnchorLinkMenu';
 import i18n from '../../i18n';
 import { TopImage } from '../../assets/TopImage';
 import { string } from 'prop-types';
-import { ContentItem } from '../../components/Content'
+import { ContentItem } from '../../components/Content';
 import { SettingsContext } from '../../components/SettingsProvider';
-import { PageProps } from '../PageProps'
+import { PageProps } from '../PageProps';
 import Helmet from 'react-helmet';
 import moment from 'moment';
 import { Breadcrumb } from '../../components/Breadcrumb';
@@ -73,15 +76,12 @@ const getLinks = () => {
   return menuItems;
 };
 
-
-interface ContentPageProps extends PageProps{  
-  content:any;
+interface ContentPageProps extends PageProps {
+  content: any;
 }
 
-export const ContentPage: React.FC<ContentPageProps> = props =>{
-  const {
-    content
-  }=props;
+export const ContentPage: React.FC<ContentPageProps> = (props) => {
+  const { content } = props;
   const initialState: MenuItem[] = [];
   const [menuItems, setMenuItems] = useState(initialState);
   const [width, setWidth] = useState(getWidth());
@@ -94,8 +94,6 @@ export const ContentPage: React.FC<ContentPageProps> = props =>{
   //     headerRef.current.setFocusOnMenuButton();
   //   }
   // }
-
- 
 
   useEffect(() => {
     const newMenuItems = getLinks();
@@ -116,82 +114,106 @@ export const ContentPage: React.FC<ContentPageProps> = props =>{
   });
 
   let uri = new URLSearchParams(location.search);
-  return (   
+  return (
     <QueryParamProvider params={uri}>
-    <PageMetadata
-      seoTitle="Innehåll - Sveriges dataportal"
-      seoDescription=""
-      seoImageUrl=""
-      seoKeywords=""
-      robotsFollow={true}
-      robotsIndex={true}
-      lang={i18n.languages[0]}
-    />
-    <SettingsContext.Consumer>
-      {settings => (       
-      <Box
-        id="top"
-        display="flex"
-        direction="column"
-        minHeight="100vh"
-        bgColor="#fff"
-      >
-        <NoJavaScriptWarning text="" />
+      <PageMetadata
+        seoTitle="Innehåll - Sveriges dataportal"
+        seoDescription=""
+        seoImageUrl=""
+        seoKeywords=""
+        robotsFollow={true}
+        robotsIndex={true}
+        lang={i18n.languages[0]}
+      />
+      <SettingsContext.Consumer>
+        {(settings) => (
+          <Box
+            id="top"
+            display="flex"
+            direction="column"
+            minHeight="100vh"
+            bgColor="#fff"
+          >
+            <NoJavaScriptWarning text="" />
 
-        <Header ref={headerRef} />
+            <Header ref={headerRef} />
 
-        <ErrorBoundary>
-          <MainContent flex="1 1 auto">
-          <Breadcrumb env={settings.env} connectedtagpath={props.match.params.path}/>
-
-            <div className="main-container">                  
-              <div className="">
-              <div className="news-article content">       
-              <Helmet>
-                <title>{props.content.name} - {i18n.t('common|seo-title')}</title>
-              </Helmet> 
-              <Box display="block" width={1}>
-            {menuItems[0] && width > 899 && (
-              <PageNavigation ref={AnchorLinkMenuRef}>
-                <AnchorLinkMenu
-                  screenWidth={getWidth()}
-                  menuItems={menuItems}
-                  anchorLinkMenuRef={AnchorLinkMenuRef}
+            <ErrorBoundary>
+              <Box flex="1 1 auto">
+                <Breadcrumb
+                  env={settings.env}
+                  connectedtagpath={props.match.params.path}
                 />
-              </PageNavigation>
-            )}
-            </Box>
+                <MainContent className="main-container">
+                <h1 className="text-1">{props.content.name}</h1>
 
-              {props.content && props.content.imageUrl && (
-                <img src={`${props.content.imageUrl}?width=1024`} alt={`${props.content.imageText}`} />
-              )}
-              <span className="text-6">{moment(props.content.published.toString()).format("D MMM YYYY")}</span>
-              <h1 className="text-1">{props.content.name}</h1>            
-              <p
-                  className="preamble text-4"
-                  dangerouslySetInnerHTML={{
-                    __html: props.content.preambleHTML,
-                  }}
-                />                           
-              <div
-                className="main-text text-5"
-                dangerouslySetInnerHTML={{
-                  __html: props.content.bodyHTML,
-                }}
-              />                                            
-              </div>   
-              </div>
-            </div>
-          </MainContent>
-        </ErrorBoundary>
-        <Footer onToTopButtonPushed={() => {}} />
-      </Box>
-      )}
-    </SettingsContext.Consumer>
-  </QueryParamProvider>                                            
-  )  
-}
+                  <div className="main-container--contentwrapper">
 
+                    <Box
+                      className="anchorlink_wrapper"
+                    >
+                      {menuItems[0] && width > 899 && (
+                        <PageNavigation ref={AnchorLinkMenuRef}>
+                          <AnchorLinkMenu
+                            screenWidth={getWidth()}
+                            menuItems={menuItems}
+                            anchorLinkMenuRef={AnchorLinkMenuRef}
+                          />
+                        </PageNavigation>
+                      )}
+                    </Box>
+
+                    <div className="news-article content">
+                      <Helmet>
+                        <title>
+                          {props.content.name} - {i18n.t('common|seo-title')}
+                        </title>
+                      </Helmet>
+                      {/*             
+              <Box className="anchorlink_wrapper" display="block" width={1}>
+                {menuItems[0] && width > 899 && (
+                  <PageNavigation ref={AnchorLinkMenuRef}>
+                    <AnchorLinkMenu
+                      screenWidth={getWidth()}
+                      menuItems={menuItems}
+                      anchorLinkMenuRef={AnchorLinkMenuRef}
+                    />
+                  </PageNavigation>
+                )}
+            </Box> */}
+
+                      {props.content && props.content.imageUrl && (
+                        <img
+                          src={`${props.content.imageUrl}?width=1024`}
+                          alt={`${props.content.imageText}`}
+                        />
+                      )}
+                      {/* <span className="text-6">{moment(props.content.published.toString()).format("D MMM YYYY")}</span> */}
+                      {/* <h1 className="text-1">{props.content.name}</h1> */}
+                      <p
+                        className="preamble text-4"
+                        dangerouslySetInnerHTML={{
+                          __html: props.content.preambleHTML,
+                        }}
+                      />
+                      <div
+                        className="main-text text-5"
+                        dangerouslySetInnerHTML={{
+                          __html: props.content.bodyHTML,
+                        }}
+                      />
+                    </div>
+                  </div>
+                </MainContent>
+              </Box>
+            </ErrorBoundary>
+            <Footer onToTopButtonPushed={() => {}} />
+          </Box>
+        )}
+      </SettingsContext.Consumer>
+    </QueryParamProvider>
+  );
+};
 
 // export class ContentfafaPage extends React.Component<ContentPageProps> {
 //     private headerRef: React.RefObject<Header>;
@@ -201,15 +223,9 @@ export const ContentPage: React.FC<ContentPageProps> = props =>{
 //         this.headerRef = React.createRef();
 //         this.setFocus = this.setFocus.bind(this);
 //       }
-      
-      
 
-   
-    
 //       // setTopMargin(height: number) {
 //       //   this.setState({ headerHeight: height });
 //       // }
-          
-
 
 // }

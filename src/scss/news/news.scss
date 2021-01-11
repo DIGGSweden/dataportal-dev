@@ -168,12 +168,15 @@
 
 // NewsPage
 .news-article {
-    margin-top: $space-32;
+    // margin-top: $space-32;
 
     img {
         width: 100%;
         height: auto;
         margin-bottom: $space-24;
+        &:empty{
+            display: none;
+        }
     }
 
     p {

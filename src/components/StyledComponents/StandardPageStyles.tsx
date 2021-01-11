@@ -14,7 +14,7 @@ export const PageNavigation = styled('div')`
   position: -ms-sticky;
   position: -o-sticky;
   position: sticky;
-  width: 33.33333333333333%;
+  width: 100%;
   float: right;
   top: 32px;
   padding: 0 16px 16px 16px;
@@ -26,13 +26,18 @@ export const PageNavigation = styled('div')`
     float: unset;
     padding-left: 0px;
     padding-bottom: 0px;
-    margin-top: 32px;
+    /* margin-top: 32px; */
     margin-bottom: 48px;
     /* margin-bottom: 48px; */
   }
 
   nav {
     max-width: 350px;
+    min-width: 250px;
+
+    @media screen and (max-width: 56.1875rem) {
+      max-width: 40rem;
+    }
   }
 
   .anchorLinks {
