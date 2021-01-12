@@ -22,6 +22,8 @@ import { TopImage } from 'assets/TopImage';
 import i18n from 'i18n';
 import { SettingsContext } from '../../components/SettingsProvider';
 import { PageProps } from 'pages/PageProps';
+import Truncate from 'react-truncate';
+import ChopLines from 'chop-lines';
 
 const MainContent = Box.withComponent('main');
 
@@ -76,7 +78,6 @@ export class StartPage extends React.Component<PageProps, any> {
               <ErrorBoundary>
                 <MainContent id="main" flex="1 1 auto">
                   <div className="wpb_wrapper">
-
                     <div className="main-container">
                       <div className="dev_head">
                         <div className="dev_head-heading">
@@ -87,6 +88,7 @@ export class StartPage extends React.Component<PageProps, any> {
                             öppen data i de lösningar som du själv utvecklar.
                           </span>
                         </div>
+
                         <div className="dev_head-links">
                           <div className="dev_head-link">
                             <a className="text-4-link">
@@ -104,6 +106,54 @@ export class StartPage extends React.Component<PageProps, any> {
                             </span>
                           </div>
                         </div>
+                      </div>
+
+                      <div className="content_grid">
+                        <ul className="content_grid-list">
+                          <li className="content_grid-item">
+                            <div className="content_grid-item-wrapper">
+                              <a href="#" className="content_grid-link text-4">
+                                Floki the boat builder
+                              </a>
+                              <ChopLines lines={2} lineHeight={27}>
+                                <p className="text-5 content_grid-preamble">
+                                  In 868, Flóki left to search for the land
+                                  found by Garðar Svavarsson way up in the
+                                  north. He was accompanied by his family on his
+                                  journey; his wife was named Gró and his
+                                  children included Oddleifur and Þjóðgerður.
+                                </p>
+                              </ChopLines>
+                            </div>
+                          </li>
+                          <li className="content_grid-item">
+                            <div className="content_grid-item-wrapper">
+                              <a
+                                href="#"
+                                className="content_grid-link text-4"
+                              ></a>
+                              <p className="text-5 content_grid-preamble"></p>
+                            </div>
+                          </li>
+                          <li className="content_grid-item">
+                            <div className="content_grid-item-wrapper">
+                              <a
+                                href="#"
+                                className="content_grid-link text-4"
+                              ></a>
+                              <p className="text-5 content_grid-preamble"></p>
+                            </div>
+                          </li>
+                          <li className="content_grid-item">
+                            <div className="content_grid-item-wrapper">
+                              <a
+                                href="#"
+                                className="content_grid-link text-4"
+                              ></a>
+                              <p className="text-5 content_grid-preamble"></p>
+                            </div>
+                          </li>
+                        </ul>
                       </div>
                     </div>
                   </div>
