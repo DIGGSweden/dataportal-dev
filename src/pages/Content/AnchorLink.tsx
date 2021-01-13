@@ -9,6 +9,7 @@ interface LinkProps {
 const Link = styled('a')<LinkProps>`
   font-size: 16px;
   color: ${colorPalette.black100};
+  text-decoration:none;
   ${props =>
     props.active
       ? `border-left: 2px solid ${colorPalette.pink100} !important;`
