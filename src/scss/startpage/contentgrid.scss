@@ -20,6 +20,18 @@
             width: 25%;
             padding: $space-8;
 
+            @media screen and (max-width: 50rem) {
+                width: 33.3333%;
+            }
+
+            @media screen and (max-width: 37.5rem) {
+                width: 50%;
+            }
+
+            @media screen and (max-width: 31.5rem) {
+                width: 100%;
+            }
+
 
             &:nth-of-type(1) {
                 .content_grid-item-wrapper {
@@ -45,15 +57,19 @@
                 }
             }
 
-
             .content_grid-item-wrapper {
                 padding: $space-16;
-                min-height: 17.25rem;
 
-                .content-grid-link {}
+                @media screen and (min-width: 31.5rem) {
+                    min-height: 17.25rem;
+                }
+
+                .content_grid-link {
+                    display: block;
+                }
 
                 .content_grid-preamble {
-                    margin-top: $space-8;
+                    margin-top: 0.5rem;
                 }
             }
         }

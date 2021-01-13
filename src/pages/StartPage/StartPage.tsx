@@ -92,33 +92,79 @@ export class StartPage extends React.Component<PageProps, any> {
                               <a href="#" className="content_grid-link text-4">
                                 Floki the boat builder
                               </a>
-                              <ChopLines lines={2} lineHeight={27}>
-                                <p className="text-5 content_grid-preamble">
+                              <p className="text-5 content_grid-preamble">
+                                <Truncate lines={4}>
                                   In 868, Flóki left to search for the land
                                   found by Garðar Svavarsson way up in the
                                   north. He was accompanied by his family on his
                                   journey; his wife was named Gró and his
                                   children included Oddleifur and Þjóðgerður.
-                                </p>
-                              </ChopLines>
+                                </Truncate>
+                              </p>
                             </div>
                           </li>
                           <li className="content_grid-item">
                             <div className="content_grid-item-wrapper">
-                              <a
-                                href="#"
-                                className="content_grid-link text-4"
-                              ></a>
-                              <p className="text-5 content_grid-preamble"></p>
+                              <a href="#" className="content_grid-link text-4">
+                                Ragnar Lodbrok or Lothbrok
+                              </a>
+                              <p className="text-5 content_grid-preamble">
+                                <Truncate lines={4}>
+                                  Ragnar Loðbrók is a legendary Viking hero, as
+                                  well as, according to the Gesta Danorum, a
+                                  legendary Danish and Swedish king.[2] He is
+                                  known from Old Norse poetry of the Viking Age,
+                                  Icelandic sagas, and near-contemporary
+                                  chronicles. According to the traditional
+                                  literature, Ragnar Lodbrok distinguished
+                                  himself by many raids against the British
+                                  Isles and the Holy Roman Empire during the 9th
+                                  century.
+                                </Truncate>
+                              </p>
                             </div>
                           </li>
                           <li className="content_grid-item">
                             <div className="content_grid-item-wrapper">
-                              <a
-                                href="#"
-                                className="content_grid-link text-4"
-                              ></a>
-                              <p className="text-5 content_grid-preamble"></p>
+                              <a href="#" className="content_grid-link text-4">
+                                Harald I Fairhair
+                              </a>
+                              <p className="text-5 content_grid-preamble">
+                                <Truncate lines={4}>
+                                  Harald hårfagre; putatively c. 850 – c. 932)
+                                  is portrayed by medieval Norwegian historians
+                                  as the first King of Norway. According to
+                                  traditions current in Norway and Iceland in
+                                  the twelfth and thirteenth centuries, he
+                                  reigned from c. 872 to 930. Supposedly, two of
+                                  his sons, Eric Bloodaxe and Haakon the Good,
+                                  succeeded Harald to become kings after his
+                                  death.
+                                </Truncate>
+                              </p>
+                            </div>
+                          </li>
+                          <li className="content_grid-item">
+                            <div className="content_grid-item-wrapper">
+                              <a href="#" className="content_grid-link text-4">
+                                Rollo the first ruler of
+                                Normandy
+                              </a>
+                              <p className="text-5 content_grid-preamble">
+                                <Truncate lines={4}>
+                                  He emerged as the outstanding warrior among
+                                  the Norsemen who had secured a permanent
+                                  foothold on Frankish soil in the valley of the
+                                  lower Seine. After the Siege of Chartres in
+                                  911, Charles the Simple, the king of West
+                                  Francia, gifted them lands between the mouth
+                                  of the Seine and what is now Rouen in exchange
+                                  for Rollo agreeing to end his brigandage,
+                                  swearing allegiance to him, religious
+                                  conversion and a pledge to defend the Seine's
+                                  estuary from Viking raiders.
+                                </Truncate>
+                              </p>
                             </div>
                           </li>
                           <li className="content_grid-item">
