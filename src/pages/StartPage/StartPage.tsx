@@ -83,9 +83,7 @@ export class StartPage extends React.Component<PageProps, any> {
                 <StartPageBlocksItem
                           env={settings.env}
                           connectedtagpath="/start/"
-                        />  
-
-                      </div>
+                        />                                             
 
                       <div className="content_grid">
                         <ul className="content_grid-list">
@@ -133,6 +131,7 @@ export class StartPage extends React.Component<PageProps, any> {
                             </div>
                           </li>
                         </ul>
+                        </div>
                 </MainContent>
               </ErrorBoundary>
               <Footer onToTopButtonPushed={this.setFocus} />
