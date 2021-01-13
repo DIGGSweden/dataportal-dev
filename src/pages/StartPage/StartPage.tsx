@@ -26,6 +26,7 @@ import Truncate from 'react-truncate';
 import ChopLines from 'chop-lines';
 
 const MainContent = Box.withComponent('main');
+const jumbotron_logo = require('./grafic.png');
 
 export class StartPage extends React.Component<PageProps, any> {
   private headerRef: React.RefObject<Header>;
@@ -79,43 +80,40 @@ export class StartPage extends React.Component<PageProps, any> {
                 <MainContent id="main" flex="1 1 auto">
                   <div className="wpb_wrapper">
                     <div className="main-container">
-                      <div className="dev_head">
-                        <div className="dev_head-heading">
-                          <h1 className="text-1">Utvecklarportalen</h1>
+                      <div className="jumbotron">
+                        <div className="jumbotron_heading">
+                          <h1 className="text-1">
+                            Platsen för dig som arbetar med API:er
+                          </h1>
                           <span className="text-5">
                             Här hittar du information och tips om hur du gör för
                             att på ett standardierat sätt kan använda API:er och
                             öppen data i de lösningar som du själv utvecklar.
                           </span>
                         </div>
-
-                        <div className="dev_head-links">
-                          <div className="dev_head-link">
-                            <a className="text-4-link">
-                              Produktägare och förvaltare
-                            </a>
-                            <span className="text-5">livscykelhantering?</span>
-                          </div>
-                          <div className="dev_head-link">
-                            <a className="text-4-link">
-                              Är du utvecklare eller testare
-                            </a>
-                            <span className="text-5">
-                              Ta del av bra exempel på hur andra har utvecklat
-                              sina lösningar.{' '}
-                            </span>
-                          </div>
+                        <div className="jumbotron_img">
+                          <img src={jumbotron_logo} />
                         </div>
                       </div>
 
                       <div className="content_grid">
+                        <h2 className="text-3">The Viking Age (793–1066 AD)</h2>
+                        <p className="text-5 content_grid-preamble">
+                          The Viking Age (793–1066 AD) was the period during the
+                          Middle Ages when Norsemen known as Vikings undertook
+                          large-scale raiding, colonizing, conquest and trading
+                          throughout Europe, and reached North America.
+                        </p>
                         <ul className="content_grid-list">
                           <li className="content_grid-item">
                             <div className="content_grid-item-wrapper">
-                              <a href="#" className="content_grid-link text-4">
+                              <a
+                                href="#"
+                                className="content_grid-itemlink text-4"
+                              >
                                 Floki the boat builder
                               </a>
-                              <p className="text-5 content_grid-preamble">
+                              <p className="text-5 content_grid-itemdesc">
                                 <Truncate lines={4}>
                                   In 868, Flóki left to search for the land
                                   found by Garðar Svavarsson way up in the
@@ -128,10 +126,13 @@ export class StartPage extends React.Component<PageProps, any> {
                           </li>
                           <li className="content_grid-item">
                             <div className="content_grid-item-wrapper">
-                              <a href="#" className="content_grid-link text-4">
+                              <a
+                                href="#"
+                                className="content_grid-itemlink text-4"
+                              >
                                 Ragnar Lodbrok or Lothbrok
                               </a>
-                              <p className="text-5 content_grid-preamble">
+                              <p className="text-5 content_grid-itemdesc">
                                 <Truncate lines={4}>
                                   Ragnar Loðbrók is a legendary Viking hero, as
                                   well as, according to the Gesta Danorum, a
@@ -149,10 +150,13 @@ export class StartPage extends React.Component<PageProps, any> {
                           </li>
                           <li className="content_grid-item">
                             <div className="content_grid-item-wrapper">
-                              <a href="#" className="content_grid-link text-4">
+                              <a
+                                href="#"
+                                className="content_grid-itemlink text-4"
+                              >
                                 Harald I Fairhair
                               </a>
-                              <p className="text-5 content_grid-preamble">
+                              <p className="text-5 content_grid-itemdesc">
                                 <Truncate lines={4}>
                                   Harald hårfagre; putatively c. 850 – c. 932)
                                   is portrayed by medieval Norwegian historians
@@ -169,11 +173,13 @@ export class StartPage extends React.Component<PageProps, any> {
                           </li>
                           <li className="content_grid-item">
                             <div className="content_grid-item-wrapper">
-                              <a href="#" className="content_grid-link text-4">
-                                Rollo the first ruler of
-                                Normandy
+                              <a
+                                href="#"
+                                className="content_grid-itemlink text-4"
+                              >
+                                Rollo the first ruler of Normandy
                               </a>
-                              <p className="text-5 content_grid-preamble">
+                              <p className="text-5 content_grid-itemdesc">
                                 <Truncate lines={4}>
                                   He emerged as the outstanding warrior among
                                   the Norsemen who had secured a permanent
@@ -188,15 +194,6 @@ export class StartPage extends React.Component<PageProps, any> {
                                   estuary from Viking raiders.
                                 </Truncate>
                               </p>
-                            </div>
-                          </li>
-                          <li className="content_grid-item">
-                            <div className="content_grid-item-wrapper">
-                              <a
-                                href="#"
-                                className="content_grid-link text-4"
-                              ></a>
-                              <p className="text-5 content_grid-preamble"></p>
                             </div>
                           </li>
                         </ul>

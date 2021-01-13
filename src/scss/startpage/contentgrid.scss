@@ -4,6 +4,11 @@
     display: flex;
     flex-direction: column;
 
+    .content_grid-preamble{
+        margin-top: 0rem;
+        max-width: 40rem;
+    }
+
     .content_grid-list {
         display: flex;
         justify-content: flex-start;
@@ -32,7 +37,6 @@
                 width: 100%;
             }
 
-
             &:nth-of-type(1) {
                 .content_grid-item-wrapper {
                     background-color: $green25;
@@ -60,16 +64,26 @@
             .content_grid-item-wrapper {
                 padding: $space-16;
 
+                &:hover {
+                    cursor: pointer;
+                    filter: brightness(98%);
+
+                    .content_grid-itemlink {
+                        text-decoration: none;
+                    }
+                }
+
                 @media screen and (min-width: 31.5rem) {
                     min-height: 17.25rem;
                 }
 
-                .content_grid-link {
-                    display: block;
+                .content_grid-itemlink {
+                    width: fit-content;
                 }
 
-                .content_grid-preamble {
+                .content_grid-itemdesc {
                     margin-top: 0.5rem;
+                    max-width: 40rem;
                 }
             }
         }

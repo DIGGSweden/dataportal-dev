@@ -1,0 +1,52 @@
+@import 'scss/general/variables.scss';
+
+.jumbotron {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: $space-64;
+    padding-top: $space-64;
+
+    .jumbotron_heading {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 50%;
+        padding-bottom: $space-24;
+
+        h1 {
+            margin-top: 0rem;
+        }
+    }
+
+    .jumbotron_img {
+        width: 50%;
+        object-fit: cover;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    @media screen and (max-width: 50rem) {
+        flex-direction: column;
+
+        .jumbotron_heading,
+        .jumbotron_img {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+
+            img {
+                max-width: 70%;
+            }
+        }
+    }
+
+    @media screen and (max-width: 37.5rem) {
+        .jumbotron_img {
+            img {
+                max-width: 90%;
+            }
+        }
+    }
+}
