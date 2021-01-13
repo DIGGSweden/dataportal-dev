@@ -17,11 +17,14 @@ import { Header } from '../../components/Header';
 import { NoJavaScriptWarning } from '../../components/NoJavaScriptWarning';
 import { QueryParamProvider } from '../../components/QueryParamProvider';
 import { __RouterContext, Redirect } from 'react-router';
+import { useQuery } from '@apollo/client';
+import { gql } from 'apollo-boost';
 import { PageMetadata } from '../PageMetadata';
 import { TopImage } from 'assets/TopImage';
 import i18n from 'i18n';
 import { SettingsContext } from '../../components/SettingsProvider';
 import { PageProps } from 'pages/PageProps';
+import { StartPageBlocksItem } from '../../components/StartPage';
 
 const MainContent = Box.withComponent('main');
 
@@ -75,38 +78,11 @@ export class StartPage extends React.Component<PageProps, any> {
 
               <ErrorBoundary>
                 <MainContent id="main" flex="1 1 auto">
-                  <div className="wpb_wrapper">
-
-                    <div className="main-container">
-                      <div className="dev_head">
-                        <div className="dev_head-heading">
-                          <h1 className="text-1">Utvecklarportalen</h1>
-                          <span className="text-5">
-                            Här hittar du information och tips om hur du gör för
-                            att på ett standardierat sätt kan använda API:er och
-                            öppen data i de lösningar som du själv utvecklar.
-                          </span>
-                        </div>
-                        <div className="dev_head-links">
-                          <div className="dev_head-link">
-                            <a className="text-4-link">
-                              Produktägare och förvaltare
-                            </a>
-                            <span className="text-5">livscykelhantering?</span>
-                          </div>
-                          <div className="dev_head-link">
-                            <a className="text-4-link">
-                              Är du utvecklare eller testare
-                            </a>
-                            <span className="text-5">
-                              Ta del av bra exempel på hur andra har utvecklat
-                              sina lösningar.{' '}
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                <StartPageBlocksItem
+                          env={settings.env}
+                          connectedtagpath="/start/"
+                        />  
+           
                 </MainContent>
               </ErrorBoundary>
               <Footer onToTopButtonPushed={this.setFocus} />

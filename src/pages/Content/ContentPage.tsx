@@ -1,4 +1,4 @@
-import { Box, Accordion } from '@digg/design-system';
+import { Box, Text, Accordion } from '@digg/design-system';
 import React, { useState, useEffect } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import 'url-search-params-polyfill';
@@ -52,6 +52,7 @@ const getLinks = () => {
   let hTags = Array.prototype.slice.call(
     cont.querySelectorAll('h2') || document.createElement('div'),
     0
+    
   );
 
   // Set only if there are more than 2 elements
@@ -62,11 +63,8 @@ const getLinks = () => {
       const id = `${element.innerText
         .toLowerCase()
         .replace(/[åäö\s\.]/g, (m: any) => chars[m])}`;
-
       // Get the sibling element and give it the id
-      const sibling = element.previousElementSibling;
-      sibling && ((sibling.id = id), (element.id = `${id}-value`));
-
+      (element.id = `${id}`);
       menuItems.push({
         id: id,
         text: element.textContent,
@@ -97,7 +95,6 @@ export const ContentPage: React.FC<ContentPageProps> = (props) => {
 
   useEffect(() => {
     const newMenuItems = getLinks();
-
     // Make sure that the state needs to be updated
     if (
       (menuItems[0] &&
@@ -114,6 +111,8 @@ export const ContentPage: React.FC<ContentPageProps> = (props) => {
   });
 
   let uri = new URLSearchParams(location.search);
+  //const rendered = renderHTMLString(props.content.bodyHTML, false);
+
   return (
     <QueryParamProvider params={uri}>
       <PageMetadata
@@ -195,13 +194,15 @@ export const ContentPage: React.FC<ContentPageProps> = (props) => {
                         dangerouslySetInnerHTML={{
                           __html: props.content.preambleHTML,
                         }}
-                      />
+                      />                   
+                      <div className="main-text" >
                       <div
-                        className="main-text text-5"
+                        className="text-5"
                         dangerouslySetInnerHTML={{
                           __html: props.content.bodyHTML,
                         }}
                       />
+                      </div>
                     </div>
                   </div>
                 </MainContent>
