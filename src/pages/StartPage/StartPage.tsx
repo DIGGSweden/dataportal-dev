@@ -85,7 +85,7 @@ export class StartPage extends React.Component<PageProps, any> {
                       <div className="main-container">
                         <div className="jumbotron">
                           <div className="jumbotron_heading">
-                            <h1>
+                          <h1>
                               Platsen för dig som arbetar med API:er
                             </h1>
                             <span className="text-5">
