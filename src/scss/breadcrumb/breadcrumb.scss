@@ -40,6 +40,9 @@
                     text-decoration: none;
                     cursor: text;
                 }
+                span{
+                    margin-left: $space-8;
+                }
             }
 
             &:not(:first-of-type) {
