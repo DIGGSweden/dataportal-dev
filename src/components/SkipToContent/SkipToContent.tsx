@@ -44,7 +44,7 @@ export const skipToContent = (ev?: React.MouseEvent) => {
 export const SkipToContent = () => (
   <EventEffect outline noHover noColorInvert>
     {({ className }) => (
-      <>
+      <div>
         <SkipLink className={className} onClick={skipToContent}>
           Till innehållet
         </SkipLink>
@@ -52,7 +52,7 @@ export const SkipToContent = () => (
         <noscript>
           <a className="skiptocontent_nojs" href="#main">Till innehållet</a>
         </noscript>
-      </>
+      </div>
     )}
   </EventEffect>
 );
