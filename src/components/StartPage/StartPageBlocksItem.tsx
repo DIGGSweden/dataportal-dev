@@ -11,38 +11,45 @@ import { decode } from 'qss';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import Skeleton from 'react-loading-skeleton';
+import Truncate from 'react-truncate';
+
 
 export interface StartPageBlocksItemProps {
-  children?: React.ReactNode;
-  env: EnvSettings;  
-  connectedtagpath:string;
+    children?: React.ReactNode;
+    env: EnvSettings;
+    connectedtagpath: string;
 }
 
 const hasWindow = typeof window !== 'undefined';
 
 export const StartPageBlocksItem: React.FC<StartPageBlocksItemProps> = (props) => {
-  moment.locale(i18n.languages[0]);
-  let connectedtagpath = '';
+    moment.locale(i18n.languages[0]);
+    let connectedtagpath = '';
 
-  if(props.connectedtagpath) connectedtagpath = props.connectedtagpath;
-  
-  const STARTPAGEBLOCKS = gql`
+    if (props.connectedtagpath) connectedtagpath = props.connectedtagpath;
+
+    const STARTPAGEBLOCKS = gql`
   {   
     tags(siteurl: "${props.env.CONTENTBACKEND_SITEURL}",tagpaths:["/start/"])
       {
         id
        title        
         connectedTagPath
-        connectedContents{
-            name
-            uihints
-            id
+        connectedContents{      
             ... on ContentBlock{
-                contentBlocks{
-                    ... on ContentBlock{
-                        bodyHTML
-                        name
-                        uihints
+                name
+                uihints
+                id
+                preamble        
+                link        
+                nestledContentBlocks{      
+                    ... on NestledContentBlock{
+                      preamble
+                      bodyHTML        
+                      name
+                     link
+                      uihints
+                      id
                     }
                 }
             }
@@ -51,36 +58,83 @@ export const StartPageBlocksItem: React.FC<StartPageBlocksItemProps> = (props) =
     }
 `;
 
-  const { loading, error, data } = useQuery<{ tags:Array<any> }>(STARTPAGEBLOCKS);
+    const { loading, error, data } = useQuery<{ tags: Array<any> }>(STARTPAGEBLOCKS);
 
-  const blocks =
-  data && data.tags && data.tags.length > 0 && data.tags[0].connectedContents.length>0 ?
-   data.tags[0].connectedContents : [];  
+    const blocks =
+        data && data.tags && data.tags.length > 0 && data.tags[0].connectedContents.length > 0 ?
+            data.tags[0].connectedContents : [];
+    const jumbotron_logo = require('../../pages/StartPage/grafic.png');
+    console.log(blocks);
 
-  console.log(blocks);
+    return (
+        <div>
+            {loading && (
+                <span className="text-5 loading">{i18n.t('common|loading')}</span>
+            )}
 
-  return (   
-      <div>
-              {loading && (
-          <span className="text-5 loading">{i18n.t('common|loading')}</span>
-        )}
-          <p>skoj</p>
-      {!loading && data && data!.tags &&(
-          <div>
-              {blocks.map((block:any,index:number) => {
-            if(block.uihints[0] =='TextAndImage'){
-                return(
-                    <div key={index}><p>TextAndImage</p></div>
-                );}
+            {!loading && data && data!.tags && (
+                <div>
+                    {blocks.map((block: any, index: number) => {
+                        if (block.uihints[0] == 'TextAndImage') {
+                            return (
+                                <div key={index}>
+                                    <div className="jumbotron">
+                                        <div className="jumbotron_heading">
+                                            <h1>
+                                                {block.name}
+                                            </h1>
+                                            <span className="text-5">
+                                                {block.preamble}
+                                            </span>
+                                        </div>
+                                        <div className="jumbotron_img">
+                                            <img src={block.link} />
+                                        </div>
+                                    </div>
+                                </div>
+                            );
+                        }
 
-            if(block.uihints[0]=='Puffar'){
-                return(<div key={index}><p>puffar</p></div>);
-            }
-return(<div key={index}></div>);
-              })}
-          </div>
-      )}
- 
- </div>
-  );
+                        if (block.uihints[0] == 'Puffar') {
+                            return (
+                                <div key={index}>
+                                    <div className="content_grid">
+                                        <h2 className="text-3">{block.name}</h2>
+                                        <p className="text-5 content_grid-preamble">
+                                            {block.preamble}
+                                        </p>
+                                        {block.nestledContentBlocks && block.nestledContentBlocks.length > 0 &&
+                                            <ul className="content_grid-list">                                                
+                                                {block.nestledContentBlocks.map((puffblock: any, puffIndex: number) => {
+                                                    return (
+                                                        <li key={puffIndex} className="content_grid-item">                                                           
+                                                            <div className="content_grid-item-wrapper">                                                            
+                                                                <a
+                                                                    href={puffblock.link}
+                                                                    className="content_grid-itemlink text-4"
+                                                                >
+                                                                    {puffblock.name}
+                                                                </a>
+                                                                <p className="text-5 content_grid-itemdesc">
+                                                                    <Truncate lines={4}>
+                                                                        {puffblock.preamble}
+                                                                    </Truncate>
+                                                                </p>
+                                                            </div>
+                                                        </li>
+                                                    );
+                                                })}
+                                            </ul>
+                                        }
+                                    </div>
+                                </div>
+                            );
+                        }
+                        return (<div key={index}></div>);
+                    })}
+                </div>
+            )}
+
+        </div>
+    );
 };

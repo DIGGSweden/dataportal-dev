@@ -245,7 +245,7 @@ export class Header extends React.Component<HeaderProps> {
           settings.mainmenu[0].children?.map((m:any, i:any) => {
             if (m && m.data && m.data.connectedContent) {
               return (
-                <a
+                <a key={i}
                   className={'header-link'}
                   href={`/${i18n.languages[0]}${m.data.urlsegment}`}
                 >
@@ -258,42 +258,6 @@ export class Header extends React.Component<HeaderProps> {
           </div>
                       )}
                     </SettingsContext.Consumer>
-
-         
-                {/* <div className="header-links">
-                  
-                  <a
-                    href="webbplatsen"
-                    className={
-                      'header-link ' +
-                      (this.props.activeLink == 'projects' ? 'active' : '')
-                    }
-                  >
-                    Webbplatsen{' '}
-                  </a>
-                  <a
-                    href="landningssida"
-                    className={
-                      'header-link ' +
-                      (this.props.activeLink == 'projects' ? 'active' : '')
-                    }
-                  >
-                    Landningssida{' '}
-                  </a>
-
-                  <a
-                    href="innehallssida"
-                    className={
-                      'header-link ' +
-                      (this.props.activeLink == 'projects' ? 'active' : '')
-                    }
-                  >
-                    Innehållssida{' '}
-                  </a>
-                </div> */}
-
-
-
               </Box>
             </Container>
           </InnerBox>
