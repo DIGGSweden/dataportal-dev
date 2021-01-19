@@ -41,7 +41,8 @@ export const StartPageBlocksItem: React.FC<StartPageBlocksItemProps> = (props) =
                 uihints
                 id
                 preamble        
-                link        
+                link     
+                linkAltText   
                 nestledContentBlocks{      
                     ... on NestledContentBlock{
                       preamble
@@ -88,7 +89,7 @@ export const StartPageBlocksItem: React.FC<StartPageBlocksItemProps> = (props) =
                                             </span>
                                         </div>
                                         <div className="jumbotron_img">
-                                            <img src={block.link} />
+                                            <img src={block.link} alt={block.linkAltText} />
                                         </div>
                                     </div>
                                 </div>
