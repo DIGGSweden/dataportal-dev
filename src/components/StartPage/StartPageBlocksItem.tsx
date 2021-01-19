@@ -23,7 +23,7 @@ export interface StartPageBlocksItemProps {
 const hasWindow = typeof window !== 'undefined';
 
 const Spacer = styled('div')`
-  width: 2rem;
+  width: 2.5rem;
   @media screen and (max-width: 50rem) {
     display: none;
   }

@@ -5,7 +5,9 @@ header {
 }
 
 .dataportal-logo {
-    margin-right: $space-48;
+    @media screen and (min-width: 47.5rem) {
+        margin-right: $space-48;
+    }
 
     &:focus {
         outline: $focus-style;
@@ -37,7 +39,7 @@ header {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    
+
     .header-link {
         font-family: Ubuntu !important;
         color: $black100;
@@ -47,19 +49,23 @@ header {
         padding-top: 0.25rem;
         padding-bottom: 0.25rem;
 
-        &:not(:last-of-type) {
-            margin-right: $space-32;
+        @media screen and (min-width: 47.5rem) {
 
-            @media screen and (max-width: 40.625rem) {
-                margin-right: $space-24;
-                transition: .1s;
-                margin-top: $space-8;
+            &:not(:last-of-type) {
+                margin-right: $space-32;
             }
+        }
 
-            @media screen and (max-width: 24.063rem) {
-                margin-right: $space-16;
-                transition: .1s;
-            }
+        @media screen and (max-width: 47.5rem) {
+            margin-right: $space-24;
+            transition: .1s;
+            margin-top: $space-16;
+        }
+
+        @media screen and (max-width: 24.063rem) {
+            margin-top: $space-8;
+            margin-right: $space-16;
+            transition: .1s;
         }
 
         &:hover {
