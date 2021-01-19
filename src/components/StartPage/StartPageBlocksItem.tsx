@@ -107,7 +107,11 @@ export const StartPageBlocksItem: React.FC<StartPageBlocksItemProps> = (props) =
                                             <ul className="content_grid-list">                                                
                                                 {block.nestledContentBlocks.map((puffblock: any, puffIndex: number) => {
                                                     return (
-                                                        <li key={puffIndex} className="content_grid-item">                                                           
+                                                        <li key={puffIndex} className="content_grid-item"
+                                                        onClick={() => {
+                                                            (window as any).location.href = puffblock.link;
+                                                          }}
+                                                        >                                                           
                                                             <div className="content_grid-item-wrapper">                                                            
                                                                 <a
                                                                     href={puffblock.link}
