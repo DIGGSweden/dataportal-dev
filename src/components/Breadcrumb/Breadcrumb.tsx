@@ -26,7 +26,6 @@ const breadcrumbQuery = gql`
   }
 `;
 
-
 export const Breadcrumb : React.FC<BreadcrumbProps> = (props) => {
   moment.locale(i18n.languages[0]);
 
