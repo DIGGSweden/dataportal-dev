@@ -79,8 +79,7 @@ export const StartPageBlocksItem: React.FC<StartPageBlocksItemProps> = (
     data.tags[0].connectedContents.length > 0
       ? data.tags[0].connectedContents
       : [];
-  const jumbotron_logo = require('../../pages/StartPage/grafic.png');
-  console.log(blocks);
+  const jumbotron_logo = require('../../pages/StartPage/grafic.png');  
 
   return (
     <div>

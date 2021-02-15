@@ -62,7 +62,8 @@ export const renderer = async (
     ssrMode: true, 
     backendUrl: env.CONTENTBACKEND_GRAPHAPI,
     cookies:cookies,
-    fetch: fetch as any 
+    fetch: fetch as any,
+    fetchPolicy: 'network-only'
   });
 
   if(path.startsWith("/en/") || path == "/en")
