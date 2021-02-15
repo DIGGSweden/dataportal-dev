@@ -39,7 +39,7 @@ export const StartPageBlocksItem: React.FC<StartPageBlocksItemProps> = (
 
   const STARTPAGEBLOCKS = gql`
   {   
-    tags(siteurl: "${props.env.CONTENTBACKEND_SITEURL}",tagpaths:["/start/"])
+    tags(siteurl: "${props.env.CONTENTBACKEND_SITEURL}",tagpaths:["/start/"],lang:"${i18n.languages[0]}")
       {
         id
        title        
