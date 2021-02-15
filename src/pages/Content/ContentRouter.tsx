@@ -110,7 +110,7 @@ export const ContentRouter: React.FC<ContentPageProps> = (props) => {
     }
   
     if(loading)
-      return <LoadingPage />
+      return <LoadingPage staticPaths={staticPaths} {...props} />
     //content found with id, switch type for corrent Content component
     else if(!loading && data && data.contents && data.contents.length > 0){
       // if(data.contents[0].tags.find((t :any) => t.tagPath.includes('/landingpage/')))

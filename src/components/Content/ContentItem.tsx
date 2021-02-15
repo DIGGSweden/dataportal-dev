@@ -47,7 +47,7 @@ export const ContentItem : React.FC<ContentItemProps> = (props) => {
 `
 ;
 
-  const { loading, error, data } = useQuery<{news:Array<any>}>(CONTENT);
+  const { error, data } = useQuery<{news:Array<any>}>(CONTENT);
 
   const contentItem = data && data.news && data.news.length > 0
   ? data.news[0]
@@ -55,8 +55,8 @@ export const ContentItem : React.FC<ContentItemProps> = (props) => {
 
     return (                    
       <div className="news-article content">
-        {loading && (<span className="text-5 loading">{i18n.t('common|loading')}</span>)}
-        {!loading && contentItem && id && id != '0' ?
+        {/* {loading && (<span className="text-5 loading">{i18n.t('common|loading')}</span>)} */}
+        {contentItem && id && id != '0' ?
           <>
             <Helmet>
               <title>{contentItem.heading} - {i18n.t('common|seo-title')}</title>
@@ -76,7 +76,7 @@ export const ContentItem : React.FC<ContentItemProps> = (props) => {
               }}
             />                          
           </>  
-          : !loading &&
+          :
           <>
             <h1 className="text-1">Det här innehållet finns inte längre kvar.</h1>
           </>
