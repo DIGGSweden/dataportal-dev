@@ -34,6 +34,7 @@ export const LandingPageItem: React.FC<LandingPageItemProps> = (props) => {
         parentID
         title
         connectedTagPath
+        indexOrder
       }
     }
 `;
@@ -56,7 +57,12 @@ export const LandingPageItem: React.FC<LandingPageItemProps> = (props) => {
         {!loading &&
           landingPageRelatedLinks &&
           landingPageRelatedLinks.length > 0 &&
-          landingPageRelatedLinks.map((n, index) => {
+          landingPageRelatedLinks?.sort(
+            (a, b) =>
+              parseInt(a.indexOrder + '0') -
+              parseInt(b.indexOrder + '0')
+          )
+          .map((n, index) => {
             return (
               <li 
               key={index}

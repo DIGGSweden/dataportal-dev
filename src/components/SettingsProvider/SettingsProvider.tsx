@@ -115,24 +115,26 @@ export const SettingsProvider: React.FunctionComponent<SettingsProviderProps> = 
     if(applicationUrl)
       defaultSettings.env = SettingsUtil.create(applicationUrl);    
 
-    const {loading, error, data } = 
+    const {error, data } = 
       useQuery<{ mainmenu: Array<any>,footer: Array<any> }>(MENUS,{
         variables:{          
-          siteurl: defaultSettings.env.CONTENTBACKEND_SITEURL
+          siteurl: defaultSettings.env.CONTENTBACKEND_SITEURL,
+          lang: i18n.languages[0],
+          ssr: true
         }
       });
       
-    return (    
+    return (
         <SettingsContext.Provider
           value={{
             env: defaultSettings.env,
             noScriptContent: defaultSettings.noScriptContent,
             anchorLinkHeading: '',
-            mainmenu: !loading && data && data.mainmenu? 
+            mainmenu: data && data.mainmenu? 
               createNavigationTree(data.mainmenu)
               : 
               null,
-            footermenu: !loading && data && data.footer? 
+            footermenu: data && data.footer? 
               createNavigationTree(data.footer)
               : 
               null 
@@ -142,22 +144,3 @@ export const SettingsProvider: React.FunctionComponent<SettingsProviderProps> = 
         </SettingsContext.Provider>      
     );
 }
-
-// export class SettingsProvider extends React.Component<SettingsProviderProps, {}> {
-//   constructor(props:any){
-//     super(props);    
-
-//     if(props.applicationUrl)
-//       defaultSettings.env = SettingsUtil.create(props.applicationUrl);
-//   }
-
-//   render() {
-//     return (    
-//         <SettingsContext.Provider
-//           value={defaultSettings}
-//         >          
-//           {this.props.children}
-//         </SettingsContext.Provider>      
-//     );
-//   }
-// }

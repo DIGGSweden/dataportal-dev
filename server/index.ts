@@ -22,7 +22,8 @@ app.use(helmet()); //express hardening lib
 app.use(
   helmet.hsts({
     maxAge: 31536000,
-    includeSubDomains: 'preload',
+    includeSubDomains: true,
+    preload: true
   })
 );
 
@@ -114,11 +115,7 @@ app.get('*', async (req, res) => {
 
   let body = '';
 
-  let spinner = ora().start(`[___] ${url} Rendering...`);
-
   try {
-    const start = Date.now();
-
     const result = await renderer(
       host,
       url,
@@ -126,9 +123,7 @@ app.get('*', async (req, res) => {
       '',
       ''
     );
-
-    const end = Date.now();
-
+    
     res.status(result.statusCode);
 
     if (result.statusCode === 301 && result.redirectTo) {

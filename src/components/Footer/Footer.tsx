@@ -67,12 +67,12 @@ export class Footer extends React.Component<FooterProps> {
                                   m.data.connectedContent
                                 )
                                   output.push(
-                                    <a key={i}
+                                    <Link key={i}
                                       className={'footer-link text-6-link'}
-                                      href={`/${i18n.languages[0]}${m.data.urlsegment}`}
+                                      to={`/${i18n.languages[0]}${m.data.urlsegment}`}
                                     >
                                       {m.data.title}
-                                    </a>
+                                    </Link>
                                   );
                                 else if (m && m.data && m.data.title) {
                                   var parent: any = [];
@@ -87,15 +87,15 @@ export class Footer extends React.Component<FooterProps> {
                                       .map((c) => {
                                         if (c && c.data && c.data.externalUrl)
                                           parent.push(
-                                            <a
+                                            <Link
                                               className={
                                                 'footer-link text-6-link'
                                               }
-                                              href={c.data.externalUrl}
+                                              to={c.data.externalUrl}
                                               target="_blank"
                                             >
                                               {c.data.title}
-                                            </a>
+                                            </Link>
                                           );
 
                                         if (
@@ -104,14 +104,14 @@ export class Footer extends React.Component<FooterProps> {
                                           c.data.connectedContent
                                         )
                                           parent.push(
-                                            <a
+                                            <Link
                                               className={
                                                 'footer-link text-6-link'
                                               }
-                                              href={`/${i18n.languages[0]}${c.data.urlsegment}`}
+                                              to={`/${i18n.languages[0]}${c.data.urlsegment}`}
                                             >
                                               {c.data.title}
-                                            </a>
+                                            </Link>
                                           );
                                       });
 

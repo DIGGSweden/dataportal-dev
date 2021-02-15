@@ -23,7 +23,7 @@ import { SettingsContext } from '../../components/SettingsProvider';
 import { PageProps } from '../PageProps';
 import Helmet from 'react-helmet';
 import moment from 'moment';
-import { Breadcrumb } from '../../components/Breadcrumb';
+import { Breadcrumb, StaticBreadcrumb, StaticPath } from '../../components/Breadcrumb';
 import {
   skipToContent,
   skipToElement,
@@ -31,6 +31,7 @@ import {
 } from 'components/SkipToContent';
 import { isIE } from '../../utilities/detectBrowser';
 import { onNextFrame } from '../../utilities/onNextFrame';
+import { LandingPageItem } from 'components/LandingPage';
 
 export const hasWindow = typeof window !== 'undefined';
 export const getWidth = () => {
@@ -76,6 +77,7 @@ const getLinks = () => {
 
 interface ContentPageProps extends PageProps {
   content: any;
+  staticPaths: StaticPath[];
 }
 
 export const ContentPage: React.FC<ContentPageProps> = (props) => {
@@ -139,10 +141,8 @@ export const ContentPage: React.FC<ContentPageProps> = (props) => {
 
             <ErrorBoundary>
               <Box flex="1 1 auto">
-                <Breadcrumb
-                  env={settings.env}
-                  connectedtagpath={props.match.params.path}
-                />
+                <StaticBreadcrumb staticPaths={props.staticPaths} env={settings.env} />
+
                 <MainContent className="main-container">
                 <h1 className="text-1">{props.content.name}</h1>
 
@@ -194,15 +194,17 @@ export const ContentPage: React.FC<ContentPageProps> = (props) => {
                         dangerouslySetInnerHTML={{
                           __html: props.content.preambleHTML,
                         }}
-                      />                   
-                      <div className="main-text" >
+                      /> 
+                      <LandingPageItem
+                          env={settings.env}
+                          connectedtagpath={`/${props.match.params.path}/`}
+                        />                                          
                       <div
-                        className="text-5"
+                        className="main-text text-5"
                         dangerouslySetInnerHTML={{
                           __html: props.content.bodyHTML,
                         }}
-                      />
-                      </div>
+                      />                      
                     </div>
                   </div>
                 </MainContent>

@@ -96,8 +96,6 @@ export const renderer = async (
     const bundlesPromise = getBundles(manifestPath);    
     const styleBundlesPromise = getStyleBundles(manifestPath);    
 
-    await getDataFromTree(frontend);  
-
     if (routerContext.url) {
       return {
         statusCode: 301,
@@ -106,6 +104,8 @@ export const renderer = async (
       };
     }
 
+    await getDataFromTree(frontend);  
+
     const { helmet } = helmetContext as FilledContext;    
 
     const bundles: string[] = await bundlesPromise;    
@@ -113,7 +113,7 @@ export const renderer = async (
 
     let response = getHeader({
       metaTags: helmet
-        ? `${helmet.title.toString()}${helmet.meta.toString()}${helmet.link.toString()}`
+      ? `<title data-rh="true">Sveriges utvecklarportal</title>${helmet.meta.toString()}${helmet.link.toString()}`
         : '',
       bundles,  
       styleBundles,    

@@ -75,7 +75,7 @@
     "webpack-stylish": "^0.1.8"
   },
   "dependencies": {
-    "@apollo/client": "3.1.4",
+    "@apollo/client": "3.3.6",
     "@datapunt/matomo-tracker-react": "^0.3.1",
     "@digg/design-system": "file:local_modules/digg_design-system-1.1.87.tgz",
     "@digg/react-ideal-image": "file:local_modules/digg_react-ideal-image-1.0.2.tgz",
@@ -87,7 +87,6 @@
     "@types/react-truncate": "^2.3.3",
     "apollo-boost": "^0.4.7",
     "apollo-cache-inmemory": "^1.6.5",
-    "apollo-client": "^2.6.8",
     "apollo-link-batch-http": "^1.2.14",
     "apollo-link-http": "^1.5.17",
     "babel-polyfill": "^6.26.0",
@@ -121,7 +120,7 @@
     "qss": "^2.0.3",
     "react": "^16.10.2",
     "react-device-detect": "^1.11.14",
-    "react-dom": "npm:@hot-loader/react-dom",
+    "react-dom": "16.10.2",
     "react-helmet": "^5.2.1",
     "react-helmet-async": "^1.0.3",
     "react-hooks": "^1.0.1",

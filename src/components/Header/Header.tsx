@@ -174,9 +174,8 @@ export class Header extends React.Component<HeaderProps> {
       this.container1Ref.style.height = `${height}rem`;
       this.container2Ref.style.height = `${height}rem`;
       this.logoWordRef.style.opacity = `${opacity}`;
-      this.logoWordRef.style.transform = `translate(-${
-        inverse(opacity || 0) * 40
-      }px, 0px)`;
+      this.logoWordRef.style.transform = `translate(-${inverse(opacity || 0) * 40
+        }px, 0px)`;
 
       const link = this.container2Ref.querySelector('a');
       if (link) {
@@ -207,8 +206,8 @@ export class Header extends React.Component<HeaderProps> {
                 justifyContent="space-between"
                 deepRef={(el) => (this.container2Ref = el)}
               >
-                <a
-                  href={`/${i18n.languages[0]}`}
+                <Link
+                  to={`/${i18n.languages[0]}`}
                   aria-label={i18n.t('common|logo-title')}
                   style={{ transformOrigin: 'left center' }}
                   className={'dataportal-logo'}
@@ -218,7 +217,7 @@ export class Header extends React.Component<HeaderProps> {
                       <DataportalLogo />
                     </div>
                   </Box>
-                </a>
+                </Link>
 
                 {/* <LanguageSelector /> */}
                 <div className="lang-select">
@@ -236,28 +235,45 @@ export class Header extends React.Component<HeaderProps> {
                 </div>
 
 
-<SettingsContext.Consumer>
-                      {(settings)=> (
-                        <div className="header-links">
-         {settings.mainmenu &&
-          settings.mainmenu[0] &&
-          settings.mainmenu[0].children &&
-          settings.mainmenu[0].children?.map((m:any, i:any) => {
-            if (m && m.data && m.data.connectedContent) {
-              return (
-                <a key={i}
-                  className={'header-link'}
-                  href={`/${i18n.languages[0]}${m.data.urlsegment}`}
-                >
-                  {m.data.title}
-                </a>
-              );
-            }
-            return;
-          })}
-          </div>
-                      )}
-                    </SettingsContext.Consumer>
+                <SettingsContext.Consumer>
+                  {(settings) => (
+                    <div className="header-links">
+                      {settings.mainmenu &&
+                        settings.mainmenu[0] &&
+                        settings.mainmenu[0].children &&
+                        settings.mainmenu[0].children
+                        ?.sort(
+                          (a, b) =>
+                            parseInt(a.data.indexOrder + '0') -
+                            parseInt(b.data.indexOrder + '0')
+                        )
+                        .map((m: any, i: any) => {                          
+                          if (m && m.data && m.data.connectedContent) {
+                            return (
+                              <Link key={i}
+                                className={'header-link'}
+                                to={`/${i18n.languages[0]}${m.data.urlsegment}`}
+                              >
+                                {m.data.title}
+                              </Link>
+                            );
+                          }
+                          if (m && m.data && m.data.externalUrl) {
+                            return (
+                              <a key={i}
+                                className={'header-link'}
+                                href={m.data.externalUrl}
+                                target="_blank"
+                              >
+                                {m.data.title}
+                              </a>
+                            );
+                          }
+                          return;
+                        })}
+                    </div>
+                  )}
+                </SettingsContext.Consumer>
               </Box>
             </Container>
           </InnerBox>

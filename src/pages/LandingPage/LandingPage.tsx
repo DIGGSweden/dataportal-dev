@@ -18,13 +18,14 @@ import { string } from 'prop-types';
 import { LandingPageItem } from '../../components/LandingPage';
 import { SettingsContext } from '../../components/SettingsProvider';
 import { PageProps } from '../PageProps';
-import { Breadcrumb } from '../../components/Breadcrumb';
+import { Breadcrumb, StaticBreadcrumb, StaticPath } from '../../components/Breadcrumb';
 
 
 const MainContent = Box.withComponent('main');
 interface LandingPageProps extends PageProps {
   content: any;
   path: string;
+  staticPaths: StaticPath[];
 }
 export class LandingPage extends React.Component<LandingPageProps> {
   private headerRef: React.RefObject<Header>;
@@ -74,9 +75,7 @@ export class LandingPage extends React.Component<LandingPageProps> {
 
               <ErrorBoundary>
                 <MainContent flex="1 1 auto">
-                <Breadcrumb env={settings.env}
-                connectedtagpath ={this.props.path}
-                />
+                <StaticBreadcrumb staticPaths={this.props.staticPaths} env={settings.env} />
 
                   <div className="main-container">
                     <div className="">
