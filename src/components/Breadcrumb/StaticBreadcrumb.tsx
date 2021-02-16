@@ -29,7 +29,7 @@ export const StaticBreadcrumb : React.FC<StaticBreadcrumbProps> = (props) => {
         {props.staticPaths.map((n, index) => {                
           return (                
             <li className="breadcrumb__list--item text-7">        
-              <Link to={`${n.path}`}>{n.title}</Link>        
+              <Link to={`${n.path}`}>{n.title}</Link>     
             </li>   
           );  
         })}

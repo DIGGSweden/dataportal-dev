@@ -46,9 +46,9 @@ export const LandingPageItem: React.FC<LandingPageItemProps> = (props) => {
 
   return (   
     <ul className="text-5-bold landingpage_linkblock">
-        {loading && (
+        {/* {loading && (
           <Skeleton count={2} height={60} />
-        )}
+        )} */}
         {!loading && error && (
           <span className="loading-msg">
             Det finns inga sidor att visa för tillfället.
@@ -64,7 +64,8 @@ export const LandingPageItem: React.FC<LandingPageItemProps> = (props) => {
           )
           .map((n, index) => {
             return (
-              <li 
+              <li
+              onClick={() => window.location.href=n.connectedTagPath}
               key={index}
               >
                 <Link                  

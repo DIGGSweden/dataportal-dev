@@ -2,6 +2,7 @@
 
 
 .breadcrumb {
+
     // border-bottom: 1px solid $black10;
     .breadcrumb__list {
         display: flex;
@@ -15,7 +16,7 @@
         padding-top: $space-8;
         padding-bottom: $space-8;
 
-        @media screen and (max-width: 1440px){
+        @media screen and (max-width: 1440px) {
             padding-left: $space-16;
             padding-right: $space-16;
         }
@@ -23,24 +24,30 @@
         .breadcrumb__list--item {
             padding-top: $space-8;
             padding-bottom: $space-8;
+
             a {
                 margin-right: $space-8;
                 text-decoration: underline;
-                &:hover{
+                color: $black100;
+
+                &:hover {
                     text-decoration: none;
                     cursor: pointer;
                 }
-                &:active,&:visited{
-                    color:$black100;
+
+                &:active,
+                &:visited {
+                    color: $black100;
                 }
             }
 
-            &:last-of-type{
-                a{
+            &:last-of-type {
+                a {
                     text-decoration: none;
                     cursor: text;
                 }
-                span{
+
+                span {
                     margin-left: $space-8;
                 }
             }
