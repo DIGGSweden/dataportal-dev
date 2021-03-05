@@ -194,17 +194,17 @@ export const ContentPage: React.FC<ContentPageProps> = (props) => {
                         dangerouslySetInnerHTML={{
                           __html: props.content.preambleHTML,
                         }}
-                      /> 
-                      <LandingPageItem
-                          env={settings.env}
-                          connectedtagpath={`/${props.match.params.path}/`}
-                        />                                          
+                      />                                                                
                       <div
                         className="main-text text-5"
                         dangerouslySetInnerHTML={{
                           __html: props.content.bodyHTML,
                         }}
-                      />                      
+                      /> 
+                      <LandingPageItem
+                          env={settings.env}
+                          connectedtagpath={`/${props.match.params.path}/`}
+                        />                      
                     </div>
                   </div>
                 </MainContent>
