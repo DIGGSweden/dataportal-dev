@@ -39,7 +39,7 @@ export const LandingPageItem: React.FC<LandingPageItemProps> = (props) => {
     }
 `;
 
-  const { loading, error, data } = useQuery<{ tags:Array<any> }>(LANDINGPAGE);
+  const { error, data } = useQuery<{ tags:Array<any> }>(LANDINGPAGE);
 
   const landingPageRelatedLinks =
   data && data.tags && data.tags.length > 0 ? data.tags : [];  
@@ -49,12 +49,12 @@ export const LandingPageItem: React.FC<LandingPageItemProps> = (props) => {
         {/* {loading && (
           <Skeleton count={2} height={60} />
         )} */}
-        {!loading && error && (
+        {error && (
           <span className="loading-msg">
             Det finns inga sidor att visa för tillfället.
           </span>
         )}
-        {!loading &&
+        {
           landingPageRelatedLinks &&
           landingPageRelatedLinks.length > 0 &&
           landingPageRelatedLinks?.sort(

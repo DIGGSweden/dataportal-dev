@@ -201,10 +201,12 @@ export const ContentPage: React.FC<ContentPageProps> = (props) => {
                           __html: props.content.bodyHTML,
                         }}
                       /> 
-                      <LandingPageItem
-                          env={settings.env}
-                          connectedtagpath={`/${props.match.params.path}/`}
-                        />                      
+                      {props.content && props.content.uihints && props.content.uihints.includes('TextAndImage') &&
+                        <LandingPageItem
+                            env={settings.env}
+                            connectedtagpath={`/${props.match.params.path}/`}                          
+                          />                      
+                      }
                     </div>
                   </div>
                 </MainContent>
