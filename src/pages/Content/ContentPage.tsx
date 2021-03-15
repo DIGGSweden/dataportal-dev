@@ -201,7 +201,7 @@ export const ContentPage: React.FC<ContentPageProps> = (props) => {
                           __html: props.content.bodyHTML,
                         }}
                       /> 
-                      {props.content && props.content.uihints && props.content.uihints.includes('TextAndImage') &&
+                      {props.content && props.content.uihints && props.content.uihints.includes('hidesubmenu') &&
                         <LandingPageItem
                             env={settings.env}
                             connectedtagpath={`/${props.match.params.path}/`}                          
