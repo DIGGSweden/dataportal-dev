@@ -114,6 +114,7 @@ export const ContentPage: React.FC<ContentPageProps> = (props) => {
 
   let uri = new URLSearchParams(location.search);
   //const rendered = renderHTMLString(props.content.bodyHTML, false);
+  const hideSubMenu = props.content && props.content.uihints && props.content.uihints.includes('hidesubmenu');
 
   return (
     <QueryParamProvider params={uri}>
@@ -201,7 +202,7 @@ export const ContentPage: React.FC<ContentPageProps> = (props) => {
                           __html: props.content.bodyHTML,
                         }}
                       /> 
-                      {props.content && props.content.uihints && props.content.uihints.includes('hidesubmenu') &&
+                      {!hideSubMenu &&
                         <LandingPageItem
                             env={settings.env}
                             connectedtagpath={`/${props.match.params.path}/`}                          
