@@ -41,12 +41,14 @@ const contentQuery = gql`
         published         
         tags{
           tagPath
+          uihints
           connectedTagPath
         }
         ... on Page {        
           preambleHTML        
           bodyHTML    
           imageUrl
+          uihints
         imageText
         }
       }

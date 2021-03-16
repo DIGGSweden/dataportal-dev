@@ -114,8 +114,8 @@ export const ContentPage: React.FC<ContentPageProps> = (props) => {
 
   let uri = new URLSearchParams(location.search);
   //const rendered = renderHTMLString(props.content.bodyHTML, false);
-  const hideSubMenu = props.content && props.content.uihints && props.content.uihints.includes('hidesubmenu');
-
+  const hideSubMenu = props.content && props.content.uihints && props.content.uihints.includes('hideSubMenu');
+  
   return (
     <QueryParamProvider params={uri}>
       <PageMetadata
