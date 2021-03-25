@@ -163,7 +163,7 @@ export const ContentPage: React.FC<ContentPageProps> = (props) => {
                       )}
                     </Box>
 
-                    <div className="news-article content">
+                    <div className="content">
                       <Helmet>
                         <title>
                           {props.content.name} - {i18n.t('common|seo-title')}
