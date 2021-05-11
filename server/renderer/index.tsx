@@ -43,7 +43,9 @@ export const renderer = async (
   cookies: string,
   apiUrl: string,
   formdata?: object,
-  vars?: object
+  vars?: object,
+  acceptLang?: string,
+  i18nreq?: any
 ): Promise<RenderResponse> => {
   const profile: RenderResponseProfileItem[] = [];  
 
@@ -66,14 +68,10 @@ export const renderer = async (
     fetchPolicy: 'network-only'
   });
 
-  if(path.startsWith("/en/") || path == "/en")
-    i18n.changeLanguage("en");
-
-  if(path.startsWith("/sv/")  || path == "/sv")
-    i18n.changeLanguage("sv");
+  i18n.changeLanguage(i18nreq.languages[0]);  
 
   const frontend = (
-  <I18nextProvider i18n={i18n}>
+  <I18nextProvider i18n={i18nreq}>
     <ApolloProvider client={client}>
       <CacheProvider value={cache}>
         <GlobalStyles theme={themes.default} />
@@ -105,34 +103,27 @@ export const renderer = async (
       };
     }
 
-    await getDataFromTree(frontend);  
-
-    const { helmet } = helmetContext as FilledContext;    
+    await getDataFromTree(frontend);          
 
     const bundles: string[] = await bundlesPromise;    
     const styleBundles: string[] = await styleBundlesPromise;        
 
-    let response = getHeader({
-      metaTags: helmet
-      ? `<title data-rh="true">Sveriges utvecklarportal</title>${helmet.meta.toString()}${helmet.link.toString()}`
-        : '',
+    start = Date.now();    
+
+    const { html, ids, css } = extractCritical(renderToString(frontend));
+
+    const helmetServer = Helmet.renderStatic();
+
+    let response = getHeader({        
+      metaTags:`${helmetServer.title?.toString()}${helmetServer.meta?.toString()}${helmetServer.link?.toString()}`,
       bundles,  
       styleBundles,    
-      htmlAttributes: 'lang="sv"',
-    });
-
-    start = Date.now();
-    const { html, ids, css } = extractCritical(renderToString(frontend));
+      htmlAttributes: `lang="${i18nreq.languages[0]}"`,
+    });         
 
     end = Date.now();
 
     profile.push({ name: 'Render Body', duration: end - start });
-
-    if(!helmet)
-    {
-      const helmetServer = Helmet.renderStatic();
-      response += `<title data-react-helmet="true">Sveriges utvecklarportal</title>${helmetServer.meta.toString()}${helmetServer.link.toString()}`;      
-    }
 
     let data = client.extract();
       if(data)
@@ -159,9 +150,4 @@ export const renderer = async (
       profile,
     };
   }
-
-  return {
-    statusCode: 500,
-    profile,
-  };
 };

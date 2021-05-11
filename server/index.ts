@@ -8,8 +8,18 @@ import { promisify } from 'util';
 import zlib from 'zlib';
 import { renderer, RenderResponseProfileItem } from './renderer';
 import { getSitemap } from './SiteMap'
+import i18next from 'i18next';
 var csp = require('simple-csp');
 const app = express();
+var middleware = require('i18next-http-middleware')
+import resources_sv from '../src/translations/sv/resources.json';
+import pages_sv from '../src/translations/sv/pages.json';
+import resources_en from '../src/translations/en/resources.json';
+import pages_en from '../src/translations/en/pages.json';
+import routes_sv from '../src/translations/sv/routes.json';
+import routes_en from '../src/translations/en/routes.json';
+import common_sv from '../src/translations/sv/common.json';
+import common_en from '../src/translations/en/common.json';
 
 const cwd = process.cwd();
 app.set('port', process.env.PORT || 80);
@@ -26,6 +36,49 @@ app.use(
     preload: true
   })
 );
+
+i18next.use(middleware.LanguageDetector).init({    
+  preload: ['sv', 'en'],
+  detection:({
+    order:['path','header'],     
+    lookupHeader: 'accept-language',
+    lookupPath: 'lng',
+    lookupFromPathIndex: 0,
+  }),    
+  resources: {
+    sv: {
+      resource:resources_sv,
+      pages:pages_sv,
+      routes: routes_sv,
+      common: common_sv
+    },
+    en: {
+      resource:resources_en,
+      pages:pages_en,
+      routes: routes_en,
+      common: common_en
+    }
+  },
+  load: 'languageOnly',
+  whitelist:['sv','en'],    
+  fallbackLng: {
+    'sv-SE':['se'],
+    'en-US':['en'],
+    'default':['sv']
+  },        
+  debug: false,    
+  keySeparator: '>',
+  nsSeparator: '|',
+
+  interpolation: {
+    escapeValue: false // react already safes from xss
+  }
+})
+
+app.use(
+middleware.handle(i18next, { 
+})
+)
 
 app.disable('x-powered-by');
 
@@ -112,6 +165,7 @@ app.get(['/.well-known/acme-challenge/*'], async (req, res) => {
 app.get('*', async (req, res) => {
   const host = req.hostname;
   const url = req.url;
+  let acceptLang = req.acceptsLanguages();
 
   let body = '';
 
@@ -121,7 +175,11 @@ app.get('*', async (req, res) => {
       url,
       path.join(cwd, '/dist/client/js/assets.json'),
       '',
-      ''
+      '',
+      null,
+      null,
+      acceptLang && acceptLang.length > 0? acceptLang[0] : null,
+      (req as any).i18n
     );
     
     res.status(result.statusCode);

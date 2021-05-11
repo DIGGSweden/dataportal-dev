@@ -5,7 +5,7 @@ import webpack, { Configuration } from 'webpack';
 import ManifestPlugin from 'webpack-manifest-plugin';
 import webpackMerge from 'webpack-merge';
 import MiniCssExtractPlugin  from 'mini-css-extract-plugin'
-import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin'
+import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 import TerserJSPlugin from 'terser-webpack-plugin';
 
 const env = process.env.NODE_ENV || 'development';
@@ -198,7 +198,7 @@ export const createWebpackConfig = (
       // https://twitter.com/wSokra/status/969679223278505985
       // runtimeChunk: isProd ? 'single' : false,
       minimize: isProd,
-      minimizer: [new TerserJSPlugin({}),new OptimizeCSSAssetsPlugin({})]
+      minimizer: [new TerserJSPlugin({}),new CssMinimizerPlugin()]
     },
     stats: {
       errors: true,

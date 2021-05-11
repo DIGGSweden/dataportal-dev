@@ -126,7 +126,7 @@ export const ContentPage: React.FC<ContentPageProps> = (props) => {
         robotsFollow={true}
         robotsIndex={true}
         lang={i18n.languages[0]}
-      />
+      />      
       <SettingsContext.Consumer>
         {(settings) => (
           <Box
@@ -168,28 +168,14 @@ export const ContentPage: React.FC<ContentPageProps> = (props) => {
                         <title>
                           {props.content.name} - {i18n.t('common|seo-title')}
                         </title>
-                      </Helmet>
-                      {/*             
-              <Box className="anchorlink_wrapper" display="block" width={1}>
-                {menuItems[0] && width > 899 && (
-                  <PageNavigation ref={AnchorLinkMenuRef}>
-                    <AnchorLinkMenu
-                      screenWidth={getWidth()}
-                      menuItems={menuItems}
-                      anchorLinkMenuRef={AnchorLinkMenuRef}
-                    />
-                  </PageNavigation>
-                )}
-            </Box> */}
+                      </Helmet>                   
 
                       {props.content && props.content.imageUrl && (
                         <img
                           src={`${props.content.imageUrl}?width=1024`}
                           alt={`${props.content.imageText}`}
                         />
-                      )}
-                      {/* <span className="text-6">{moment(props.content.published.toString()).format("D MMM YYYY")}</span> */}
-                      {/* <h1 className="text-1">{props.content.name}</h1> */}
+                      )}                      
                       <p
                         className="preamble text-4"
                         dangerouslySetInnerHTML={{
