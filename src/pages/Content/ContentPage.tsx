@@ -33,6 +33,25 @@ import { isIE } from '../../utilities/detectBrowser';
 import { onNextFrame } from '../../utilities/onNextFrame';
 import { LandingPageItem } from 'components/LandingPage';
 
+//import all stuff needed for Prismjs (code highlighting)
+import 'scss/general/prism.scss';
+import Prism from "prismjs"
+require('prismjs/components/prism-markup-templating');
+require('prismjs/components/prism-csharp');
+require('prismjs/components/prism-json');
+require('prismjs/components/prism-javascript');
+require('prismjs/components/prism-css');
+require('prismjs/components/prism-php');
+require('prismjs/components/prism-ruby');
+require('prismjs/components/prism-python');
+require('prismjs/components/prism-java');
+require('prismjs/components/prism-c');
+require('prismjs/components/prism-cpp');
+require('prismjs/plugins/line-numbers/prism-line-numbers');
+require('prismjs/plugins/toolbar/prism-toolbar');
+require('prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard');
+
+
 export const hasWindow = typeof window !== 'undefined';
 export const getWidth = () => {
   return hasWindow ? window.innerWidth : 1080;
@@ -96,6 +115,11 @@ export const ContentPage: React.FC<ContentPageProps> = (props) => {
   // }
 
   useEffect(() => {
+    setTimeout(() => {Prism.highlightAll()}, 0)    
+  },[])
+
+  useEffect(() => {
+
     const newMenuItems = getLinks();
     // Make sure that the state needs to be updated
     if (
@@ -134,7 +158,7 @@ export const ContentPage: React.FC<ContentPageProps> = (props) => {
             display="flex"
             direction="column"
             minHeight="100vh"
-            bgColor="#fff"
+            bgColor="#fff"            
           >
             <NoJavaScriptWarning text="" />
 
@@ -144,7 +168,8 @@ export const ContentPage: React.FC<ContentPageProps> = (props) => {
               <Box flex="1 1 auto">
                 <StaticBreadcrumb staticPaths={props.staticPaths} env={settings.env} />
 
-                <MainContent className="main-container">
+                <MainContent 
+                  className="main-container line-numbers">
                 <h1 className="text-1">{props.content.name}</h1>
 
                   <div className="main-container--contentwrapper">

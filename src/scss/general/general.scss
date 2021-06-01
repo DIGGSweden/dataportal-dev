@@ -66,6 +66,30 @@ html select:focus {
     outline: none !important;
 }
 
+span.editor-format-gray {
+    background-color: #E0E1E6
+}
+
+span.editor-format-purple {
+    background-color: #EAE6FF
+}
+
+span.editor-format-blue {
+    background-color: #DEEBFE
+}
+
+span.editor-format-red {
+    background-color: #FEEBE7
+}
+
+span.editor-format-yellow {
+    background-color: #FFF1B4
+}
+
+span.editor-format-green {
+    background-color: #E5FEF2
+}
+
 //Cookie banner, base from designsystem.
 .cookie-banner {
     color: $black100;
@@ -166,3 +190,26 @@ html select:focus {
         padding-left: 0rem;
     }
 }
+
+//General style för all tables
+table { 
+    overflow-x:auto;
+    width: 100%; 
+    border-collapse: collapse;     
+    border: 1px solid #D9D9D9;
+  }
+  /* Zebra striping */
+//   tr:nth-of-type(odd) { 
+//     background: #eee; 
+//     border: 1px solid #D9D9D9;
+//   }
+  th { 
+    background: #F4F5F7;     
+    font-weight: bold; 
+    border: 1px solid #D9D9D9;
+  }
+  td, th { 
+    font-size: 0.925rem;
+     padding: .5rem;
+     border: 1px solid #D9D9D9;  
+  }
