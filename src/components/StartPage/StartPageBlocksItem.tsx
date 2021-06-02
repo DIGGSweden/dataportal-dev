@@ -68,7 +68,7 @@ export const StartPageBlocksItem: React.FC<StartPageBlocksItemProps> = (
     }
 `;
 
-  const { loading, error, data } = useQuery<{ tags: Array<any> }>(
+  const { error, data } = useQuery<{ tags: Array<any> }>(
     STARTPAGEBLOCKS
   );
 
@@ -83,11 +83,15 @@ export const StartPageBlocksItem: React.FC<StartPageBlocksItemProps> = (
 
   return (
     <div>
-      {loading && (
-        <span className="text-5 loading">{i18n.t('common|loading')}</span>
+      {!data && (
+        <span className="text-5 loading">{i18n.t('common|loading')}...</span>
       )}
 
-      {!loading && data && data!.tags && (
+      {error && (
+        <span className="text-5">{error}</span>
+      )}
+
+      {data && data!.tags && (
         <div>
           {blocks.map((block: any, index: number) => {
             if (block.uihints[0] == 'TextAndImage') {
@@ -106,7 +110,7 @@ export const StartPageBlocksItem: React.FC<StartPageBlocksItemProps> = (
                 </div>
               );
             }
-
+            else
             if (block.uihints[0] == 'Puffar') {
               return (
                 <div key={index}>

@@ -78,8 +78,8 @@ export const ContentRouter: React.FC<ContentPageProps> = (props) => {
     paths.push(`/${copy.join('/')}/`)
     copy.pop();
   });     
-
-  const {loading, error, data } = 
+  
+  const {error, data } = 
     useQuery<{ contents: Array<any>, breadcrumb: Array<any> }>(contentQuery,{
       variables:{
         path:`/${props.match.params.path}/`,
@@ -89,7 +89,7 @@ export const ContentRouter: React.FC<ContentPageProps> = (props) => {
       }
     });
 
-    if(!loading && data && data?.breadcrumb && data?.breadcrumb.length > 0)
+    if(data && data?.breadcrumb && data?.breadcrumb.length > 0)
     {
       //create staticpath for breadcrumbs component
       data.breadcrumb
@@ -109,20 +109,12 @@ export const ContentRouter: React.FC<ContentPageProps> = (props) => {
           if(aNum < bNum) return -1;
           return 0;
         })
-    }
-  
-    if(loading)
-      return <LoadingPage staticPaths={staticPaths} {...props} />
-    //content found with id, switch type for corrent Content component
-    else if(!loading && data && data.contents && data.contents.length > 0){
-      // if(data.contents[0].tags.find((t :any) => t.tagPath.includes('/landingpage/')))
-      // {     
-      //   /** We have a landing page!!! */
-      //   return <LandingPage staticPaths={staticPaths} {...props} content={data!.contents[0]} path={`/${props.match.params.path}/`} />
-      // }     
+    }    
+
+    if(!data)
+      return <LoadingPage staticPaths={[{path:"/",title:`${i18n.t('common|loading')}...`}]} {...props} />
+    else if(data && data.contents)
       return <ContentPage staticPaths={staticPaths} {...props} content={data!.contents[0]} />
-    }
-      
-    else    
-      return <NotFoundPage {...props} />
+    else
+      return <NotFoundPage {...props} />    
 }

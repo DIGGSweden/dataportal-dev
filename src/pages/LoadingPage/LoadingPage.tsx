@@ -33,6 +33,10 @@ export const LoadingPage: React.FC<LoadingPageProps> = (props) => {
           <ErrorBoundary>
             <MainContent flex="1 1 auto">
               <StaticBreadcrumb staticPaths={props.staticPaths} env={settings.env} />
+              <div className="main-container--contentwrapper">
+                <div className="content">                
+                </div>
+              </div>
             </MainContent>
           </ErrorBoundary>
         </Box>
