@@ -48,7 +48,7 @@ const client = createApolloClient({
   fetch: fetch,
   //ssrForceFetchDelay: 100,
   backendUrl: env.CONTENTBACKEND_GRAPHAPI,
-  fetchPolicy: 'cache-first'
+  fetchPolicy: 'cache-and-network'
 });
 
   ReactDOM.hydrate( 
