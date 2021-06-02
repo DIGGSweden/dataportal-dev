@@ -46,7 +46,7 @@ const env = SettingsUtil.create(typeof window !== 'undefined'? window.location.h
 const client = createApolloClient({ 
   serverState: serverState, 
   fetch: fetch,
-  //ssrForceFetchDelay: 100,
+  ssrForceFetchDelay: 100,
   backendUrl: env.CONTENTBACKEND_GRAPHAPI,
   fetchPolicy: 'cache-and-network'
 });

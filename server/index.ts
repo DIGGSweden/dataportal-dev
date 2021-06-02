@@ -96,7 +96,8 @@ var csp_headers = {
     '*.googleapis.com',
     '*.gstatic.com',
     'digg-test-graphproxy.azurewebsites.net',
-    'digg-prod-graphproxy.azurewebsites.net'
+    'digg-prod-graphproxy.azurewebsites.net',
+    'https://webbanalys.digg.se/'
   ],
   'base-uri': ["'self'"],
   'manifest-src': ["'self'"],
