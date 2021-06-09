@@ -76,6 +76,7 @@ export const StartPageBlocksItem: React.FC<StartPageBlocksItemProps> = (
     data &&
     data.tags &&
     data.tags.length > 0 &&
+    data.tags[0].connectedContents &&
     data.tags[0].connectedContents.length > 0
       ? data.tags[0].connectedContents
       : [];
