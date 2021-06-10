@@ -42,9 +42,9 @@ export class SettingsUtil {
     }
 
     switch(url)
-    {      
-      case "www.utvecklarportalen.se":
-      case "utvecklarportalen.se":
+    { 
+      case "digg-prod-devportal.azurewebsites.net":
+      case "dev.dataportal.se":      
         SettingsUtil.current = new Settings_Prod();          
         break;        
       case "digg-test-devportal.azurewebsites.net":
