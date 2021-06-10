@@ -1,7 +1,7 @@
 import { EnvSettings } from "./EnvSettings";
 
 export class Settings_Dev extends EnvSettings {  
- //CONTENTBACKEND_SITEURL="*utvecklarportal.web.local";
+//  CONTENTBACKEND_SITEURL="*utvecklarportal.web.local";
   CONTENTBACKEND_SITEURL = "*test-devportal.*";  
 
   CONTENTBACKEND_GRAPHAPI="https://digg-test-graphproxy.azurewebsites.net";
