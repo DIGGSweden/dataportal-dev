@@ -8,6 +8,7 @@ import { promisify } from 'util';
 import zlib from 'zlib';
 import { renderer, RenderResponseProfileItem } from './renderer';
 import { getSitemap } from './SiteMap'
+import basicAuth from 'express-basic-auth'
 import i18next from 'i18next';
 var csp = require('simple-csp');
 const app = express();
@@ -23,7 +24,7 @@ import common_en from '../src/translations/en/common.json';
 
 const cwd = process.cwd();
 app.set('port', process.env.PORT || 80);
-app.set('basic_auth', process.env.BASIC_AUTH || false);
+app.set('basic_auth', true);
 
 app.use(compression()); //makes sure we use gzip
 app.use(helmet()); //express hardening lib
@@ -126,6 +127,21 @@ var csp_headers = {
 app.use('/', function(req, res, done) {
   csp.header(csp_headers, res);
   done();
+});
+
+//simple basic auth for some environments
+app.use(function(req,res, next)
+{
+  var host = req.get('Host');
+  if(host === 'dev.dataportal.se') {
+   basicAuth({
+      users: { 'digg': 'devdata' },
+      challenge: true,
+      realm: 'dev.dataportal.se',
+    })(req, res, next);
+  }
+  else
+    next();
 });
 
 app.use(express.json());
