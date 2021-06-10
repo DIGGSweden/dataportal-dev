@@ -21,6 +21,9 @@
   "accessibility-report" : "Tillgänglighetsredogörelse",
   "logo-text" : " - Myndigheten för digital förvaltning",
   "home-text" : "Hem",
-  "contentonthispage":"Innehåll på sidan"
+  "contentonthispage":"Innehåll på sidan",
+  "open": "Öppna",
+  "close": "Stäng",
+  "menu": "Meny"
 }
 

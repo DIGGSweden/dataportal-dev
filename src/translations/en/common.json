@@ -22,5 +22,8 @@
   "accessibility-report" : "Accessibility report",
   "logo-text" : " - Agency for digital government",
   "home-text" : "Home",
-  "contentonthispage":"Content on this page"
+  "contentonthispage":"Content on this page",
+  "open": "Open",
+  "close": "Close",
+  "menu": "Menu"
 }

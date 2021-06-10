@@ -114,7 +114,7 @@ export const StartPageBlocksItem: React.FC<StartPageBlocksItemProps> = (
             else
             if (block.uihints[0] == 'Puffar') {
               return (
-                <div key={index}>
+                <div className="grid" key={index}>
                   <div className="content_grid">
                     <h2 className="text-3">{block.name}</h2>
                     <p className="text-5 content_grid-preamble">
