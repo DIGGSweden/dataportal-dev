@@ -22,11 +22,6 @@ import { bool, string } from 'prop-types';
 import { boolean } from 'yup';
 import FocusTrap from 'focus-trap-react';
 
-// const hasWindow = typeof window !== 'undefined';
-
-// const frame = hasWindow
-//   ? window.requestAnimationFrame
-//   : (cb: () => void) => cb();
 
 const InnerBox = styled(Box)`
   pointer-events: auto;
@@ -57,12 +52,10 @@ export class Header extends React.Component<HeaderProps, any> {
 
   openMenu = () => {
     this.setState({ showMenu: true });
-    // this.toggleShowOrHideMenu();
     document.body.setAttribute('style', `position:fixed;`);
   };
 
   closeMenu = () => {
-    // this.toggleShowOrHideMenu();
     this.setState({ showMenu: false });
     document.body.setAttribute('style', ``);
   };
@@ -186,13 +179,6 @@ export class Header extends React.Component<HeaderProps, any> {
                         </>
                       )}
                     </SettingsContext.Consumer>
-                    {/* <a
-                      className="header-link header-link--lang"
-                      lang={i18n.t('common|lang')}
-                      href={i18n.language == 'sv' ? '/en' : '/sv'}
-                    >
-                      {i18n.t('common|language')}
-                    </a> */}
                     <div
                       className="click-outside"
                       onClick={this.closeMenu}
