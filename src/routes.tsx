@@ -18,12 +18,12 @@ export interface RouteProps {
 
 export const Routes = ({formdata, vars}:RouteProps) => {    
 
-  const { trackPageView } = useMatomo();
+  //const { trackPageView } = useMatomo();
   const location = useLocation();  
 
-  useEffect(() => {
-    trackPageView({});
-  },[location.pathname])  
+  // useEffect(() => {
+  //   trackPageView({});
+  // },[location.pathname])  
 
   return (
     <ErrorBoundary>

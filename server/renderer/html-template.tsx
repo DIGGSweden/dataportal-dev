@@ -1,34 +1,32 @@
 import { html } from 'common-tags';
 import serialize from 'serialize-javascript';
-import generateRandomKey from '../../src/utilities/keyGenerator';
 
-const nonceKey = generateRandomKey(256);
-
-const createScriptTag = (src: string) => {
+const createScriptTag = (src: string, nonceKey: string) => {
   const module = !src.includes('legacy');
 
-  return `<script ${
+  return `<script nonce="${nonceKey}" ${
     module ? 'type="module" crossorigin="use-credentials"' : 'nomodule defer'
   } src="${src}" ></script>`;
 };
 
-const createScriptNoMod = (src: string) => {
-  return `<script src="${src}" crossorigin="use-credentials"></script>`;
+const createScriptNoMod = (src: string, nonceKey: string) => {
+  return `<script nonce="${nonceKey}" src="${src}" crossorigin="use-credentials"></script>`;
 };
 
-const createScriptPreload = (src: string) => {
+const createScriptPreload = (src: string, nonceKey: string) => {
   if (src.includes('legacy')) return '';
 
-  return `<link rel="modulepreload" href="${src}" crossorigin="use-credentials" />`;
+  return `<link nonce="${nonceKey}" rel="modulepreload" href="${src}" crossorigin="use-credentials" />`;
 };
 
-const createStyleTag = (src: string) => {
-  return `<link rel="stylesheet" href="${src}" type="text/css" />`;  
+const createStyleTag = (src: string, nonceKey: string) => {
+  return `<link nonce="${nonceKey}" rel="stylesheet" href="${src}" type="text/css" />`;  
 };
 
 export type FooterData = {  
   ids: any;
   bundles: string[];  
+  nonceKey: string;
 };
 
 export type HeaderData = {
@@ -36,13 +34,15 @@ export type HeaderData = {
   bundles: string[];  
   styleBundles: string[];  
   htmlAttributes: string;
+  nonceKey: string;
 };
 
 export const getHeader = ({
   metaTags,
   bundles,
   styleBundles,  
-  htmlAttributes,
+  htmlAttributes,  
+  nonceKey
 }: HeaderData) => {
   return html`
       <!DOCTYPE html>
@@ -52,7 +52,20 @@ export const getHeader = ({
           <meta name="viewport" content="width=device-width,initial-scale=1">
           <meta name="theme-color" content="#171A21">         
           <meta name="referrer" content="no-referrer">   
-          <link rel="stylesheet" href="/dist/client/js/font-awesome.min.css" media="print" onload="this.media='all'" type="text/css">                  
+          <meta http-equiv="Content-Security-Policy" 
+            content="
+                script-src 'self' 'nonce-${nonceKey}' dataportal.azureedge.net *.dataportal.se
+                *.googleapis.com *.gstatic.com digg-test-graphproxy.azurewebsites.net digg-prod-graphproxy.azurewebsites.net
+                https://webbanalys.digg.se/;
+                default-src 'none';
+                base-uri 'self';
+                manifest-src 'self';
+                img-src 'self' data: *;
+                style-src 'self' 'unsafe-inline' dataportal.azureedge.net *.googleapis.com *.dataportal.se;                
+                form-action 'self';
+                font-src 'self' data: dataportal.azureedge.net fonts.gstatic.com *.dataportal.se;    
+                connect-src *;            
+             ">                       
           <link href="https://fonts.googleapis.com" rel="preconnect" crossorigin>   
           <link href="https://fonts.googleapis.com" rel="dns-prefetch" crossorigin>                          
           <link rel="manifest" href="/dist/client/js/manifest.json">
@@ -84,15 +97,15 @@ export const getHeader = ({
           </script>
           <meta name="og:type" content="website">
           <meta name="og:site_name" content="Sveriges utvecklarportal">                   
-          ${styleBundles.map(src => createStyleTag(src))}              
+          ${styleBundles.map(src => createStyleTag(src,nonceKey))}              
           ${metaTags}                                                                                         
-          ${bundles.map(src => createScriptPreload(src))}                                                  
+          ${bundles.map(src => createScriptPreload(src,nonceKey))}                                                  
         `;
 };
 
-export const getFooter = ({ bundles, ids }: FooterData) => {
+export const getFooter = ({ bundles, ids, nonceKey }: FooterData) => {
   return html`<div id="popup"></div>            
-      <script>window.__EMOTION_IDS__ = ${serialize(ids)};</script>         
+      <script nonce="${nonceKey}">window.__EMOTION_IDS__ = ${serialize(ids)};</script>         
       <script nonce=${nonceKey}>
         if (window.appInsights) {
           var aiScript = document.querySelector('script[src="https://az416426.vo.msecnd.net/scripts/a/ai.0.js"]');
@@ -101,7 +114,7 @@ export const getFooter = ({ bundles, ids }: FooterData) => {
           }
         }        
       </script>                            
-      ${bundles.map(src => createScriptTag(src))}           
+      ${bundles.map(src => createScriptTag(src,nonceKey))}           
       <script nonce=${nonceKey}>                      
         document.addEventListener("DOMContentLoaded", function() {          
           var matScript = document.querySelector('script[src="https://webbanalys.digg.se/matomo.js"]');

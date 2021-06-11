@@ -84,45 +84,8 @@ middleware.handle(i18next, {
 app.disable('x-powered-by');
 
 //Setup CSP
-var csp_headers = {
-  'default-src': ["'none'"],
-  'script-src': [
-    "'self'",
-    "'unsafe-eval'",
-    "'unsafe-inline'",
-    'dataportal.azureedge.net',
-    '*.entryscape.com',
-    '*.oppnadata.se',
-    '*.dataportal.se',
-    '*.googleapis.com',
-    '*.gstatic.com',
-    'digg-test-graphproxy.azurewebsites.net',
-    'digg-prod-graphproxy.azurewebsites.net',
-    'https://webbanalys.digg.se/'
-  ],
-  'base-uri': ["'self'"],
-  'manifest-src': ["'self'"],
-  'img-src': ["'self' data:", '*'],
-  'style-src': [
-    "'self'",
-    "'unsafe-inline'",
-    'dataportal.azureedge.net',
-    '*.googleapis.com',
-    '*.entryscape.com',
-    '*.oppnadata.se',
-    '*.dataportal.se',
-  ],
-  'form-action': ["'self'"],
-  'font-src': [
-    "'self' data:",
-    'dataportal.azureedge.net',
-    'fonts.gstatic.com',
-    '*.entryscape.com',
-    '*.oppnadata.se',
-    '*.dataportal.se',
-  ],
-  'frame-ancestors': ['https://dev.digg.se','https://digg.se','https://www.digg.se'],
-  'connect-src': ['*'],
+var csp_headers = { 
+  'frame-ancestors': ['https://dev.digg.se','https://digg.se','https://www.digg.se']  
 };
 app.use('/', function(req, res, done) {
   csp.header(csp_headers, res);
