@@ -133,7 +133,7 @@ app.use(
 //app.use('/sitemap.xml', getSitemap)
 
 //Robots, sitemap and google site verification
-app.get(['/robots.txt','/google*.html','/favicon.ico'], async (req, res) => {  
+app.get(['/robots.txt','/google*.html','/favicon.ico','/security.txt'], async (req, res) => {  
   res.sendFile(path.join(cwd, req.path));
 });
 
