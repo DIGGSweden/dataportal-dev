@@ -113,7 +113,7 @@ export const ContentRouter: React.FC<ContentPageProps> = (props) => {
 
     if(!data)
       return <LoadingPage staticPaths={[{path:"/",title:`${i18n.t('common|loading')}...`}]} {...props} />
-    else if(data && data.contents)
+    else if(data && data.contents && data.contents.length > 0)
       return <ContentPage staticPaths={staticPaths} {...props} content={data!.contents[0]} />
     else
       return <NotFoundPage {...props} />    
