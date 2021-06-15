@@ -68,7 +68,7 @@ export const getHeader = ({
              ">                       
           <link href="https://fonts.googleapis.com" rel="preconnect" crossorigin>   
           <link href="https://fonts.googleapis.com" rel="dns-prefetch" crossorigin>                          
-          <link rel="manifest" href="/dist/client/js/manifest.json">
+          <link rel="manifest" href="/dist/client/js/manifest.json" crossorigin="use-credentials">
           <link rel="icon" type="image/png" href="/dist/client/js/svdp-favicon-16.png" sizes="16x16">
           <link rel="icon" type="image/png" href="/dist/client/js/svdp-favicon-32.png" sizes="32x32">
           <link rel="icon" type="image/png" href="/dist/client/js/svdp-favicon-64.png" sizes="64x64">
