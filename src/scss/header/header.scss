@@ -1,4 +1,3 @@
-
 @import 'scss/general/variables.scss';
 
 header {
@@ -21,11 +20,6 @@ header {
     flex-wrap: wrap;
     align-items: center;
 
-    @media screen and (max-width: 650px) {
-        padding-top: $space-8;
-        padding-bottom: $space-8;
-    }
-
     svg {
         width: 18.75rem;
         transition: .5s;
@@ -36,8 +30,6 @@ header {
         }
     }
 }
-
-
 
 .header-links {
     display: flex;
