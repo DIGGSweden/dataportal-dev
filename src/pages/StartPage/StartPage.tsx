@@ -66,7 +66,7 @@ export class StartPage extends React.Component<PageProps, any> {
               bgColor="#fff"
             >
               <PageMetadata
-                seoTitle="Delwebb för utvecklare"
+                seoTitle="Dev - Sveriges dataportal"
                 seoDescription={i18n.t('pages|startpage|seo_description')}
                 seoImageUrl=""
                 seoKeywords=""
@@ -80,15 +80,13 @@ export class StartPage extends React.Component<PageProps, any> {
               <Header ref={this.headerRef} />
 
               <ErrorBoundary>
-                <MainContent id="main" flex="1 1 auto">                                           
-                <div className="wpb_wrapper">
-                      <div className="main-container">
-                      <StartPageBlocksItem
-                          env={settings.env}
-                          connectedtagpath="/start/"
-                        />                                         
-                      </div>
-                    </div>
+                <MainContent id="main" flex="1 1 auto">
+                  <div className="wpb_wrapper">
+                    <StartPageBlocksItem
+                      env={settings.env}
+                      connectedtagpath="/start/"
+                    />
+                  </div>
                 </MainContent>
               </ErrorBoundary>
               <Footer onToTopButtonPushed={this.setFocus} />

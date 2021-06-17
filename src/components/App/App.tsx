@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { ScrollManager } from '../ScrollManager';
 import { SkipToContent } from '../SkipToContent';
-// import { CookieBanner } from '../CookieBanner';
+import { CookieBanner } from '../CookieBanner';
 import {KeyFocus } from '../KeyFocus';
 
 export const App: React.SFC = ({ children }) => (

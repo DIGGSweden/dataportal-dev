@@ -68,9 +68,7 @@ export const StartPageBlocksItem: React.FC<StartPageBlocksItemProps> = (
     }
 `;
 
-  const { error, data } = useQuery<{ tags: Array<any> }>(
-    STARTPAGEBLOCKS
-  );
+  const { error, data } = useQuery<{ tags: Array<any> }>(STARTPAGEBLOCKS);
 
   const blocks =
     data &&
@@ -80,7 +78,7 @@ export const StartPageBlocksItem: React.FC<StartPageBlocksItemProps> = (
     data.tags[0].connectedContents.length > 0
       ? data.tags[0].connectedContents
       : [];
-  const jumbotron_logo = require('../../pages/StartPage/grafic.png');  
+  const jumbotron_logo = require('../../pages/StartPage/grafic.png');
 
   return (
     <div>
@@ -88,16 +86,14 @@ export const StartPageBlocksItem: React.FC<StartPageBlocksItemProps> = (
         <span className="text-5 loading">{i18n.t('common|loading')}...</span>
       )}
 
-      {error && (
-        <span className="text-5">{error}</span>
-      )}
+      {error && <span className="text-5">{error}</span>}
 
       {data && data!.tags && (
         <div>
           {blocks.map((block: any, index: number) => {
             if (block.uihints[0] == 'TextAndImage') {
               return (
-                <div key={index}>
+                <div className="jumbotron-wrapper" key={index}>
                   <div className="jumbotron">
                     <div className="jumbotron_heading">
                       <h1>{block.name}</h1>
@@ -105,59 +101,59 @@ export const StartPageBlocksItem: React.FC<StartPageBlocksItemProps> = (
                     </div>
                     <Spacer></Spacer>
                     <div className="jumbotron_img">
-                                            <img src={block.link} alt={block.linkAltText} />
+                      <img src={block.link} alt={block.linkAltText} />
+                    </div>
+                  </div>
+                </div>
+              );
+            } else if (block.uihints[0] == 'Puffar') {
+              return (
+                <div className="main-container">
+                  <div className="grid" key={index}>
+                    <div className="content_grid">
+                      <h2 className="text-3">{block.name}</h2>
+                      <p className="text-5 content_grid-preamble">
+                        {block.preamble}
+                      </p>
+                      {block.nestledContentBlocks &&
+                        block.nestledContentBlocks.length > 0 && (
+                          <ul className="content_grid-list">
+                            {block.nestledContentBlocks.map(
+                              (puffblock: any, puffIndex: number) => {
+                                return (
+                                  <li
+                                    key={puffIndex}
+                                    className="content_grid-item"
+                                    onClick={() => {
+                                      (window as any).location.href =
+                                        puffblock.link;
+                                    }}
+                                  >
+                                    <div className="content_grid-item-wrapper">
+                                      <a
+                                        href={puffblock.link}
+                                        className="content_grid-itemlink text-4"
+                                      >
+                                        {puffblock.name}
+                                      </a>
+                                      <p className="text-5 content_grid-itemdesc">
+                                        <Truncate lines={4}>
+                                          {puffblock.preamble}
+                                        </Truncate>
+                                      </p>
+                                    </div>
+                                  </li>
+                                );
+                              }
+                            )}
+                          </ul>
+                        )}
                     </div>
                   </div>
                 </div>
               );
             }
-            else
-            if (block.uihints[0] == 'Puffar') {
-              return (
-                <div className="grid" key={index}>
-                  <div className="content_grid">
-                    <h2 className="text-3">{block.name}</h2>
-                    <p className="text-5 content_grid-preamble">
-                      {block.preamble}
-                    </p>
-                    {block.nestledContentBlocks &&
-                      block.nestledContentBlocks.length > 0 && (
-                        <ul className="content_grid-list">
-                          {block.nestledContentBlocks.map(
-                            (puffblock: any, puffIndex: number) => {
-                              return (
-                                <li
-                                  key={puffIndex}
-                                  className="content_grid-item"
-                                  onClick={() => {
-                                    (window as any).location.href =
-                                      puffblock.link;
-                                  }}
-                                >
-                                  <div className="content_grid-item-wrapper">
-                                    <a
-                                      href={puffblock.link}
-                                      className="content_grid-itemlink text-4"
-                                    >
-                                      {puffblock.name}
-                                    </a>
-                                    <p className="text-5 content_grid-itemdesc">
-                                      <Truncate lines={4}>
-                                        {puffblock.preamble}
-                                      </Truncate>
-                                    </p>
-                                  </div>
-                                </li>
-                              );
-                            }
-                          )}
-                        </ul>
-                      )}
-                  </div>
-                </div>
-              );
-            }
-            return <div key={index}></div>;
+            return <div className="test" key={index}></div>;
           })}
         </div>
       )}
