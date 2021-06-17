@@ -89,9 +89,9 @@ export const createWebpackConfig = (
       ]
     : [];
 
-  const defaultConfig = {
+  const defaultConfig = {    
     context: workingDir,
-    devtool: isProd ? 'source-map' : 'cheap-module-source-map',
+    devtool: isProd ? 'source-map' : 'cheap-module-source-map',    
     entry: {},
     mode: isProd ? 'none' : 'development',
     output: {

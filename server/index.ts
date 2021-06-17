@@ -8,6 +8,7 @@ import { promisify } from 'util';
 import zlib from 'zlib';
 import { renderer, RenderResponseProfileItem } from './renderer';
 import { getSitemap } from './SiteMap'
+import basicAuth from 'express-basic-auth'
 import i18next from 'i18next';
 var csp = require('simple-csp');
 const app = express();
@@ -23,7 +24,7 @@ import common_en from '../src/translations/en/common.json';
 
 const cwd = process.cwd();
 app.set('port', process.env.PORT || 80);
-app.set('basic_auth', process.env.BASIC_AUTH || false);
+app.set('basic_auth', true);
 
 app.use(compression()); //makes sure we use gzip
 app.use(helmet()); //express hardening lib
@@ -83,49 +84,27 @@ middleware.handle(i18next, {
 app.disable('x-powered-by');
 
 //Setup CSP
-var csp_headers = {
-  'default-src': ["'none'"],
-  'script-src': [
-    "'self'",
-    "'unsafe-eval'",
-    "'unsafe-inline'",
-    'dataportal.azureedge.net',
-    '*.entryscape.com',
-    '*.oppnadata.se',
-    '*.dataportal.se',
-    '*.googleapis.com',
-    '*.gstatic.com',
-    'digg-test-graphproxy.azurewebsites.net',
-    'digg-prod-graphproxy.azurewebsites.net',
-    'https://webbanalys.digg.se/'
-  ],
-  'base-uri': ["'self'"],
-  'manifest-src': ["'self'"],
-  'img-src': ["'self' data:", '*'],
-  'style-src': [
-    "'self'",
-    "'unsafe-inline'",
-    'dataportal.azureedge.net',
-    '*.googleapis.com',
-    '*.entryscape.com',
-    '*.oppnadata.se',
-    '*.dataportal.se',
-  ],
-  'form-action': ["'self'"],
-  'font-src': [
-    "'self' data:",
-    'dataportal.azureedge.net',
-    'fonts.gstatic.com',
-    '*.entryscape.com',
-    '*.oppnadata.se',
-    '*.dataportal.se',
-  ],
-  'frame-ancestors': ['https://dev.digg.se','https://digg.se','https://www.digg.se'],
-  'connect-src': ['*'],
+var csp_headers = { 
+  'frame-ancestors': ['https://dev.digg.se','https://digg.se','https://www.digg.se']  
 };
 app.use('/', function(req, res, done) {
   csp.header(csp_headers, res);
   done();
+});
+
+//simple basic auth for some environments
+app.use(function(req,res, next)
+{
+  var host = req.get('Host');
+  if(host === 'dev.dataportal.se') {
+   basicAuth({
+      users: { 'digg': 'devdata' },
+      challenge: true,
+      realm: 'dev.dataportal.se',
+    })(req, res, next);
+  }
+  else
+    next();
 });
 
 app.use(express.json());
@@ -154,7 +133,7 @@ app.use(
 //app.use('/sitemap.xml', getSitemap)
 
 //Robots, sitemap and google site verification
-app.get(['/robots.txt','/google*.html','/favicon.ico'], async (req, res) => {  
+app.get(['/robots.txt','/google*.html','/favicon.ico','/security.txt'], async (req, res) => {  
   res.sendFile(path.join(cwd, req.path));
 });
 

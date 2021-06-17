@@ -23,6 +23,10 @@ import { createApolloClient } from '../../shared/graphql/client';
 import { I18nextProvider } from 'react-i18next';
 import i18n from '../../src/i18n';
 
+import generateRandomKey from '../../src/utilities/keyGenerator';
+
+const nonceKey = generateRandomKey(256);
+
 export interface RenderResponseProfileItem {
   name: string;
   duration: number;
@@ -119,6 +123,7 @@ export const renderer = async (
       bundles,  
       styleBundles,    
       htmlAttributes: `lang="${i18nreq.languages[0]}"`,
+      nonceKey
     });         
 
     end = Date.now();
@@ -128,14 +133,14 @@ export const renderer = async (
     let data = client.extract();
       if(data)
         try {
-          response += `<script>window.__APOLLO_STATE__ = ${JSON.stringify(data)};</script>`
+          response += `<script nonce="${nonceKey}">window.__APOLLO_STATE__ = ${JSON.stringify(data)};</script>`
         }catch{}
 
     response += `<style data-emotion-css>${css}</style></head>`;
 
     response += `<body><div id="root">${html}</div>`;
 
-    response += getFooter({ bundles, ids });
+    response += getFooter({ bundles, ids, nonceKey });
 
     return {
       statusCode: routerContext.statusCode || 200,

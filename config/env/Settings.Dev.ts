@@ -6,7 +6,7 @@ export class Settings_Dev extends EnvSettings {
 
   CONTENTBACKEND_GRAPHAPI="https://digg-test-graphproxy.azurewebsites.net";
   
-  // CONTENTBACKEND_GRAPHAPI="http://localhost:4444";
+  //CONTENTBACKEND_GRAPHAPI="http://localhost:4444";
 
   CANONICAL_URL = "http://localhost:8080";  
 

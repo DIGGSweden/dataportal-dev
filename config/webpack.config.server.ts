@@ -6,7 +6,7 @@ const workingDir = path.join(__dirname, '../');
 
 const config = createWebpackConfig(
   {
-    entry: './server/',
+    entry: './server/',    
     output: {
       libraryTarget: 'commonjs',
       path: path.join(workingDir, 'dist/server'),
