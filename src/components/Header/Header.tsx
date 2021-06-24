@@ -22,7 +22,6 @@ import { bool, string } from 'prop-types';
 import { boolean } from 'yup';
 import FocusTrap from 'focus-trap-react';
 
-
 const InnerBox = styled(Box)`
   pointer-events: auto;
 `;
@@ -52,13 +51,16 @@ export class Header extends React.Component<HeaderProps, any> {
 
   openMenu = () => {
     this.setState({ showMenu: true });
+    this.setState({ focusTrap : true});
     document.body.setAttribute('style', `position:fixed;`);
   };
 
   closeMenu = () => {
     this.setState({ showMenu: false });
+    this.setState({ focusTrap : false});
     document.body.setAttribute('style', ``);
   };
+
 
   render() {
     return (
@@ -83,18 +85,34 @@ export class Header extends React.Component<HeaderProps, any> {
                   )}
                 </EventEffect>
 
-                <button
-                  aria-label={i18n.t('common|menu')}
-                  className={
-                    'nav-btn' + (this.state.showMenu ? ' nav-btn--open' : '')
-                  }
-                  onClick={this.openMenu}
-                >
-                  <MenuIcon className="menu-icon"></MenuIcon>
-                  <span className="nav-btn--text text-6">
-                    {i18n.t('common|menu')}
-                  </span>
-                </button>
+                {this.state.showMenu ? (
+                  <button
+                    aria-label={i18n.t('common|close')}
+                    className="nav-btn close-menu-btn"
+                    onClick={this.closeMenu}
+                  >
+                    <CloseIcon className="close-icon"></CloseIcon>{' '}
+                    <span className="nav-btn--text text-6">
+                      {' '}
+                      {i18n.t('common|close')}
+                    </span>
+                  </button>
+                ) : (
+
+                  <button
+                    aria-label={i18n.t('common|menu')}
+                    className={
+                      'nav-btn' + (this.state.showMenu ? ' nav-btn--open' : '')
+                    }
+                    onClick={this.openMenu}
+                  >
+                    <MenuIcon className="menu-icon"></MenuIcon>
+                    <span className="nav-btn--text text-6">
+                      {i18n.t('common|menu')}
+                    </span>
+                  </button>
+                )}
+
                 <div
                   className={
                     'menu-bg' + (this.state.showMenu ? ' menu-bg--active' : '')
@@ -115,19 +133,7 @@ export class Header extends React.Component<HeaderProps, any> {
                           ? ' close-menu-btn-wrapper--active '
                           : '')
                       }
-                    >
-                      <button
-                        aria-label={i18n.t('common|close')}
-                        className="nav-btn"
-                        onClick={this.closeMenu}
-                      >
-                        <CloseIcon className="close-icon"></CloseIcon>{' '}
-                        <span className="nav-btn--text text-6">
-                          {' '}
-                          {i18n.t('common|close')}
-                        </span>
-                      </button>
-                    </div>
+                    ></div>
 
                     <SettingsContext.Consumer>
                       {(settings) => (

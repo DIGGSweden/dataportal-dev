@@ -29,6 +29,10 @@ header {
             transition: .2s;
         }
     }
+
+    .close-menu-btn{
+        z-index: 4000;
+    }
 }
 
 .header-links {
