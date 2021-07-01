@@ -103,7 +103,6 @@ export const ContentPage: React.FC<ContentPageProps> = (props) => {
   const { content } = props;
   const initialState: MenuItem[] = [];
   const [menuItems, setMenuItems] = useState(initialState);
-  const [width, setWidth] = useState(getWidth());
   const AnchorLinkMenuRef = React.createRef<HTMLDivElement>(); //for making changes in ms edge legacy
   const { location } = props;
   const headerRef = React.createRef<Header>();
@@ -177,10 +176,9 @@ export const ContentPage: React.FC<ContentPageProps> = (props) => {
                     <Box
                       className="anchorlink_wrapper"
                     >
-                      {menuItems[0] && width > 899 && (
+                      {menuItems[0] && (
                         <PageNavigation ref={AnchorLinkMenuRef}>
                           <AnchorLinkMenu
-                            screenWidth={getWidth()}
                             menuItems={menuItems}
                             anchorLinkMenuRef={AnchorLinkMenuRef}
                           />

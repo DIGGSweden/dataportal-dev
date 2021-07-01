@@ -12,7 +12,6 @@ export interface MenuItem {
 
 interface AnchorLinkMenuProps {
   menuItems: MenuItem[];
-  screenWidth: number;
   anchorLinkMenuRef?: React.RefObject<HTMLDivElement>;
 }
 
@@ -68,7 +67,6 @@ export class AnchorLinkMenu extends React.Component<
     };
     ref &&
     ref.current &&
-    this.props.screenWidth > 899 &&
     scrollTtop > 360 &&
     bottom > 1200
       ? setStyles(false)
@@ -104,7 +102,7 @@ export class AnchorLinkMenu extends React.Component<
   }
 
   render() {
-    const { menuItems, screenWidth } = this.props;
+    const { menuItems } = this.props;
 
     const AnchorHeadingBox = styled('div')`
       h2 {
@@ -141,7 +139,6 @@ export class AnchorLinkMenu extends React.Component<
                     const latestWathedItem = this.state.latestActiveItem;
                     let isActive =
                       latestWathedItem != null &&
-                      screenWidth > 899 &&
                       menuItem.id === latestWathedItem.element.id;
 
                     return (
