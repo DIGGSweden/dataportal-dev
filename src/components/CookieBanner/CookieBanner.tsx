@@ -50,9 +50,7 @@ export class CookieBanner extends React.Component {
                             vidareutvecklas webbplatsen ytterligare. Genom att
                             surfa vidare godkänner du att vi använder kakor.
                             <Link
-                              // to={`/${i18n.languages[0]}/${i18n.t(
-                              //   'routes|about|path'
-                              // )}#${i18n.t('common|cookies')}`}
+                              to="Kakor"
                               className="text-5"
                             >
                               Läs mer om kakor
