@@ -13,7 +13,7 @@ export const App: React.SFC = ({ children }) => (
     />
      <ScrollManager />
     <SkipToContent />
-    {/* <CookieBanner /> */}
+    <CookieBanner />
     <KeyFocus />
 
     {children}
