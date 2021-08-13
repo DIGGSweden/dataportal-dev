@@ -1,0 +1,23 @@
+@import 'scss/general/variables.scss';
+
+.code-toolbar {
+    .toolbar {
+        opacity: 1;
+
+        .toolbar-item {
+            button {
+                box-shadow: none;
+                border: 2px solid $black50;
+                color: $black100;
+
+                &:hover {
+                    border-color: $black100;
+                }
+            }
+        }
+    }
+
+    pre{
+        background-color: $orange10;
+    }
+}

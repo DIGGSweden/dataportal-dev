@@ -21,7 +21,9 @@ import 'scss/general/general.scss';
 import 'scss/general/typography.scss';
 import 'scss/general/buttons.scss';
 import 'scss/general/variables.scss';
+import 'scss/general/codetoolbar.scss';
 import 'scss/content/content.scss';
+
 import 'scss/cookiebanner/cookiebanner.scss';
 import 'scss/content/landingpage.scss';
 import 'scss/startpage/startpage_general.scss';

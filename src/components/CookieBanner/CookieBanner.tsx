@@ -44,15 +44,11 @@ export class CookieBanner extends React.Component {
                       <div className="cookiebanner">
                         <div className="cookiebanner__text">
                           <span className="text-5">
-                            På dataportal.se använder vi kakor (cookies) för att
-                            webbplatsen ska fungera på ett bra sätt för dig. Med
-                            hjälp av webbanalys och anonymiserad data
-                            vidareutvecklas webbplatsen ytterligare. Genom att
-                            surfa vidare godkänner du att vi använder kakor.
-                            <Link
-                              to="Kakor"
-                              className="text-5"
-                            >
+                            På dev.dataportal.se använder vi kakor (cookies) för
+                            att webbplatsen ska fungera på ett bra sätt för dig.
+                            Genom att surfa vidare godkänner du att vi använder
+                            kakor.
+                            <Link to="om-webbplatsen#om-kakor" className="text-5">
                               Läs mer om kakor
                             </Link>
                           </span>
