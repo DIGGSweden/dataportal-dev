@@ -44,8 +44,6 @@ export const LandingPageItem: React.FC<LandingPageItemProps> = (props) => {
   const landingPageRelatedLinks =
   data && data.tags && data.tags.length > 0 ? data.tags : [];  
 
-  console.log(landingPageRelatedLinks.length)
-
   return (   
 
     landingPageRelatedLinks.length >= 1 && (
