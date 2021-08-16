@@ -14,8 +14,8 @@ import Skeleton from 'react-loading-skeleton';
 
 export interface LandingPageItemProps {
   children?: React.ReactNode;
-  env: EnvSettings;  
-  connectedtagpath:string;
+  env: EnvSettings;
+  connectedtagpath: string;
 }
 
 const hasWindow = typeof window !== 'undefined';
@@ -24,8 +24,8 @@ export const LandingPageItem: React.FC<LandingPageItemProps> = (props) => {
   moment.locale(i18n.languages[0]);
   let connectedtagpath = '';
 
-  if(props.connectedtagpath) connectedtagpath = props.connectedtagpath;
-  
+  if (props.connectedtagpath) connectedtagpath = props.connectedtagpath;
+
   const LANDINGPAGE = gql`
   {   
     tags(siteurl: "${props.env.CONTENTBACKEND_SITEURL}",parentconnectedtagpaths:["${connectedtagpath}"])
@@ -39,49 +39,43 @@ export const LandingPageItem: React.FC<LandingPageItemProps> = (props) => {
     }
 `;
 
-  const { error, data } = useQuery<{ tags:Array<any> }>(LANDINGPAGE);
+  const { error, data } = useQuery<{ tags: Array<any> }>(LANDINGPAGE);
 
   const landingPageRelatedLinks =
-  data && data.tags && data.tags.length > 0 ? data.tags : [];  
+    data && data.tags && data.tags.length > 0 ? data.tags : [];
 
-  return (   
-
-    landingPageRelatedLinks.length >= 1 && (
-    
-    <ul className="text-5-bold landingpage_linkblock">
-        {/* {loading && (
+  return (
+    <div>
+      {!error && landingPageRelatedLinks.length > 0 && (
+        <ul className="text-5-bold landingpage_linkblock">
+          {/* {loading && (
           <Skeleton count={2} height={60} />
         )} */}
-        {error && (
-          <span className="loading-msg">
-            Det finns inga sidor att visa för tillfället.
-          </span>
-        )}
-        {
-          landingPageRelatedLinks &&
-          landingPageRelatedLinks.length > 0 &&
-          landingPageRelatedLinks?.sort(
-            (a, b) =>
-              parseInt(a.indexOrder + '0') -
-              parseInt(b.indexOrder + '0')
-          )
-          .map((n, index) => {
-            return (
-              <li
-              onClick={() => window.location.href=n.connectedTagPath}
-              key={index}
-              >
-                <Link                  
-                  to={`${n.connectedTagPath}`}
-                >
-                  {n.title}
-                  </Link>
-                  <ArrowIcon />
-              </li>
-            );
-          })}      
-    </ul>
-  )
-
+          {error && (
+            <span className="loading-msg">
+              Det finns inga sidor att visa för tillfället.
+            </span>
+          )}
+          {landingPageRelatedLinks &&
+            landingPageRelatedLinks.length > 0 &&
+            landingPageRelatedLinks
+              ?.sort(
+                (a, b) =>
+                  parseInt(a.indexOrder + '0') - parseInt(b.indexOrder + '0')
+              )
+              .map((n, index) => {
+                return (
+                  <li
+                    onClick={() => (window.location.href = n.connectedTagPath)}
+                    key={index}
+                  >
+                    <Link to={`${n.connectedTagPath}`}>{n.title}</Link>
+                    <ArrowIcon />
+                  </li>
+                );
+              })}
+        </ul>
+      )}
+    </div>
   );
 };
