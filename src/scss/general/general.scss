@@ -176,6 +176,7 @@ span.editor-format-green {
 .main-container--contentwrapper {
     display: flex;
     flex-direction: row-reverse;
+    justify-content: flex-end;
 
     @media screen and (max-width: 56.1875rem) {
         flex-direction: column;
@@ -183,7 +184,7 @@ span.editor-format-green {
 }
 
 .anchorlink_wrapper {
-    width: 100%;
+    width: auto;
     padding-left: $space-64;
 
     @media screen and (max-width: 56.1875rem) {

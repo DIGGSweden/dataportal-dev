@@ -227,6 +227,8 @@ pre[class*="language-"].line-numbers > code {
             -webkit-user-select: none; /* for button */
             -moz-user-select: none;
             -ms-user-select: none;
+            background-color: #FBF3EB !important;
+            z-index: 300;
         }
         
         div.code-toolbar > .toolbar a,
@@ -239,6 +241,7 @@ pre[class*="language-"].line-numbers > code {
             background: rgba(224, 224, 224, 0.2);
             box-shadow: 0 2px 0 0 rgba(0,0,0,0.2);
             border-radius: .5em;
+            word-break: break-word;
         }
         
         div.code-toolbar > .toolbar a:hover,
