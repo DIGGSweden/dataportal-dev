@@ -4,7 +4,7 @@
     list-style: none;
     padding: 0rem;
     margin-top: $space-48;
-    margin-bottom: $space-48;    
+    margin-bottom: $space-48;
 
     li {
         display: flex;
@@ -59,6 +59,47 @@
         &:nth-last-of-type(10) {
             background-color: $orange10;
         }
+
+        &:nth-last-of-type(11) {
+            background-color: $orange25;
+        }
+
+        &:nth-last-of-type(12) {
+            background-color: $orange50;
+        }
+
+        &:nth-last-of-type(13) {
+            background-color: $orange10;
+        }
+
+        &:nth-last-of-type(14) {
+            background-color: $orange25;
+        }
+
+        &:nth-last-of-type(15) {
+            background-color: $orange10;
+        }
+
+        &:nth-last-of-type(16) {
+            background-color: $orange50;
+        }
+
+        &:nth-last-of-type(17) {
+            background-color: $orange25;
+        }
+
+        &:nth-last-of-type(18) {
+            background-color: $orange10;
+        }
+
+        &:nth-last-of-type(19) {
+            background-color: $orange25;
+        }
+
+        &:nth-last-of-type(20) {
+            background-color: $orange10;
+        }
+
 
         @media screen and (max-width: 28.75rem) {
             padding: $space-16;
