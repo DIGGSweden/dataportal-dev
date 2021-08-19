@@ -194,16 +194,14 @@ span.editor-format-green {
 
 //General style för all tables
 table { 
-    overflow-x:auto;
-    width: 100%; 
-    border-collapse: collapse;     
-    border: 1px solid #D9D9D9;
+    display: block;
+    overflow-x: auto;
+    width: auto !important;
+    border: none;
+    max-width: 40rem;
+    border-collapse: collapse;
   }
-  /* Zebra striping */
-//   tr:nth-of-type(odd) { 
-//     background: #eee; 
-//     border: 1px solid #D9D9D9;
-//   }
+
   th { 
     background: #F4F5F7;     
     font-weight: bold; 
