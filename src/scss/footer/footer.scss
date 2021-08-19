@@ -51,17 +51,10 @@ footer {
         }
     }
 
-    a[target=_blank]:after {
-        content: '\f08e';
-        margin-left: 5px;
-        font-family: "FontAwesome" !important;
-        font-size: .8em;
-        text-decoration: none !important;
-        display: inline-block;
-    }
-
-    a[href^="mailto:"]:after {
-        content: none;
+    a[href^="mailto:"] {
+        span {
+            display: none;
+        }
     }
 
     a {
@@ -73,6 +66,7 @@ footer {
     .footer-link {
         word-break: initial;
         margin-bottom: $space-16;
+        display: flex;
 
         &:focus {
             outline: $focus-style;
@@ -81,6 +75,25 @@ footer {
 
         &:hover {
             text-decoration: none;
+        }
+
+        span {
+            margin-left: .5rem;
+            width: max-content;
+
+            svg {
+                width: 1rem;
+            }
+        }
+
+        .mail-icon {
+            display: none;
+        }
+
+        &[href^="mailto:"] {
+            .mail-icon {
+                display: block;
+            }
         }
     }
 

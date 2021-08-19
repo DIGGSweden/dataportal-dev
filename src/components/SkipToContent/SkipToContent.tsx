@@ -57,7 +57,7 @@ export const skipToContent = (ev?: React.MouseEvent) => {
 export const SkipToContent = () => (
   <EventEffect outline noHover noColorInvert>
     {({ className }) => (
-      <div>
+      <div role="navigation">
         <SkipLink className={className} onClick={skipToContent}>
           {i18n.t('common|skiptocontent')}
         </SkipLink>

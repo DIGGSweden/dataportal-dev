@@ -3,6 +3,8 @@ import {
   Container,
   Logo,
   Text,
+  ExternalLinkIcon,
+  MailIcon
 
 } from '@digg/design-system';
 import React from 'react';
@@ -59,6 +61,10 @@ export class Footer extends React.Component<FooterProps> {
                                       target="_blank"
                                     >
                                       {m.data.title}
+
+                                      <ExternalLinkIcon/>
+                                      <MailIcon className="mail-icon"/>
+
                                     </a>
                                   );
                                 } else if (

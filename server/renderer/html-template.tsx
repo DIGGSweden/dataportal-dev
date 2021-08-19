@@ -65,7 +65,8 @@ export const getHeader = ({
                 form-action 'self';
                 font-src 'self' data: dataportal.azureedge.net fonts.gstatic.com *.dataportal.se;    
                 connect-src *;            
-             ">                       
+             ">        
+          <link rel="stylesheet" href="/dist/client/js/font-awesome.min.css" media="print" onload="this.media='all'" type="text/css">                                 
           <link href="https://fonts.googleapis.com" rel="preconnect" crossorigin>   
           <link href="https://fonts.googleapis.com" rel="dns-prefetch" crossorigin>                          
           <link rel="manifest" href="/dist/client/js/manifest.json" crossorigin="use-credentials">
