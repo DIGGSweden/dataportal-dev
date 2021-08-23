@@ -68,6 +68,9 @@ export class Header extends React.Component<HeaderProps, any> {
         <header>
           <InnerBox paddingY={0} paddingX={2}>
             <Container>
+            
+            <FocusTrap active={this.state.focusTrap}>
+
               <Box className="header-box">
                 <EventEffect outline noHover>
                   {({ className }) => (
@@ -77,7 +80,7 @@ export class Header extends React.Component<HeaderProps, any> {
                       className={'dataportal-logo'}
                     >
                       <Box>
-                        <div className="logo-box">
+                        <div onClick={this.closeMenu} className="logo-box">
                           <DataportalLogo />
                         </div>
                       </Box>
@@ -118,14 +121,14 @@ export class Header extends React.Component<HeaderProps, any> {
                     'menu-bg' + (this.state.showMenu ? ' menu-bg--active' : '')
                   }
                 ></div>
-                <FocusTrap active={this.state.focusTrap}>
                   <nav
                     className={
                       'header-links' +
                       (this.state.showMenu ? '--active text-5' : '')
                     }
                   >
-                    <div
+                   
+                    {/* <div
                       onClick={this.closeMenu}
                       className={
                         'close-menu-btn-wrapper ' +
@@ -133,7 +136,7 @@ export class Header extends React.Component<HeaderProps, any> {
                           ? ' close-menu-btn-wrapper--active '
                           : '')
                       }
-                    ></div>
+                    ></div> */}
 
                     <SettingsContext.Consumer>
                       {(settings) => (
@@ -190,8 +193,10 @@ export class Header extends React.Component<HeaderProps, any> {
                       onClick={this.closeMenu}
                     ></div>
                   </nav>
-                </FocusTrap>
               </Box>
+
+              </FocusTrap>
+
             </Container>
           </InnerBox>
         </header>
