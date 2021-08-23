@@ -75,12 +75,13 @@ export class Header extends React.Component<HeaderProps, any> {
                 <EventEffect outline noHover>
                   {({ className }) => (
                     <Link
+                      onClick={this.closeMenu}
                       to={`/${i18n.languages[0]}`}
                       aria-label={i18n.t('common|logo-title')}
                       className={'dataportal-logo'}
                     >
                       <Box>
-                        <div onClick={this.closeMenu} className="logo-box">
+                        <div className="logo-box">
                           <DataportalLogo />
                         </div>
                       </Box>
