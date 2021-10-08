@@ -103,8 +103,15 @@ app.use(function(req,res, next)
       realm: 'dev.dataportal.se',
     })(req, res, next);
   }
-  else
-    next();
+  else if(host === 'digg-test-devportal.azurewebsites.net') {
+    basicAuth({
+       users: { 'digg': 'devdata' },
+       challenge: true,
+       realm: 'digg-test-devportal.azurewebsites.net',
+     })(req, res, next);
+   }
+   else  
+  next();
 });
 
 app.use(express.json());
