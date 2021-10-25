@@ -66,10 +66,10 @@ export const LandingPageItem: React.FC<LandingPageItemProps> = (props) => {
               .map((n, index) => {
                 return (
                   <li
-                    onClick={() => (window.location.href = n.connectedTagPath)}
+                    onClick={() => (window.location.href = `/${i18n.languages[0]}${n.connectedTagPath}`)}
                     key={index}
                   >
-                    <Link to={`${n.connectedTagPath}`}>{n.title}</Link>
+                    <Link to={`/${i18n.languages[0]}${n.connectedTagPath}`}>{n.title}</Link>
                     <ArrowIcon />
                   </li>
                 );
