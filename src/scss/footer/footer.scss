@@ -1,4 +1,7 @@
-@import 'scss/general/variables.scss';
+@import "scss/general/variables.scss";
+
+//Footer list switch query
+$footer-mobile-switch: 56.25rem;
 
 footer {
     margin-top: 10rem;
@@ -12,7 +15,7 @@ footer {
     background-color: $black100;
     padding-top: $space-32;
     padding-bottom: $space-64;
-    border-top: 1px solid #E4E4E4;
+    border-top: 1px solid $bg-color;
 
     .footer-main {
         display: flex;
@@ -37,18 +40,16 @@ footer {
     flex-wrap: wrap;
     margin-bottom: $space-24;
 
-    @media screen and (max-width: 43.75rem) {
-        flex-direction: column;
-    }
-
     span,
     a {
         color: $white;
-        margin-left: $space-16;
-
         &:focus {
             outline-color: $white !important;
         }
+    }
+
+    a {
+        margin-right: $space-24;
     }
 
     a[href^="mailto:"] {
@@ -57,28 +58,16 @@ footer {
         }
     }
 
-    a {
-        margin-right: $space-24;
-        padding-top: 0.25rem;
-        padding-bottom: 0.25rem;
-    }
-
     .footer-link {
-        word-break: initial;
-        margin-bottom: $space-16;
         display: flex;
-
-        &:focus {
-            outline: $focus-style;
-            outline-offset: $focus-offset;
-        }
+        word-break: initial;
 
         &:hover {
             text-decoration: none;
         }
 
         span {
-            margin-left: .5rem;
+            margin-left: 0.5rem;
             width: max-content;
 
             svg {
@@ -104,11 +93,6 @@ footer {
         margin-left: -1rem;
         margin-right: -1rem;
 
-        div {
-            margin-right: $space-24;
-            margin-bottom: $space-16;
-        }
-
         .footer__links-nav--heading {
             margin-bottom: $space-16;
             color: $white;
@@ -119,7 +103,7 @@ footer {
             margin: 0rem;
             padding: $space-16;
 
-            @media screen and (min-width: 31.25rem) {
+            @media screen and (min-width: $footer-mobile-switch) {
                 &:not(:last-of-type) {
                     margin-right: $space-48;
                 }
@@ -130,20 +114,7 @@ footer {
             }
         }
 
-        @media screen and (max-width: 43.75rem) {
-            flex-direction: column;
-        }
-    }
-
-    .footer__links-contact {
-        display: flex;
-        flex-wrap: wrap;
-
-        .footer-link:last-of-type {
-            margin-right: 0rem;
-        }
-
-        @media screen and (max-width: 43.75rem) {
+        @media screen and (max-width: $footer-mobile-switch) {
             flex-direction: column;
         }
     }

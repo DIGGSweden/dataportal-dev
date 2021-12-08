@@ -1,4 +1,11 @@
-@import 'scss/general/variables.scss';
+@import "scss/general/variables.scss";
+
+//Grid 33% query
+$grid-switch-33: 50rem;
+//Grid 50% query
+$grid-switch-50: 37.5rem;
+//Grid 100% query
+$grid-switch-100: 31.5rem;
 
 .content_grid {
     display: flex;
@@ -25,15 +32,15 @@
             width: 25%;
             padding: $space-8;
 
-            @media screen and (max-width: 50rem) {
+            @media screen and (max-width: $grid-switch-33) {
                 width: 33.3333%;
             }
 
-            @media screen and (max-width: 37.5rem) {
+            @media screen and (max-width: $grid-switch-50) {
                 width: 50%;
             }
 
-            @media screen and (max-width: 31.5rem) {
+            @media screen and (max-width: $grid-switch-100) {
                 width: 100%;
             }
 
@@ -83,7 +90,7 @@
 
         &:nth-of-type(3) {
             .content_grid-item-wrapper {
-                background-color: $brown10;
+                background-color: $green50;
             }
         }
 
@@ -142,7 +149,6 @@
         }
     }
 }
-
 
 //Themes for grid
 .grid:nth-of-type(even) {
@@ -212,7 +218,6 @@
                 background-color: $orange10;
             }
         }
-
 
         &:nth-of-type(1) {
             .content_grid-item-wrapper {

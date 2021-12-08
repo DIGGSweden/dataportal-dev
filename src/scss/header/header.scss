@@ -1,4 +1,11 @@
-@import 'scss/general/variables.scss';
+@import "scss/general/variables.scss";
+
+//Mobile media query
+$mobile-width: 56.25rem; //900px
+//Medium logo in mobile query
+$mobile-width-small: 28.75rem;
+//Small logo in mobile query
+$logo-mobile-small: 19.063rem;
 
 header {
     border-bottom: 1px solid $black10;
@@ -22,23 +29,20 @@ header {
 
     svg {
         width: 18.75rem;
-        transition: .5s;
+        transition: 0.5s;
 
-        @media screen and (max-width: 28.75rem) {
+        @media screen and (max-width: $mobile-width-small) {
             width: 13.75rem;
-            transition: .2s;
+            transition: 0.2s;
         }
 
-        @media screen and (max-width: 19.063rem) {
+        @media screen and (max-width: $logo-mobile-small) {
             width: 11.75rem;
-            transition: .2s;
+            transition: 0.2s;
         }
     }
 
-
-   
-
-    .close-menu-btn{
+    .close-menu-btn {
         z-index: 4000;
     }
 }
@@ -48,10 +52,10 @@ header {
     align-items: center;
     flex-wrap: nowrap;
     display: block;
-    padding-top: .75rem;
-    padding-bottom: .75rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
 
-    @media screen and (max-width: 42.5rem) {
+    @media screen and (max-width: $mobile-width) {
         display: none;
         flex-wrap: wrap;
     }
@@ -69,7 +73,7 @@ header {
         @media screen and (max-width: 650px) {
             font-size: 16px;
             margin-top: $space-24;
-            transition: .1s;
+            transition: 0.1s;
         }
 
         &:not(:last-of-type) {
@@ -122,7 +126,7 @@ header {
     width: 100%;
     min-height: 200px;
 
-    @media screen and (min-width: 42.49999rem) {
+    @media screen and (min-width: $mobile-width) {
         display: none;
     }
 }
@@ -141,7 +145,7 @@ header {
     display: flex;
     flex-direction: column;
 
-    @media screen and (min-width: 42.49999rem) {
+    @media screen and (min-width: $mobile-width) {
         display: none;
     }
 
@@ -156,7 +160,7 @@ header {
 
         &:hover {
             border-left: 5px solid $pink25;
-            transition: .1s;
+            transition: 0.1s;
         }
 
         &:focus {
@@ -192,8 +196,7 @@ header {
         margin-top: 0.125rem;
     }
 
-    @media screen and (max-width: 28.75rem) {
-
+    @media screen and (max-width: $mobile-width-small) {
         .menu-icon,
         .close-icon {
             svg {
@@ -206,7 +209,7 @@ header {
         }
     }
 
-    @media screen and (min-width: 42.49999rem) {
+    @media screen and (min-width: $mobile-width) {
         display: none;
     }
 
@@ -224,7 +227,6 @@ header {
 .nav-btn--open {
     display: none;
 }
-
 
 .menu {
     display: none;
@@ -256,7 +258,7 @@ header {
 }
 
 .close-menu-btn {
-    @media screen and (min-width: 42.49999rem) {
+    @media screen and (min-width: $mobile-width) {
         display: none;
     }
 }
