@@ -1,8 +1,6 @@
-@import 'scss/general/variables.scss';
-
+@import "scss/general/variables.scss";
 
 .breadcrumb {
-
     // border-bottom: 1px solid $black10;
     .breadcrumb__list {
         display: flex;
@@ -44,7 +42,7 @@
             &:last-of-type {
                 a {
                     text-decoration: none;
-                    cursor: text;
+                    cursor: default;
                 }
 
                 span {
@@ -55,6 +53,7 @@
             &:not(:first-of-type) {
                 &::before {
                     content: "/";
+                    color: $green50;
                 }
 
                 a {

@@ -1,16 +1,12 @@
 import {
   Box,
   Container,
-  createInterpolator,
-  Heading,
-  Logo,
   styled,
   MenuIcon,
   CloseIcon,
 } from '@digg/design-system';
 import React, { useState } from 'react';
 import { Link, RouteComponentProps, withRouter } from 'react-router-dom';
-import { NoScriptLogo } from '../../assets/NoScriptLogo';
 import { DataportalLogo } from '../../assets/Logo';
 import { EventEffect } from '../EventEffect';
 import { skipToContent } from '../SkipToContent';
@@ -18,8 +14,6 @@ import i18n from 'i18n';
 import 'scss/header/header.scss';
 import 'scss/general/general.scss';
 import { SettingsContext } from 'components/SettingsProvider';
-import { bool, string } from 'prop-types';
-import { boolean } from 'yup';
 import FocusTrap from 'focus-trap-react';
 
 const InnerBox = styled(Box)`
@@ -51,15 +45,17 @@ export class Header extends React.Component<HeaderProps, any> {
 
   openMenu = () => {
     this.setState({ showMenu: true });
-    this.setState({ focusTrap : true});
+    this.setState({ focusTrap: true });
     document.body.setAttribute('style', `position:fixed;`);
   };
 
   closeMenu = () => {
     this.setState({ showMenu: false });
-    this.setState({ focusTrap : false});
+    this.setState({ focusTrap: false });
     document.body.setAttribute('style', ``);
   };
+
+
 
 
   render() {
@@ -68,77 +64,66 @@ export class Header extends React.Component<HeaderProps, any> {
         <header>
           <InnerBox paddingY={0} paddingX={2}>
             <Container>
-            
-            <FocusTrap active={this.state.focusTrap}>
 
-              <Box className="header-box">
-                <EventEffect outline noHover>
-                  {({ className }) => (
-                    <Link
+              <FocusTrap active={this.state.focusTrap}>
+
+                <Box className="header-box">
+                  <EventEffect outline noHover>
+                    {({ className }) => (
+                      <Link
+                        onClick={this.closeMenu}
+                        to={`/${i18n.languages[0]}`}
+                        aria-label={i18n.t('common|logo-title')}
+                        className={'dataportal-logo'}
+                      >
+                        <Box>
+                          <div className="logo-box">
+                            <DataportalLogo />
+                          </div>
+                        </Box>
+                      </Link>
+                    )}
+                  </EventEffect>
+
+                  {this.state.showMenu ? (
+                    <button
+                      aria-label={i18n.t('common|close')}
+                      className="nav-btn close-menu-btn"
                       onClick={this.closeMenu}
-                      to={`/${i18n.languages[0]}`}
-                      aria-label={i18n.t('common|logo-title')}
-                      className={'dataportal-logo'}
                     >
-                      <Box>
-                        <div className="logo-box">
-                          <DataportalLogo />
-                        </div>
-                      </Box>
-                    </Link>
+                      <CloseIcon className="close-icon"></CloseIcon>{' '}
+                      <span className="nav-btn--text text-6">
+                        {' '}
+                        {i18n.t('common|close')}
+                      </span>
+                    </button>
+                  ) : (
+
+                    <button
+                      aria-label={i18n.t('common|menu')}
+                      className={
+                        'nav-btn' + (this.state.showMenu ? ' nav-btn--open' : '')
+                      }
+                      onClick={this.openMenu}
+                    >
+                      <MenuIcon className="menu-icon"></MenuIcon>
+                      <span className="nav-btn--text text-6">
+                        {i18n.t('common|menu')}
+                      </span>
+                    </button>
                   )}
-                </EventEffect>
 
-                {this.state.showMenu ? (
-                  <button
-                    aria-label={i18n.t('common|close')}
-                    className="nav-btn close-menu-btn"
-                    onClick={this.closeMenu}
-                  >
-                    <CloseIcon className="close-icon"></CloseIcon>{' '}
-                    <span className="nav-btn--text text-6">
-                      {' '}
-                      {i18n.t('common|close')}
-                    </span>
-                  </button>
-                ) : (
-
-                  <button
-                    aria-label={i18n.t('common|menu')}
+                  <div
                     className={
-                      'nav-btn' + (this.state.showMenu ? ' nav-btn--open' : '')
+                      'menu-bg' + (this.state.showMenu ? ' menu-bg--active' : '')
                     }
-                    onClick={this.openMenu}
-                  >
-                    <MenuIcon className="menu-icon"></MenuIcon>
-                    <span className="nav-btn--text text-6">
-                      {i18n.t('common|menu')}
-                    </span>
-                  </button>
-                )}
-
-                <div
-                  className={
-                    'menu-bg' + (this.state.showMenu ? ' menu-bg--active' : '')
-                  }
-                ></div>
+                  ></div>
                   <nav
                     className={
                       'header-links' +
                       (this.state.showMenu ? '--active text-5' : '')
                     }
                   >
-                   
-                    {/* <div
-                      onClick={this.closeMenu}
-                      className={
-                        'close-menu-btn-wrapper ' +
-                        (this.state.showMenu
-                          ? ' close-menu-btn-wrapper--active '
-                          : '')
-                      }
-                    ></div> */}
-
                     <SettingsContext.Consumer>
                       {(settings) => (
                         <>
@@ -161,7 +146,7 @@ export class Header extends React.Component<HeaderProps, any> {
                                       className={
                                         'header-link ' +
                                         (this.props.activeLink == 'Om oss' ||
-                                        this.props.activeLink == 'About us'
+                                          this.props.activeLink == 'About us'
                                           ? 'active'
                                           : '')
                                       }
@@ -194,10 +179,8 @@ export class Header extends React.Component<HeaderProps, any> {
                       onClick={this.closeMenu}
                     ></div>
                   </nav>
-              </Box>
-
+                </Box>
               </FocusTrap>
-
             </Container>
           </InnerBox>
         </header>

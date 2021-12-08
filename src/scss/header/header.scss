@@ -5,7 +5,9 @@ $mobile-width: 56.25rem; //900px
 //Medium logo in mobile query
 $mobile-width-small: 28.75rem;
 //Small logo in mobile query
-$logo-mobile-small: 19.063rem;
+$logo-mobile-small: 25rem;
+//Transition to mobile
+$mobile-transition: 0.25s;
 
 header {
     border-bottom: 1px solid $black10;
@@ -20,24 +22,35 @@ header {
 }
 
 .header-box {
-    padding-top: $space-16;
-    padding-bottom: $space-16;
+    padding-top: $space-24;
+    padding-bottom: $space-24;
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
     align-items: center;
+    flex-wrap: wrap;
+    transition: padding $mobile-transition ease;
+
+    @media screen and (max-width: $mobile-width) {
+        padding-top: $space-16;
+        padding-bottom: $space-16;
+    }
+
+    @media screen and (max-width: $mobile-width-small) {
+        padding-top: $space-16;
+        padding-bottom: $space-16;
+    }
 
     svg {
         width: 18.75rem;
         transition: 0.5s;
 
-        @media screen and (max-width: $mobile-width-small) {
-            width: 13.75rem;
+        @media screen and (max-width: $mobile-width) {
+            width: 14.75rem;
             transition: 0.2s;
         }
 
         @media screen and (max-width: $logo-mobile-small) {
-            width: 11.75rem;
+            width: 12.75rem;
             transition: 0.2s;
         }
     }

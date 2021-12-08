@@ -1,7 +1,8 @@
-@import 'scss/general/variables.scss';
+@import "scss/general/variables.scss";
+
+$mobile-width: 56.25rem; //900px
 
 .jumbotron-wrapper {
-    // background-color: $green10;
     margin-bottom: $space-16;
 }
 
@@ -9,16 +10,16 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: $space-64;
-    padding-top: $space-48;
-    padding-bottom: $space-48;
+    padding-top: $space-96;
+    padding-bottom: $space-96;
     max-width: $page-width;
     margin: auto;
 
-    @media screen and (max-width: 1440px) {
+    @media screen and (max-width: $mobile-width) {
         padding-left: $space-16;
         padding-right: $space-16;
-        padding-top: $space-32;
-        padding-bottom: $space-32;
+        padding-top: $space-64;
+        padding-bottom: $space-64;
     }
 
     .jumbotron_heading {
@@ -31,7 +32,7 @@
         h1 {
             z-index: 1;
             margin-top: 0rem;
-            margin-bottom: .5rem;
+            margin-bottom: 0.5rem;
             text-align: left;
 
             @media screen and (min-width: 50rem) {

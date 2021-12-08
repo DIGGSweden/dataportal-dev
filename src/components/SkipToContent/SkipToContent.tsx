@@ -58,7 +58,7 @@ export const SkipToContent = () => (
   <EventEffect outline noHover noColorInvert>
     {({ className }) => (
       <div>
-        <SkipLink aria-label={i18n.t('common|skiptocontent')} role="button" className={className} onClick={skipToContent}>
+        <SkipLink aria-label={i18n.t('common|skiptocontent')} className={className} onClick={skipToContent}>
           {i18n.t('common|skiptocontent')}
         </SkipLink>
 

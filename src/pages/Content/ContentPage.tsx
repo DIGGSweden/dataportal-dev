@@ -16,14 +16,10 @@ import {
 } from '../../components/StyledComponents/';
 import { MenuItem, AnchorLinkMenu } from './AnchorLinkMenu';
 import i18n from '../../i18n';
-import { TopImage } from '../../assets/TopImage';
-import { string } from 'prop-types';
-import { ContentItem } from '../../components/Content';
 import { SettingsContext } from '../../components/SettingsProvider';
 import { PageProps } from '../PageProps';
 import Helmet from 'react-helmet';
-import moment from 'moment';
-import { Breadcrumb, StaticBreadcrumb, StaticPath } from '../../components/Breadcrumb';
+import {StaticBreadcrumb, StaticPath } from '../../components/Breadcrumb';
 import {
   skipToContent,
   skipToElement,
@@ -72,7 +68,6 @@ const getLinks = () => {
   let hTags = Array.prototype.slice.call(
     cont.querySelectorAll('h2') || document.createElement('div'),
     0
-    
   );
 
   // Set only if there are more than 2 elements

@@ -72,10 +72,10 @@ export const StartPageBlocksItem: React.FC<StartPageBlocksItemProps> = (
 
   const blocks =
     data &&
-    data.tags &&
-    data.tags.length > 0 &&
-    data.tags[0].connectedContents &&
-    data.tags[0].connectedContents.length > 0
+      data.tags &&
+      data.tags.length > 0 &&
+      data.tags[0].connectedContents &&
+      data.tags[0].connectedContents.length > 0
       ? data.tags[0].connectedContents
       : [];
   const jumbotron_logo = require('../../pages/StartPage/grafic.png');
@@ -83,7 +83,9 @@ export const StartPageBlocksItem: React.FC<StartPageBlocksItemProps> = (
   return (
     <div>
       {!data && (
-        <span className="text-5 loading">{i18n.t('common|loading')}...</span>
+        <span className="text-5 loading">
+          {/* {i18n.t('common|loading')}... */}
+        </span>
       )}
 
       {error && <span className="text-5">{error}</span>}
