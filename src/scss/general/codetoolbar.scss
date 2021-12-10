@@ -1,6 +1,11 @@
 @import "scss/general/variables.scss";
 
 .code-toolbar {
+    pre:focus-visible{
+        outline: $focus-style !important;
+        outline-offset: $focus-offset !important;
+    }
+
     .toolbar {
         opacity: 1;
 
@@ -13,8 +18,8 @@
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    height: 2.75rem;
-                    width: 2.75rem;
+                    min-height: 2.75rem;
+                    min-width: 2.75rem;
 
                     span {
                         box-shadow: none;

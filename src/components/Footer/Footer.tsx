@@ -101,6 +101,8 @@ export class Footer extends React.Component<FooterProps> {
                                               target="_blank"
                                             >
                                               {c.data.title}
+                                              <ExternalLinkIcon/>
+
                                             </Link>
                                           );
 

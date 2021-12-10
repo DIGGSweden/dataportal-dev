@@ -112,9 +112,9 @@ export class AnchorLinkMenu extends React.Component<
     `;
 
     const AnchorHeading = styled('h2')`
-      font-size: 20px;
+      font-size: 1.25em;
       font-weight: bold;
-      line-height: 28px;
+      line-height: 1.75em;
       letter-spacing: -0.01em;
       color: ${colorPalette.black100};
     `;

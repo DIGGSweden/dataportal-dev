@@ -15,6 +15,7 @@ $grid-switch-100: 31.5rem;
     .content_grid-preamble {
         margin-top: 0rem;
         max-width: 40rem;
+        word-break: break-word;
     }
 
     .content_grid-list {
@@ -67,6 +68,7 @@ $grid-switch-100: 31.5rem;
                 .content_grid-itemdesc {
                     margin-top: 0.5rem;
                     max-width: 40rem;
+                    word-break: break-word;
                 }
             }
         }

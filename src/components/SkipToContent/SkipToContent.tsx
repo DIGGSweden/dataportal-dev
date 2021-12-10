@@ -19,6 +19,7 @@ const SkipLink = styled('button')`
   display: flex;
   justify-content: center;
   align-items: center;
+  max-width:300px;
 
   transform: translateY(-100%);
   opacity: 0;

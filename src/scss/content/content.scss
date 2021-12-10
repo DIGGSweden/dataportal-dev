@@ -1,4 +1,4 @@
-@import 'scss/general/variables.scss';
+@import "scss/general/variables.scss";
 
 .text-header {
     max-width: 50em; //800px //50em
@@ -22,6 +22,7 @@
     .preamble {
         margin-top: 0px;
         margin-bottom: $space-32;
+        word-break: break-word;
 
         a {
             color: $black100;
@@ -32,11 +33,11 @@
             }
         }
 
-        a[target=_blank]:after {
-            content: '\f08e';
+        a[target="_blank"]:after {
+            content: "\f08e";
             margin-left: 5px;
             font-family: "FontAwesome" !important;
-            font-size: .8em;
+            font-size: 0.8em;
         }
     }
 
@@ -49,7 +50,11 @@
             height: auto;
         }
 
-        p span, a {
+        p,
+        span,
+        a,
+        p span,
+        a {
             word-break: break-word;
         }
 
@@ -62,19 +67,18 @@
             }
         }
 
-        a[target=_blank]:after {
-            content: '\f08e';
+        a[target="_blank"]:after {
+            content: "\f08e";
             margin-left: 5px;
             font-family: "FontAwesome" !important;
-            font-size: .8em;
+            font-size: 0.8em;
         }
 
         li {
             margin-bottom: $space-8;
+            word-break: break-word;
         }
     }
-
-
 
     //Linkblocks / Pixels
     .link-blocks {
