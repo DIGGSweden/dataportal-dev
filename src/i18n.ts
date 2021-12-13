@@ -52,4 +52,6 @@ i18n
     }
   });
 
+  i18n.changeLanguage("sv");  
+
   export default i18n;
