@@ -39,13 +39,14 @@ app.use(
 );
 
 i18next.use(middleware.LanguageDetector).init({    
-  preload: ['sv', 'en'],
-  detection:({
-    order:['path','header'],     
-    lookupHeader: 'accept-language',
-    lookupPath: 'lng',
-    lookupFromPathIndex: 0,
-  }),    
+   preload: ['sv'],
+  // detection:({
+  //   order:['path','header'],     
+  //   lookupHeader: 'accept-language',
+  //   lookupPath: 'lng',
+  //   lookupFromPathIndex: 0,
+  // }),    
+  supportedLngs:['sv'],    
   resources: {
     sv: {
       resource:resources_sv,
@@ -61,10 +62,10 @@ i18next.use(middleware.LanguageDetector).init({
     }
   },
   load: 'languageOnly',
-  whitelist:['sv','en'],    
+  // whitelist:['sv','en'],    
   fallbackLng: {
     'sv-SE':['se'],
-    'en-US':['en'],
+    //'en-US':['en'],
     'default':['sv']
   },        
   debug: false,    
@@ -96,14 +97,7 @@ app.use('/', function(req, res, done) {
 app.use(function(req,res, next)
 {
   var host = req.get('Host');
-  if(host === 'dev.dataportal.se') {
-   basicAuth({
-      users: { 'digg': 'devdata' },
-      challenge: true,
-      realm: 'dev.dataportal.se',
-    })(req, res, next);
-  }
-  else if(host === 'digg-test-devportal.azurewebsites.net') {
+  if(host === 'digg-test-devportal.azurewebsites.net') {
     basicAuth({
        users: { 'digg': 'devdata' },
        challenge: true,

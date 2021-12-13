@@ -36,10 +36,11 @@ i18n
       }
     },
     load: 'languageOnly',
+    supportedLngs:['sv'],    
     //whitelist:['sv','en'],    
     fallbackLng: {
       'sv-SE':['se'],
-      'en-US':['en'],
+      //'en-US':['en'],
       'default':['sv']
     },        
     debug: false,    
