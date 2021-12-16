@@ -1,7 +1,7 @@
 # Sveriges utvecklarportal webbklient
 
 Här finns källkoden för utvecklarportalens webbklient
-[https://www.DATAPORTAL](https://DATAPORTAL)
+[https://dev.dataportal.se](https://dev.dataportal.se)
 
 ## Förutsättningar
 
