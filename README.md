@@ -8,7 +8,6 @@ Här finns källkoden för utvecklarportalens webbklient
 - node 14.16.1
 - yarn
 
-
 ## Utveckling
 
 ```sh
@@ -34,7 +33,7 @@ Besök [http://localhost:3003](http://localhost:3003) i din webbläsare.
 
 Bygg för produktion genom att köra följande:
 
-```
+```sh
 yarn build
 ```
 
@@ -46,7 +45,6 @@ Detta kommer generera applikationen som statiska filer i dist-mappen. `dist/serv
 - [React](https://reactjs.org/) för UI
 - [Emotion](https://emotion.sh) för styling
 - [React Router](https://reacttraining.com/react-router/) för routing
-
 
 ## Noteringar
 
