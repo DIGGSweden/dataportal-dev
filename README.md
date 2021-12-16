@@ -48,5 +48,5 @@ Detta kommer generera applikationen som statiska filer i dist-mappen. `dist/serv
 
 ## Noteringar
 
-Projektet har ett beroende till Diggs designsystemspaket `@digg/design-system`. 
+Projektet har ett beroende till Diggs designsystemspaket `@digg/design-system`.
 I skrivande stund är källkoden till detta paket inte publicerad på Github eller NPM.

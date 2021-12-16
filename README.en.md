@@ -19,7 +19,7 @@ Visit [http://localhost:8080](http://localhost:8080) in your browser.
 
 ## Development backend rendered
 
-To test the site with a node express server, for backend rendering. 
+To test the site with a node express server, for backend rendering.
 
 ```sh
 yarn
