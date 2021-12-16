@@ -1,8 +1,6 @@
 import { EnvSettings } from "./EnvSettings";
 
-export class Settings_Prod extends EnvSettings {  
-  //CONTENTBACKEND_SITEURL = "*dev.dataportal.se*";  //set to dev.digg.se when backend is multisite enabled
-
+export class Settings_Prod extends EnvSettings {    
   CONTENTBACKEND_SITEURL = "*dev.dataportal.*";  //set to dev.digg.se when backend is multisite enabled
 
   CONTENTBACKEND_GRAPHAPI="https://digg-prod-graphproxy.azurewebsites.net";

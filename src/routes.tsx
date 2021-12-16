@@ -33,15 +33,7 @@ export const Routes = ({formdata, vars}:RouteProps) => {
             <Switch>
                {/* default */}
                <Route path={['/', '/sv']} exact render={(props)=><StartPage env={settings.env} {...props}/>} />               
-                
-                {/* <Route path={['/landningssida', '/sv/landningssida']} exact render={(props)=><LandingPage env={settings.env} {...props}/>} /> */}
-
-                {/* <Route render={(props)=><NotFoundPage {...props}/>} /> */}
-              
-                {/* <Route path={['/nyheter/:nid/*', '/sv/nyheter/:nid/*','/sv/nyheter/*']} exact render={(props)=><ContentPage env={settings.env} content={null} {...props}/>} /> */}        
-            
-                {/* query graphql for connectedcontentpath */}
-                {/* <Route path={['/en/:path*']} exact render={(props) => (<ContentRouter env={settings.env} lang="en" {...props} />)} />                               */}
+                                
                 <Route path={['/sv/:path*']} exact render={(props) => (<ContentRouter env={settings.env} lang="sv" {...props} />)} />                              
                 <Route path={['/:path*']} exact render={(props) => (<ContentRouter env={settings.env} lang="sv" {...props} />)} />    
             </Switch>

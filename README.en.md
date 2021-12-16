@@ -5,7 +5,7 @@ This is the main repository for the DEV web client.
 
 ## Prerequisites
 
-- node 10.16.3
+- node 14.16.1
 - yarn
 
 ## Development

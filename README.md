@@ -5,7 +5,7 @@ Här finns källkoden för utvecklarportalens webbklient
 
 ## Förutsättningar
 
-- node 10.16.3
+- node 14.16.1
 - yarn
 
 
