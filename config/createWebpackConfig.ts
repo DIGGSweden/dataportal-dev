@@ -212,7 +212,7 @@ export const createWebpackConfig = (
       version: false,
       builtAt: false,
       warningsFilter: /^(?!CriticalDependenciesWarning$)/
-    },
+    }    
   };
 
   return webpackMerge.smart(defaultConfig, config);

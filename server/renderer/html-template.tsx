@@ -52,9 +52,10 @@ export const getHeader = ({
           <meta name="viewport" content="width=device-width,initial-scale=1">
           <meta name="theme-color" content="#171A21">         
           <meta name="referrer" content="no-referrer">   
+          <link rel="stylesheet" href="/dist/client/js/font-awesome.min.css" type="text/css">  
           <meta http-equiv="Content-Security-Policy" 
             content="
-                script-src 'self' 'nonce-${nonceKey}' dataportal.azureedge.net *.dataportal.se
+                script-src 'self' 'unsafe-eval' 'strict-dynamic' 'unsafe-inline' 'nonce-${nonceKey}' dataportal.azureedge.net *.dataportal.se
                 *.googleapis.com *.gstatic.com digg-test-graphproxy.azurewebsites.net digg-prod-graphproxy.azurewebsites.net
                 https://webbanalys.digg.se/;
                 default-src 'none';
@@ -63,10 +64,10 @@ export const getHeader = ({
                 img-src 'self' data: *;
                 style-src 'self' 'unsafe-inline' dataportal.azureedge.net *.googleapis.com *.dataportal.se;                
                 form-action 'self';
-                font-src 'self' data: dataportal.azureedge.net fonts.gstatic.com *.dataportal.se;    
+                font-src 'self' data: dataportal.azureedge.net fonts.gstatic.com *.dataportal.se;                    
                 connect-src *;            
-             ">        
-          <link rel="stylesheet" href="/dist/client/js/font-awesome.min.css" media="print" onload="this.media='all'" type="text/css">                                 
+                frame-src 'self' https://www.youtube.com/ https://www.youtube-nocookie.com/;
+             ">                                            
           <link href="https://fonts.googleapis.com" rel="preconnect" crossorigin>   
           <link href="https://fonts.googleapis.com" rel="dns-prefetch" crossorigin>                          
           <link rel="manifest" href="/dist/client/js/manifest.json" crossorigin="use-credentials">
